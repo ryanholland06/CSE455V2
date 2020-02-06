@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using CSE455V2.Models;
 using CSE455V2.Views;
 using CSE455V2.ViewModels;
+using CSE455V2.Services;
 
 namespace CSE455V2.Views
 {
@@ -18,38 +19,66 @@ namespace CSE455V2.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        FirebaseHelper firebaseHelper = new FirebaseHelper();
 
         public ItemsPage()
         {
             InitializeComponent();
-
-            BindingContext = viewModel = new ItemsViewModel();
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        protected async override void OnAppearing()
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
-                return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
-
-        protected override void OnAppearing()
-        {
             base.OnAppearing();
+            var allPersons = await firebaseHelper.GetAllPersons();
+            lstPersons.ItemsSource = allPersons;
+        }
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+        private async void BtnAdd_Clicked(object sender, EventArgs e)
+        {
+            await firebaseHelper.AddPerson(Convert.ToInt32(txtId.Text), txtName.Text);
+            await firebaseHelper.AddPayment(Convert.ToInt32(txtId.Text), txtName.Text);
+
+            txtId.Text = string.Empty;
+            txtName.Text = string.Empty;
+            await DisplayAlert("Success", "Person Added Successfully", "OK");
+            var allPersons = await firebaseHelper.GetAllPersons();
+            lstPersons.ItemsSource = allPersons;
+        }
+
+        private async void BtnRetrive_Clicked(object sender, EventArgs e)
+        {
+            var person = await firebaseHelper.GetPerson(Convert.ToInt32(txtId.Text));
+            if (person != null)
+            {
+                txtId.Text = person.PersonId.ToString();
+                txtName.Text = person.Name;
+                await DisplayAlert("Success", "Person Retrive Successfully", "OK");
+
+            }
+            else
+            {
+                await DisplayAlert("Success", "No Person Available", "OK");
+            }
+
+        }
+
+        private async void BtnUpdate_Clicked(object sender, EventArgs e)
+        {
+            await firebaseHelper.UpdatePerson(Convert.ToInt32(txtId.Text), txtName.Text);
+            txtId.Text = string.Empty;
+            txtName.Text = string.Empty;
+            await DisplayAlert("Success", "Person Updated Successfully", "OK");
+            var allPersons = await firebaseHelper.GetAllPersons();
+            lstPersons.ItemsSource = allPersons;
+        }
+
+        private async void BtnDelete_Clicked(object sender, EventArgs e)
+        {
+            await firebaseHelper.DeletePerson(Convert.ToInt32(txtId.Text));
+            await DisplayAlert("Success", "Person Deleted Successfully", "OK");
+            var allPersons = await firebaseHelper.GetAllPersons();
+            lstPersons.ItemsSource = allPersons;
         }
     }
 }
