@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace CSE455V2.Services
 {
+    //Methods for Database 
     public class FirebaseHelper
     {
         FirebaseClient firebase = new FirebaseClient("https://spotlot-e32bf.firebaseio.com/");
-
+        #region Person
         public async Task<List<Person>> GetAllPersons()
         {
 
@@ -32,12 +33,7 @@ namespace CSE455V2.Services
               .Child("Persons")
               .PostAsync(new Person() { PersonId = personId, Name = name });
         }
-        public async Task AddPayment(int personId, string name)
-        {
-            await firebase
-              .Child("Payment")
-              .PostAsync(new PaymentModel() { studentID = personId, cardNo = name });
-        }
+       
 
         public async Task<Person> GetPerson(int personId)
         {
@@ -68,5 +64,14 @@ namespace CSE455V2.Services
             await firebase.Child("Persons").Child(toDeletePerson.Key).DeleteAsync();
 
         }
+        #endregion
+        #region PaymentDataMethods
+        public async Task AddPayment(int personId, string name)
+        {
+            await firebase
+              .Child("Payment")
+              .PostAsync(new PaymentModel() { studentID = personId, cardNo = name });
+        }
+        #endregion
     }
 }
