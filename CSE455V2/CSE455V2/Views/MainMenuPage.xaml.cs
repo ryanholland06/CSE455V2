@@ -36,5 +36,10 @@ namespace CSE455V2.Views
         {
             Navigation.PushAsync(new UserSettingsPage());
         }
+
+        void ComPost_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new CommunityPostingPage());
+        }
     }
 }

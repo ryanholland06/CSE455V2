@@ -8,9 +8,6 @@
              Title="Settings">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="U suck dick Roy"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Button Text="Payment Information" Clicked="PaymentInfo_Clicked" />
             <Button Text="Vehicle Information" Clicked="VehicleInfo_Clicked" />
             <Button Text="Login Information" Clicked="LoginInfo_Clicked" />

@@ -4,15 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CSE455V2.Views.MainMenuPage"
-             Title="Main Menu">
+             x:Class="CSE455V2.Views.CommunityPostingPage"
+             Title="Community Postings">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Park Car" Clicked="ParkCar_Clicked" />
-            <Button Text="Map View" Clicked="MapView_Clicked" />
-            <Button Text="List View" Clicked="ListView_Clicked" />
-            <Button Text="Community Postings" Clicked="ComPost_Clicked" />
-            <Button Text="Settings" Clicked="Settings_Clicked" />
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
