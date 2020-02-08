@@ -8,7 +8,7 @@
              Title="Settings">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="U suck alan"
+            <Label Text="U suck dick Roy"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
