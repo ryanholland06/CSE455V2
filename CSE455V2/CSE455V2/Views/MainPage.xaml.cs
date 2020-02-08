@@ -21,7 +21,7 @@ namespace CSE455V2.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Menu, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,11 +30,23 @@ namespace CSE455V2.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
+                    case (int)MenuItemType.Menu:
                         MenuPages.Add(id, new NavigationPage(new MainMenuPage())); // was ItemsPage for ryan
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.Park_Car:
+                        MenuPages.Add(id, new NavigationPage(new ParkCarPage()));
+                        break;
+                    case (int)MenuItemType.Map_View:
+                        MenuPages.Add(id, new NavigationPage(new MapViewPage()));
+                        break;
+                    case (int)MenuItemType.List_View:
+                        MenuPages.Add(id, new NavigationPage(new ListViewPage()));
+                        break;
+                    case (int)MenuItemType.User_Settings:
+                        MenuPages.Add(id, new NavigationPage(new UserSettingsPage()));
+                        break;
+                    case (int)MenuItemType.Community_Post:
+                        MenuPages.Add(id, new NavigationPage(new CommunityPostingPage()));
                         break;
                 }
             }

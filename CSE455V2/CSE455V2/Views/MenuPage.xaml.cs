@@ -20,8 +20,12 @@ namespace CSE455V2.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.Menu, Title="Menu" },
+                new HomeMenuItem {Id = MenuItemType.Park_Car, Title="Park Car" },
+                new HomeMenuItem {Id = MenuItemType.Map_View, Title="Map View" },
+                new HomeMenuItem {Id = MenuItemType.List_View, Title="List View" },
+                new HomeMenuItem {Id = MenuItemType.User_Settings, Title="Settings" },
+                new HomeMenuItem {Id = MenuItemType.Community_Post, Title="Community Postings" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
