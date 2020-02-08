@@ -19,7 +19,8 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:UserSettingsPage />
+                <views:MainMenuPage /> 
+                    <!-- The page above was ItemsPage for ryan before-->
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

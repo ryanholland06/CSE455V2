@@ -17,17 +17,17 @@ namespace CSE455V2.Views
             InitializeComponent();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        void PaymentInfo_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new PaymentPage());
         }
 
-        void Handle_Clicked2(object sender, System.EventArgs e)
+        void VehicleInfo_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new VehiclePage());
         }
 
-        void Handle_Clicked3(object sender, System.EventArgs e)
+        void LoginInfo_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new LoginInfoPage());
         }
