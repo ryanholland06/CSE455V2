@@ -4,17 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CSE455V2.Views.UserSettingsPage"
-             Title="Settings">
+             x:Class="CSE455V2.Views.LoginInfoPage"
+             Title="Login Information">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="U suck dick Roy"
+            <Label Text="Welcome to Alan sucks!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Payment Information" Clicked="Handle_Clicked" />
-            <Button Text="Vehicle Information" Clicked="Handle_Clicked2" />
-            <Button Text="Login Information" Clicked="Handle_Clicked3" />
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
