@@ -20,20 +20,25 @@
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Security Code" 
                    PlaceholderColor="Olive" 
+                   IsPassword="True"
                    MaxLength="3"/>
             
             <Label Text="&#10;" />
             
             <Label Text="Billing Information:"
-                VerticalOptions="Center" 
-                HorizontalOptions="Start" 
-                FontSize="Large"/>
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Start" 
+                    FontSize="Large"/>
             <Entry Placeholder="Name" 
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Street Address" 
                    PlaceholderColor="Olive" />
             <Entry Placeholder="City, State, Zip-Code" 
                    PlaceholderColor="Olive" />
+            <Button Text="Submit"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center" 
+                    BackgroundColor="LightSkyBlue"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

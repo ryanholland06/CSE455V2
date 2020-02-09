@@ -8,9 +8,24 @@
              Title="Vehicle Information">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="FighterZ sucks"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="&#10;" />
+
+            <Label Text="License Plate:"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="Large"/>
+            <Label x:Name="LicensePlate"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Header"/>
+            <Button Text="Edit License Plate"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="EditLicensePlate" />
+            <Button Text="Delete License Plate"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="DeleteLicensePlate" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

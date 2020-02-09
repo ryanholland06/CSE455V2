@@ -17,7 +17,9 @@
             <Label x:Name="city_zip"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
+            
             <Label Text="&#10;" />
+            
             <Label x:Name="card_name"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
