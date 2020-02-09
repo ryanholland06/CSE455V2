@@ -13,16 +13,16 @@ namespace CSE455V2.Services
     public class FirebaseHelper
     {
         FirebaseClient firebase = new FirebaseClient("https://spotlot-e32bf.firebaseio.com/");
-        #region Person
-        public async Task<List<Person>> GetAllPersons()
+        #region 
+        public async Task<List<UserInfo>> GetAllPersons()
         {
 
             return (await firebase
-              .Child("Persons")
-              .OnceAsync<Person>()).Select(item => new Person
+              .Child("UserInfo")
+              .OnceAsync<UserInfo>()).Select(item => new UserInfo
               {
                   Name = item.Object.Name,
-                  PersonId = item.Object.PersonId
+                  StudentId = item.Object.StudentId
               }).ToList();
         }
 
@@ -30,47 +30,47 @@ namespace CSE455V2.Services
         {
 
             await firebase
-              .Child("Persons")
-              .PostAsync(new Person() { PersonId = personId, Name = name });
+              .Child("UserInfo")
+              .PostAsync(new UserInfo() { StudentId = personId, Name = name });
         }
        
 
-        public async Task<Person> GetPerson(int personId)
+        public async Task<UserInfo> GetPerson(int studentId)
         {
             var allPersons = await GetAllPersons();
             await firebase
-              .Child("Persons")
-              .OnceAsync<Person>();
-            return allPersons.Where(a => a.PersonId == personId).FirstOrDefault();
+              .Child("UserInfo")
+              .OnceAsync<UserInfo>();
+            return allPersons.Where(a => a.StudentId == studentId).FirstOrDefault();
         }
 
-        public async Task UpdatePerson(int personId, string name)
+        public async Task UpdatePerson(int studentId, string name)
         {
             var toUpdatePerson = (await firebase
-              .Child("Persons")
-              .OnceAsync<Person>()).Where(a => a.Object.PersonId == personId).FirstOrDefault();
+              .Child("UserInfo")
+              .OnceAsync<UserInfo>()).Where(a => a.Object.StudentId == studentId).FirstOrDefault();
 
             await firebase
               .Child("Persons")
               .Child(toUpdatePerson.Key)
-              .PutAsync(new Person() { PersonId = personId, Name = name });
+              .PutAsync(new UserInfo() { StudentId = studentId, Name = name });
         }
 
-        public async Task DeletePerson(int personId)
+        public async Task DeletePerson(int studentId)
         {
             var toDeletePerson = (await firebase
-              .Child("Persons")
-              .OnceAsync<Person>()).Where(a => a.Object.PersonId == personId).FirstOrDefault();
+              .Child("UserInfo")
+              .OnceAsync<UserInfo>()).Where(a => a.Object.StudentId == studentId).FirstOrDefault();
             await firebase.Child("Persons").Child(toDeletePerson.Key).DeleteAsync();
 
         }
         #endregion
         #region PaymentDataMethods
-        public async Task AddPayment(int personId, string name)
+        public async Task AddPayment(int studentId, string name)
         {
             await firebase
               .Child("Payment")
-              .PostAsync(new PaymentModel() { studentID = personId, cardNo = name });
+              .PostAsync(new PaymentModel() { studentID = studentId, cardNo = name });
         }
         #endregion
     }

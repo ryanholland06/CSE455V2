@@ -51,7 +51,7 @@ namespace CSE455V2.Views
             var person = await firebaseHelper.GetPerson(Convert.ToInt32(txtId.Text));
             if (person != null)
             {
-                txtId.Text = person.PersonId.ToString();
+                txtId.Text = person.StudentId.ToString();
                 txtName.Text = person.Name;
                 await DisplayAlert("Success", "Person Retrive Successfully", "OK");
 
