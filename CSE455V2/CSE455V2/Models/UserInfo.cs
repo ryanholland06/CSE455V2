@@ -12,18 +12,21 @@ namespace CSE455V2.Models
     {
         student, facaulty, security
     }
-    public class UserInfo
+    public class Users
     {
 
         AccountStatus status;
         AccountType accuntType;
-        public int StudentId { get; set; }
-        
-        public string Name { get; set; }
-        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string StudentID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
+        public string CarMake { get; set; }
+        public string CarModel { get; set; }
+        public string CarYear { get; set; }
+        public string CarColor { get; set; }
+        public string LicenseNumber { get; set; }
         public AccountStatus SetAccountStatus
         {
             get

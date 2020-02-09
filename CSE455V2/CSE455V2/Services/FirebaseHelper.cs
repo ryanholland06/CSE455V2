@@ -3,6 +3,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,61 +13,137 @@ namespace CSE455V2.Services
     //Methods for Database 
     public class FirebaseHelper
     {
-        FirebaseClient firebase = new FirebaseClient("https://spotlot-e32bf.firebaseio.com/");
-        #region 
-        public async Task<List<UserInfo>> GetAllPersons()
-        {
+        public static FirebaseClient firebase = new FirebaseClient("https://spotlot-e32bf.firebaseio.com/");
 
-            return (await firebase
-              .Child("UserInfo")
-              .OnceAsync<UserInfo>()).Select(item => new UserInfo
-              {
-                  Name = item.Object.Name,
-                  StudentId = item.Object.StudentId
-              }).ToList();
+        #region Users
+        //Read All
+        public static async Task<List<Users>> GetAllUser()
+        {
+            try
+            {
+                var userlist = (await firebase
+                .Child("Users")
+                .OnceAsync<Users>()).Select(item =>
+                new Users
+                {
+                    Email = item.Object.Email,
+                    Password = item.Object.Password,
+                    StudentID = item.Object.StudentID,
+                    FirstName = item.Object.FirstName,
+                    LastName = item.Object.LastName,
+                    CarMake = item.Object.CarMake,
+                    CarModel = item.Object.CarModel,
+                    CarYear = item.Object.CarYear,
+                    CarColor = item.Object.CarColor,
+                    LicenseNumber = item.Object.LicenseNumber
+                }).ToList();
+                return userlist;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
         }
 
-        public async Task AddPerson(int personId, string name)
+        //Read 
+        public static async Task<Users> GetUser(string email)
         {
-
-            await firebase
-              .Child("UserInfo")
-              .PostAsync(new UserInfo() { StudentId = personId, Name = name });
-        }
-       
-
-        public async Task<UserInfo> GetPerson(int studentId)
-        {
-            var allPersons = await GetAllPersons();
-            await firebase
-              .Child("UserInfo")
-              .OnceAsync<UserInfo>();
-            return allPersons.Where(a => a.StudentId == studentId).FirstOrDefault();
-        }
-
-        public async Task UpdatePerson(int studentId, string name)
-        {
-            var toUpdatePerson = (await firebase
-              .Child("UserInfo")
-              .OnceAsync<UserInfo>()).Where(a => a.Object.StudentId == studentId).FirstOrDefault();
-
-            await firebase
-              .Child("Persons")
-              .Child(toUpdatePerson.Key)
-              .PutAsync(new UserInfo() { StudentId = studentId, Name = name });
+            try
+            {
+                var allUsers = await GetAllUser();
+                await firebase
+                .Child("Users")
+                .OnceAsync<Users>();
+                return allUsers.Where(a => a.Email == email).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
         }
 
-        public async Task DeletePerson(int studentId)
+        //Inser a user
+        public static async Task<bool> AddUser(string email, string password, string studentid,
+                                                string firstname, string lastname, string carmake,
+                                                string carmodel, string caryear, string carcolor,
+                                                string licensenumber)
         {
-            var toDeletePerson = (await firebase
-              .Child("UserInfo")
-              .OnceAsync<UserInfo>()).Where(a => a.Object.StudentId == studentId).FirstOrDefault();
-            await firebase.Child("Persons").Child(toDeletePerson.Key).DeleteAsync();
+            try
+            {
 
+
+                await firebase
+                .Child("Users")
+                .PostAsync(new Users()
+                {
+                    Email = email,
+                    Password = password,
+                    StudentID = studentid,
+                    FirstName = firstname,
+                    LastName = lastname,
+                    CarMake = carmake,
+                    CarModel = carmodel,
+                    CarYear = caryear,
+                    CarColor = carcolor,
+                    LicenseNumber = licensenumber
+                });
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
         }
-        #endregion
-        #region PaymentDataMethods
-        public async Task AddPayment(int studentId, string name)
+
+        //Update 
+        public static async Task<bool> UpdateUser(string email, string password)
+        {
+            try
+            {
+
+
+                var toUpdateUser = (await firebase
+                .Child("Users")
+                .OnceAsync<Users>()).Where(a => a.Object.Email == email).FirstOrDefault();
+                await firebase
+                .Child("Users")
+                .Child(toUpdateUser.Key)
+                .PutAsync(new Users() { Email = email, Password = password });
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
+
+        //Delete User
+        public static async Task<bool> DeleteUser(string email)
+        {
+            try
+            {
+
+
+                var toDeletePerson = (await firebase
+                .Child("Users")
+                .OnceAsync<Users>()).Where(a => a.Object.Email == email).FirstOrDefault();
+                await firebase.Child("Users").Child(toDeletePerson.Key).DeleteAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
+
+#endregion
+    #region PaymentDataMethods
+    public async Task AddPayment(int studentId, string name)
         {
             await firebase
               .Child("Payment")

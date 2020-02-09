@@ -30,9 +30,6 @@ namespace CSE455V2.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Menu:
-                        MenuPages.Add(id, new NavigationPage(new MainMenuPage())); // was ItemsPage for ryan
-                        break;
                     case (int)MenuItemType.Park_Car:
                         MenuPages.Add(id, new NavigationPage(new ParkCarPage()));
                         break;
