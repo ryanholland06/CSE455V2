@@ -8,9 +8,30 @@
              Title="Payment Information">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Alan sucks at smash"
-                VerticalOptions="CenterAndExpand" 
+            <Label x:Name="personName"
+                VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="street"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="city_zip"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="&#10;" />
+            <Label x:Name="card_name"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="numbers"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Edit Payment Information"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="EditPaymentMethod" />
+            <Button Text="Delete Payment Info"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="DeletePaymentInfo" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

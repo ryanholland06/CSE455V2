@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CSE455V2.Views.PaymentInformationInput">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Card Information:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" 
+                FontSize="Large"/>
+            <Entry Placeholder="Card Number" 
+                   PlaceholderColor="Olive" 
+                   MaxLength="12"/>
+            <Entry Placeholder="Card Holder Name" 
+                   PlaceholderColor="Olive" />
+            <Entry Placeholder="Experation Date: MM/YY" 
+                   PlaceholderColor="Olive" />
+            <Entry Placeholder="Security Code" 
+                   PlaceholderColor="Olive" 
+                   MaxLength="3"/>
+            
+            <Label Text="&#10;" />
+            
+            <Label Text="Billing Information:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" 
+                FontSize="Large"/>
+            <Entry Placeholder="Name" 
+                   PlaceholderColor="Olive" />
+            <Entry Placeholder="Street Address" 
+                   PlaceholderColor="Olive" />
+            <Entry Placeholder="City, State, Zip-Code" 
+                   PlaceholderColor="Olive" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
