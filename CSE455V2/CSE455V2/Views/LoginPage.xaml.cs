@@ -16,22 +16,27 @@ namespace CSE455V2.Views
             InitializeComponent();
             BindingContext = loginViewModel;
         }
-        //private void Loginbtn_Clicked(object sender, EventArgs e)
-        //{
-        //    //null or empty field validation, check weather email and password is null or empty
-        //    if (string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text))
-        //        DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
-        //    else
-        //    {
-        //        if (Email.Text == "abc@gmail.com" && Password.Text == "1234")
-        //        {
-        //            DisplayAlert("Login Success", "", "Ok");
-        //            //Navigate to Wellcom page after successfuly login
-        //            Navigation.PushAsync(new WelcomPage()); 
-        //        }
-        //        else
-        //            DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
-        //    }
-        //}
+        private void Loginbtn_Clicked(object sender, EventArgs e)
+        {
+            //null or empty field validation, check weather email and password is null or empty
+            if (string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text))
+                DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
+            else
+            {
+                if (Email.Text == "abc@gmail.com" && Password.Text == "1234")
+                {
+                    DisplayAlert("Login Success", "", "Ok");
+                    //Navigate to Wellcom page after successfuly login
+                    Navigation.PushAsync(new MainMenuPage()); 
+                }
+                else
+                    DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
+            }
+        }
+
+        void Test_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MainMenuPage());
+        }
     }
 }

@@ -19,8 +19,8 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:MainMenuPage /> 
-                    <!-- The page above was ItemsPage for ryan before-->
+                <views:LoginPage /> 
+                    <!-- The part above was MainMenuPage before-->
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
