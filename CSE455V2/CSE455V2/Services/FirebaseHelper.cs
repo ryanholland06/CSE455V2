@@ -143,11 +143,16 @@ namespace CSE455V2.Services
 
 #endregion
     #region PaymentDataMethods
-    public async Task AddPayment(int studentId, string name)
+    public static async Task<bool> AddPaymentInfo(string userName, string cardNo, string cardHolderName)
         {
-            await firebase
-              .Child("Payment")
-              .PostAsync(new PaymentModel() { studentID = studentId, cardNo = name });
+            try
+            {
+                await firebase
+                  .Child("Payment")
+                  .PostAsync(new PaymentModel() { userName = userName, cardNo = cardNo, cardHolderName = cardHolderName });
+                return true;
+            }
+            catch { return false; }
         }
         #endregion
     }

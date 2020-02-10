@@ -12,13 +12,17 @@
                 HorizontalOptions="Start" 
                 FontSize="Large"/>
             <Entry Placeholder="Card Number" 
+                   Text="{Binding CardNo}"
                    PlaceholderColor="Olive" 
                    MaxLength="12"/>
             <Entry Placeholder="Card Holder Name" 
+                   Text="{Binding CardHolderName}"
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Experation Date: MM/YY" 
+                   Text="{Binding ExperationDate}"
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Security Code" 
+                   Text="{Binding SecuirtCode}"
                    PlaceholderColor="Olive" 
                    IsPassword="True"
                    MaxLength="3"/>
@@ -32,11 +36,13 @@
             <Entry Placeholder="Name" 
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Street Address" 
+                   Text="{Binding StreetAddress}"
                    PlaceholderColor="Olive" />
             <Entry Placeholder="City, State, Zip-Code" 
                    PlaceholderColor="Olive" />
             <Button Text="Submit"
                     VerticalOptions="CenterAndExpand"
+                    Clicked="Submitbtn_Clicked"
                     HorizontalOptions="Center" 
                     BackgroundColor="LightSkyBlue"/>
         </StackLayout>

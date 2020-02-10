@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSE455V2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace CSE455V2.Views
         public PaymentInformationInput()
         {
             InitializeComponent();
+        }
+        private async void  Submitbtn_Clicked(object sender, EventArgs e)
+        {
+            //var paymentInfo = await FirebaseHelper.AddPaymentInfo(cardHolderName, CardNo.Text, );
         }
     }
 }

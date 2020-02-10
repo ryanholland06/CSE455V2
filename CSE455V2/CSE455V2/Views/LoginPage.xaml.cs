@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CSE455V2. ViewModel;
+using CSE455V2.Services;
 
 namespace CSE455V2.Views
 {
@@ -16,24 +17,33 @@ namespace CSE455V2.Views
             InitializeComponent();
             BindingContext = loginViewModel;
         }
-        private void Loginbtn_Clicked(object sender, EventArgs e)
+
+        private async void Loginbtn_Clicked(object sender, EventArgs e)
         {
             //null or empty field validation, check weather email and password is null or empty
-            if (string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text))
-                DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
+
+            if (string.IsNullOrEmpty(loginViewModel.Email) || string.IsNullOrEmpty(loginViewModel.Password))
+                await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
             else
             {
-                if (Email.Text == "abc@gmail.com" && Password.Text == "1234")
-                {
-                    DisplayAlert("Login Success", "", "Ok");
-                    //Navigate to Wellcom page after successfuly login
-                    Navigation.PushAsync(new MainMenuPage()); 
-                }
+                //call GetUser function which we define in Firebase helper class
+                var user = await FirebaseHelper.GetUser(loginViewModel.Email);
+                //firebase return null valuse if user data not found in database
+                if (user != null)
+                    if (loginViewModel.Email == user.Email && loginViewModel.Password == user.Password)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
+                        //Navigate to Wellcom page after successfuly login
+                        //pass user email to welcom page
+                        Navigation.PushAsync(new MainMenuPage());
+
+                    }
+                    else
+                        await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
                 else
-                    DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
+                    await App.Current.MainPage.DisplayAlert("Login Fail", "User not found", "OK");
             }
         }
-
         // made these two just for now
         void Signupbtn_Clicked(object sender, System.EventArgs e)
         {
