@@ -35,7 +35,7 @@ namespace CSE455V2.Views
                         await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
                         //Navigate to Wellcom page after successfuly login
                         //pass user email to welcom page
-                        Navigation.PushAsync(new MainMenuPage());
+                        await Navigation.PushAsync(new MainMenuPage());
 
                     }
                     else

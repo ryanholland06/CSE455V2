@@ -8,7 +8,7 @@
              Title="Login Information">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Alan sucks!"
+            <Label Text="Welcome"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
