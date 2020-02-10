@@ -27,7 +27,8 @@
                  />
             <Entry x:Name="LicenseNumberEntery" Placeholder="LicenseNumber" Text="{Binding LicenseNumber}" Keyboard="Default"
                  />
-            <Button x:Name="signup" Text="SignUp" Command="{Binding SignUpCommand}" HorizontalOptions="Center"/>
+            <!--<Button x:Name="signup" Text="SignUp" Command="{Binding SignUpCommand}" HorizontalOptions="Center"/> Made dummy below for now-->
+            <Button x:Name="signup" Text="SignUp" Clicked="Test2_Clicked" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

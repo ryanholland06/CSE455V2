@@ -34,6 +34,13 @@ namespace CSE455V2.Views
             }
         }
 
+        // made these two just for now
+        void Signupbtn_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUpPage());
+        }
+
+
         void Test_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new MainMenuPage());

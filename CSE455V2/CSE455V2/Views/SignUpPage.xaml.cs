@@ -18,8 +18,13 @@ namespace CSE455V2.Views
         {
             InitializeComponent();
             signUpVM = new SignUpVM();
-            //set binding
+        //    //set binding
             BindingContext = signUpVM;
+        }
+
+        void Test2_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new LoginPage());
         }
     }
 }
