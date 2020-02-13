@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using CSE455V2.Views;
 using CSE455V2.Services;
+using System.Text.RegularExpressions;
 
 namespace CSE455V2.ViewModel
 {
@@ -140,6 +141,8 @@ namespace CSE455V2.ViewModel
             {
                 return new Command(() => 
                 {
+                    var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+
                     if (Password != ConfirmPassword)
                     {
                         App.Current.MainPage.DisplayAlert("", "Password must be same as above!", "OK");
@@ -159,6 +162,10 @@ namespace CSE455V2.ViewModel
                     else if (!Email.Contains("@"))
                     {
                         App.Current.MainPage.DisplayAlert("", "Email Address is Invalid", "OK");
+                    }
+                    else if (!hasSymbols.IsMatch(Password))
+                    {
+                        App.Current.MainPage.DisplayAlert("", "Password should contain At least one special case characters", "OK");
                     }
                     else
                     {

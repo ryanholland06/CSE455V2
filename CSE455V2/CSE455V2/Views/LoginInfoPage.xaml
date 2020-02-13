@@ -8,9 +8,26 @@
              Title="Login Information">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Login Information:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" 
+                FontSize="Large"/>
+            <Entry x:Name="userEmail"
+                   IsReadOnly="True"/>
+            <Entry x:Name="userPassword" 
+                   IsReadOnly="True"
+                   IsPassword="False"/>
+            
+            <Label Text="&#10;" />
+
+            <Button Text="Change Email Address"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="ChangeEmailAddress" />
+            <Button Text="Change Passord"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="ChangePassord" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

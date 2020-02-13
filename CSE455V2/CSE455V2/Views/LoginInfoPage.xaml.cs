@@ -12,9 +12,36 @@ namespace CSE455V2.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginInfoPage : ContentPage
     {
+        public string Uemail = "useremail@email.com";
+        public string pass = "password";        // replace with userData
         public LoginInfoPage()
         {
             InitializeComponent();
+            userEmail.Text = Uemail;
+            userPassword.Text = pass;
+        }
+
+        async void ChangeEmailAddress(object sender, EventArgs e)
+        {
+            string result = await DisplayPromptAsync("Change Email", "Enter current password to continue:");
+
+            if (result == pass)
+            {
+                string result2 = await DisplayPromptAsync("Enter New Email", "Exiting before submiting new email address will not remove current email.");
+                // Send user an email to confirm(to new email)
+                // maybe send email with confirmation code
+                // have another pop up where they enter the correct pass, then if statemant
+                Uemail = result2;
+                userEmail.Text = Uemail;
+            }
+            else
+            {
+                await DisplayAlert("Error", "Incorrect Passowrd", "OK");
+            }
+        }
+        async void ChangePassord(object sender, EventArgs e)
+        {
+
         }
     }
 }

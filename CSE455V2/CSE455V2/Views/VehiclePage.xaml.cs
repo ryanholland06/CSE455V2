@@ -12,16 +12,19 @@ namespace CSE455V2.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VehiclePage : ContentPage
     {
-        public string CarInfo = "A1B234C";
+        public string CarInfo = "A1B234";      // replace with UserData.
         public VehiclePage()
         {
             InitializeComponent();
-            LicensePlate.Text = CarInfo;
+            LicensePlate.Text = CarInfo;        //replace with userData
         }
 
         async void EditLicensePlate(object sender, EventArgs args)
         {
             string result = await DisplayPromptAsync("Edit Vehical Information", "Please enter new License Plate Information?");
+            // Change userData on database
+            
+            LicensePlate.Text = result;     // Display User data, not result
         }
         async void DeleteLicensePlate(object sender, EventArgs args)
         {
@@ -29,7 +32,7 @@ namespace CSE455V2.Views
 
             if (answer == true)
             {
-                //Delete current UserData, otherwise output "no Info exist"
+                //Delete current UserData(or show that its empty), otherwise output "no Info exist"
             }
         }
     }
