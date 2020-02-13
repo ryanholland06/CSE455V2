@@ -16,7 +16,7 @@
                    PlaceholderColor="Olive" 
                    MaxLength="12"/>
             <Entry Placeholder="Card Holder Name" 
-                   Text="{Binding CardHolderName}"
+                   Text="{Binding CardholderName}"
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Experation Date: MM/YY" 
                    Text="{Binding ExperationDate}"

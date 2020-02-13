@@ -6,8 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
-
+using Firebase.Components;
+using Xamarin.Forms;
+using Plugin.Toasts;
 
 namespace CSE455V2.Droid
 {
