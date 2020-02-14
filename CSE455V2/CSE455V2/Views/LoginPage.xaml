@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CSE455V2.Views.LoginPage">
     <ContentPage.Content>
+       
         <ScrollView>
             <StackLayout>
+
+                <ActivityIndicator x:Name="ls" IsRunning="False" IsVisible="False" Color="Blue" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"/>
+
                 <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -14,16 +18,18 @@
                     </Grid.RowDefinitions>
 
                     <StackLayout Orientation="Vertical">
-                    <Image VerticalOptions="CenterAndExpand" Source="MainLogo.png"/>
+                        <Image VerticalOptions="CenterAndExpand" Source="MainLogo.png"/>
 
-                    <Entry Placeholder="Email" x:Name="Email" Text="{Binding Email}" Grid.Row="0"/>
-                    <Entry Placeholder="Password" x:Name="Password" IsPassword="True" Text="{Binding Password}" Grid.Row="1"/>
-                    <Button Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" Clicked="Loginbtn_Clicked"/>
-                    <!--<Button Text="Sign Up" Grid.Row="3" Command="{Binding SignUp}"/>  Made dummy below just for now-->
-                    <Button Text="Sign Up" Grid.Row="3" Clicked="Signupbtn_Clicked"/> 
+                        <Entry Placeholder="Email" x:Name="Email" Text="{Binding Email}" Grid.Row="0"/>
+                        <Entry Placeholder="Password" x:Name="Password" IsPassword="True" Text="{Binding Password}" Grid.Row="1"/>
+                        <Button Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" IsEnabled="True"  Clicked="Loginbtn_Clicked"/>
+                        <!--<Button Text="Sign Up" Grid.Row="3" Command="{Binding SignUp}"/>  Made dummy below just for now-->
+                        <Button Text="Sign Up" Grid.Row="3" Clicked="Signupbtn_Clicked"/>
+
                     </StackLayout>
                 </Grid>
             </StackLayout>
         </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

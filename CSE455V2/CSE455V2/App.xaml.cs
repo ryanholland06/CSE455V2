@@ -18,6 +18,12 @@ namespace CSE455V2
 
         public static bool IsUserLoggedIn { get; set; }
 
+        private static bool _isBusy;
+        public bool isbusy {
+            get { return _isBusy; }
+            set { _isBusy = value; OnPropertyChanged(); }
+        }
+
         public App()
         {
             InitializeComponent();
