@@ -19,7 +19,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:LoginPage /> 
+                <views:MainMenuPage /> 
                     <!-- The part above was MainMenuPage before-->
             </x:Arguments>
         </NavigationPage>

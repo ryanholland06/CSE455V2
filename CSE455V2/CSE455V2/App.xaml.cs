@@ -16,6 +16,8 @@ namespace CSE455V2
             DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:5000" : "http://localhost:5000";
         public static bool UseMockDataStore = true;
 
+        public static bool IsUserLoggedIn { get; set; }
+
         public App()
         {
             InitializeComponent();
@@ -24,8 +26,16 @@ namespace CSE455V2
                 DependencyService.Register<MockDataStore>();
             else
                 DependencyService.Register<AzureDataStore>();
-            MainPage = new MainPage();
-            //MainPage = new LoginPage();
+
+
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new MainPage();
+            }
         }
 
         protected override void OnStart()
@@ -39,5 +49,7 @@ namespace CSE455V2
         protected override void OnResume()
         {
         }
+
+
     }
 }

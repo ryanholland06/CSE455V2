@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Linq;
 using Xamarin.Forms.Xaml;
 using CSE455V2. ViewModel;
 using CSE455V2.Services;
@@ -16,6 +17,7 @@ namespace CSE455V2.Views
             loginViewModel = new LoginViewModel();
             InitializeComponent();
             BindingContext = loginViewModel;
+
         }
 
         private async void Loginbtn_Clicked(object sender, EventArgs e)
@@ -35,7 +37,12 @@ namespace CSE455V2.Views
                         await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
                         //Navigate to Wellcom page after successfuly login
                         //pass user email to welcom page
-                        await Navigation.PushAsync(new MainMenuPage());
+
+                        //await Navigation.PushAsync(new MainPage());
+
+                        App.IsUserLoggedIn = true;
+                        Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
+                        await Navigation.PopAsync();
 
                     }
                     else

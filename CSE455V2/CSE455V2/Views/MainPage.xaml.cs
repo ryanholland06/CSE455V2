@@ -17,11 +17,14 @@ namespace CSE455V2.Views
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
         public MainPage()
         {
-            InitializeComponent();
+            SetValue(NavigationPage.HasNavigationBarProperty, false);
+
+            InitializeComponent();        
 
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.Menu, (NavigationPage)Detail);
+
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,6 +33,9 @@ namespace CSE455V2.Views
             {
                 switch (id)
                 {
+                    case (int)MenuItemType.Menu:
+                        MenuPages.Add(id, new NavigationPage(new MainMenuPage()));
+                        break;
                     case (int)MenuItemType.Park_Car:
                         MenuPages.Add(id, new NavigationPage(new ParkCarPage()));
                         break;

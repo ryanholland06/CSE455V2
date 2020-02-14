@@ -41,5 +41,6 @@ namespace CSE455V2.Views
         {
             Navigation.PushAsync(new CommunityPostingPage());
         }
+
     }
 }
