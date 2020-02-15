@@ -19,10 +19,10 @@
                    Text="{Binding CardholderName}"
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Experation Date: MM/YY" 
-                   Text="{Binding ExperationDate}"
+                   Text="{Binding ExpDate}"
                    PlaceholderColor="Olive" />
             <Entry Placeholder="Security Code" 
-                   Text="{Binding SecuirtCode}"
+                   Text="{Binding SecurityCode}"
                    PlaceholderColor="Olive" 
                    IsPassword="True"
                    MaxLength="3"/>
@@ -34,12 +34,24 @@
                     HorizontalOptions="Start" 
                     FontSize="Large"/>
             <Entry Placeholder="Name" 
-                   PlaceholderColor="Olive" />
+                   PlaceholderColor="Olive" 
+                   Text="{Binding BillingName}"
+                   />
             <Entry Placeholder="Street Address" 
-                   Text="{Binding StreetAddress}"
+                   Text="{Binding BillingStreetAddress}"
                    PlaceholderColor="Olive" />
-            <Entry Placeholder="City, State, Zip-Code" 
-                   PlaceholderColor="Olive" />
+            <Entry Placeholder="City" 
+                   PlaceholderColor="Olive" 
+                   Text="{Binding BillingCity}"
+                   />
+            <Entry Placeholder="State" 
+                   PlaceholderColor="Olive" 
+                   Text="{Binding BillingState}"
+                   />
+            <Entry Placeholder="Zip-Code" 
+                   PlaceholderColor="Olive" 
+                   Text="{Binding BillingZipCode}"
+                   />
             <Button Text="Submit"
                     VerticalOptions="CenterAndExpand"
                     Clicked="Submitbtn_Clicked"

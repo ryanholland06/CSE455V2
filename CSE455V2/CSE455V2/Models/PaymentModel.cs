@@ -11,11 +11,12 @@ namespace CSE455V2.Models
         public string userName { get; set; }
         public string cardHolderName { get; set; }
         public string expDate { get; set; }
-        public int secuirtCode { get; set; }
+        public string securityCode { get; set; }
         public string NameBilling { get; set; }
         public string streetAdressBilling { get; set; }
-
-        public string cityStateZipCode { get; set; }
+        public string billingZipCode { get; set; }
+        public string billingState { get; set; }
+        public string billingCity { get; set; }
 
     }
 }
