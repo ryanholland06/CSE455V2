@@ -60,6 +60,7 @@ namespace CSE455V2.Views
                         //await Navigation.PushAsync(new MainPage());
 
                         App.IsUserLoggedIn = true;
+                        App.UserName = user.Email;
                         Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
                         await Navigation.PopAsync();
                     }

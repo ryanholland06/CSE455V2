@@ -17,6 +17,7 @@ namespace CSE455V2
         public static bool UseMockDataStore = true;
 
         public static bool IsUserLoggedIn { get; set; }
+        public static string UserName { get; set; }
 
         private static bool _isBusy;
         public bool isbusy {

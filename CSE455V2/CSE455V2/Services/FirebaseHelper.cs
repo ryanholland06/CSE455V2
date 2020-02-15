@@ -143,13 +143,13 @@ namespace CSE455V2.Services
 
 #endregion
     #region PaymentDataMethods
-    public static async Task<bool> AddPaymentInfo( string cardNo, string cardHolderName, string expDate, string securityCode, string billingName, string streetAddr, string City, string State, string zipCode)
+    public static async Task<bool> AddPaymentInfo( string userName, string cardNo, string cardHolderName, string expDate, string securityCode, string billingName, string streetAddr, string City, string State, string zipCode)
         {
             try
             {
                 await firebase
                   .Child("Payment")
-                  .PostAsync(new PaymentModel() {  cardNo = cardNo, cardHolderName = cardHolderName, expDate = expDate, securityCode = securityCode, NameBilling = billingName, streetAdressBilling = streetAddr, billingCity = City, billingState = State, billingZipCode = zipCode });
+                  .PostAsync(new PaymentModel() { userName = userName, cardNo = cardNo, cardHolderName = cardHolderName, expDate = expDate, securityCode = securityCode, NameBilling = billingName, streetAdressBilling = streetAddr, billingCity = City, billingState = State, billingZipCode = zipCode });
                 return true;
             }
             catch { return false; }
