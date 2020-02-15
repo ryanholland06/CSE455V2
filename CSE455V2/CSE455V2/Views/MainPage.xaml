@@ -20,7 +20,6 @@
             </NavigationPage.Icon>
             <x:Arguments>
                 <views:MainMenuPage /> 
-                    <!-- The part above was MainMenuPage before-->
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

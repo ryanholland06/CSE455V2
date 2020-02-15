@@ -21,18 +21,14 @@ namespace CSE455V2.Views
             InitializeComponent();
             BindingContext = loginViewModel;
 
-
         }
 
         private async void Loginbtn_Clicked(object sender, EventArgs e)
         {
             //null or empty field validation, check weather email and password is null or empty
 
-            
-
             ls.IsRunning = true;
             ls.IsVisible = true;
-
 
             if (string.IsNullOrEmpty(loginViewModel.Email) || string.IsNullOrEmpty(loginViewModel.Password))
             {
@@ -51,17 +47,10 @@ namespace CSE455V2.Views
                         ls.IsRunning = false;
                         ls.IsVisible = false;
 
-                        
-
                         await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
-                        //Navigate to Wellcom page after successfuly login
-                        //pass user email to welcom page
 
-                        //await Navigation.PushAsync(new MainPage());
+                        Application.Current.MainPage = new MainPage(); //sends to main menu, resets the stack.
 
-                        App.IsUserLoggedIn = true;
-                        Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
-                        await Navigation.PopAsync();
                     }
                     else
                     {
