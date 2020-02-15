@@ -154,6 +154,69 @@ namespace CSE455V2.Services
             }
             catch { return false; }
         }
+
+        public static async Task<PaymentModel> GetUserPaymentInfo(string email)
+        {
+            try
+            {
+                var allUsers = await GetAllUsersPaymentInfo();
+                await firebase
+                .Child("Payment")
+                .OnceAsync<PaymentModel>();
+                return allUsers.Where(a => a.userName == email).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+        public static async Task<List<PaymentModel>> GetAllUsersPaymentInfo()
+        {
+            try
+            {
+                var userlist = (await firebase
+                .Child("Payment")
+                .OnceAsync<PaymentModel>()).Select(item =>
+                new PaymentModel
+                {
+                    userName = item.Object.userName,
+                    cardNo = item.Object.cardNo,
+                    cardHolderName = item.Object.cardHolderName,
+                    expDate = item.Object.expDate,
+                    securityCode = item.Object.securityCode,
+                    NameBilling = item.Object.NameBilling,
+                    streetAdressBilling = item.Object.streetAdressBilling,
+                    billingZipCode= item.Object.billingZipCode,
+                    billingState= item.Object.billingState,
+                    billingCity  = item.Object.billingCity
+                }).ToList();
+                return userlist;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+        public static async Task<bool> DeleteUserPaymentInfo(string email)
+        {
+            try
+            {
+
+
+                var toDeletePayment = (await firebase
+                .Child("Payment")
+                .OnceAsync<PaymentModel>()).Where(a => a.Object.userName == email).FirstOrDefault();
+                await firebase.Child("Payment").Child(toDeletePayment.Key).DeleteAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
         #endregion
     }
 }
