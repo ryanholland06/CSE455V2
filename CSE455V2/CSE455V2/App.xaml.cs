@@ -15,16 +15,7 @@ namespace CSE455V2
         public static string AzureBackendUrl =
             DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:5000" : "http://localhost:5000";
         public static bool UseMockDataStore = true;
-
-        public static bool IsUserLoggedIn { get; set; }
         public static string UserName { get; set; }
-
-        private static bool _isBusy;
-        public bool isbusy {
-            get { return _isBusy; }
-            set { _isBusy = value; OnPropertyChanged(); }
-        }
-
         public App()
         {
             InitializeComponent();
@@ -34,15 +25,8 @@ namespace CSE455V2
             else
                 DependencyService.Register<AzureDataStore>();
 
+            MainPage = new NavigationPage(new LoginPage());
 
-            if (!IsUserLoggedIn)
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-            else
-            {
-                MainPage = new MainPage();
-            }
         }
 
         protected override void OnStart()
