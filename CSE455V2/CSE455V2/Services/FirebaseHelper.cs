@@ -120,6 +120,28 @@ namespace CSE455V2.Services
                 return false;
             }
         }
+        public static async Task<bool> UpdateLicensePlate(string email, string plateNumber)
+        {
+            try
+            {
+
+
+                var toUpdateUser = (await firebase
+                .Child("Users")
+                .OnceAsync<Users>()).Where(a => a.Object.Email == email).FirstOrDefault();
+                await firebase
+                .Child("Users")
+                .Child(toUpdateUser.Key)
+                .PutAsync(new Users() { Email = email, LicenseNumber = plateNumber});
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
+
 
         //Delete User
         public static async Task<bool> DeleteUser(string email)
@@ -209,6 +231,37 @@ namespace CSE455V2.Services
                 .Child("Payment")
                 .OnceAsync<PaymentModel>()).Where(a => a.Object.userName == email).FirstOrDefault();
                 await firebase.Child("Payment").Child(toDeletePayment.Key).DeleteAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
+        public static async Task<bool> UpdatePayment(string email, string cardno, string cardholdername, string expdate, string  securitycode, string namebilling, string streetaddr, string zip, string state, string city)
+        {
+            try
+            {
+
+
+                var toUpdateUser = (await firebase
+                .Child("Payment")
+                .OnceAsync<PaymentModel>()).Where(a => a.Object.userName == email).FirstOrDefault();
+                await firebase
+                .Child("Payment")
+                .Child(toUpdateUser.Key)
+                .PutAsync(new PaymentModel() {
+                    userName = email,
+                    cardNo = cardno,
+                    cardHolderName = cardholdername,
+                    expDate = expdate,
+                    securityCode = securitycode,
+                    NameBilling = namebilling,
+                    streetAdressBilling = streetaddr,
+                    billingZipCode = zip,
+                    billingState = state,
+                    billingCity = city});
                 return true;
             }
             catch (Exception e)

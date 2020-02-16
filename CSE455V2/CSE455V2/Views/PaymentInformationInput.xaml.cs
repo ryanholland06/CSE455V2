@@ -90,8 +90,15 @@ namespace CSE455V2.Views
             }
             else
             {
-                await FirebaseHelper.AddPaymentInfo(App.UserName, paymentVM.CardNo, paymentVM.CardholderName, paymentVM.ExpDate, paymentVM.SecurityCode, paymentVM.BillingName, paymentVM.BillingStreetAddress, paymentVM.BillingCity, paymentVM.BillingState, paymentVM.BillingZipCode );
-                await App.Current.MainPage.DisplayAlert("", "Payment Info Updated", "OK");
+                //We first try to update if we do update then we dont proceed to add
+                bool paymentUpdated = await FirebaseHelper.UpdatePayment(App.UserName, paymentVM.CardNo, paymentVM.CardholderName, paymentVM.ExpDate, paymentVM.SecurityCode, paymentVM.BillingName, paymentVM.BillingStreetAddress, paymentVM.BillingCity, paymentVM.BillingState, paymentVM.BillingZipCode);
+                if (!paymentUpdated)
+                {
+                    await FirebaseHelper.AddPaymentInfo(App.UserName, paymentVM.CardNo, paymentVM.CardholderName, paymentVM.ExpDate, paymentVM.SecurityCode, paymentVM.BillingName, paymentVM.BillingStreetAddress, paymentVM.BillingCity, paymentVM.BillingState, paymentVM.BillingZipCode );
+                    await App.Current.MainPage.DisplayAlert("", "Payment Info Added", "OK");
+                }
+                else
+                    await App.Current.MainPage.DisplayAlert("", "Payment Info Updated", "OK");
             }
         }
     }

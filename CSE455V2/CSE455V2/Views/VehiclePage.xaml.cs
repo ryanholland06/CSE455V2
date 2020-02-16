@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSE455V2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +13,26 @@ namespace CSE455V2.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VehiclePage : ContentPage
     {
-        public string CarInfo = "A1B234";      // replace with UserData.
+        public string CarInfo = "";      // replace with UserData.
         public VehiclePage()
         {
             InitializeComponent();
             LicensePlate.Text = CarInfo;        //replace with userData
+            LoadLicensePlate();
+        }
+        async void LoadLicensePlate()
+        {
+            var user = await FirebaseHelper.GetUser(App.UserName);
+            if(user != null)
+                LicensePlate.Text = user.LicenseNumber;
         }
 
         async void EditLicensePlate(object sender, EventArgs args)
         {
             string result = await DisplayPromptAsync("Edit Vehical Information", "Please enter new License Plate Information?");
             // Change userData on database
-            
             LicensePlate.Text = result;     // Display User data, not result
+            await FirebaseHelper.UpdateLicensePlate(App.UserName, result);
         }
         async void DeleteLicensePlate(object sender, EventArgs args)
         {
@@ -32,7 +40,7 @@ namespace CSE455V2.Views
 
             if (answer == true)
             {
-                //Delete current UserData(or show that its empty), otherwise output "no Info exist"
+                await FirebaseHelper.UpdateLicensePlate(App.UserName, "");
             }
         }
     }
