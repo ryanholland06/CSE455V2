@@ -36,6 +36,13 @@ namespace CSE455V2.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs("Password"));
             }
         }
-       
+        public Command SignUp
+        {
+            get
+            {
+                return new Command(() => { App.Current.MainPage.Navigation.PushAsync(new SignUpPage()); });
+            }
+        }
+
     }
 }

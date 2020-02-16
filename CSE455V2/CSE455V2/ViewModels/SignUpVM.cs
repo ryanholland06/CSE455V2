@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace CSE455V2.ViewModel
 {
-   public class SignUpVM: INotifyPropertyChanged
+    public class SignUpVM : INotifyPropertyChanged
     {
         private string email;
         public string Email
@@ -139,17 +139,18 @@ namespace CSE455V2.ViewModel
         {
             get
             {
-                return new Command(() => 
+                return new Command(() =>
                 {
                     var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
 
-                    if (Password != ConfirmPassword)
+                    //null or empty field validation, check weather email and password is null or empty
+                    if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
                     {
-                        App.Current.MainPage.DisplayAlert("", "Password must be same as above!", "OK");
+                        App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
                     }
-                    else if (StudentID.Length < 9)
+                    else if (!Email.Contains("@"))
                     {
-                        App.Current.MainPage.DisplayAlert("", "Student ID is Incorrect!", "OK");
+                        App.Current.MainPage.DisplayAlert("", "Email Address is Invalid", "OK");
                     }
                     else if (Password.Length < 8)
                     {
@@ -159,48 +160,43 @@ namespace CSE455V2.ViewModel
                     {
                         App.Current.MainPage.DisplayAlert("", "Password Must Contain at Least 1 Uppcase Letter", "OK");
                     }
-                    else if (!Email.Contains("@"))
-                    {
-                        App.Current.MainPage.DisplayAlert("", "Email Address is Invalid", "OK");
-                    }
                     else if (!hasSymbols.IsMatch(Password))
                     {
                         App.Current.MainPage.DisplayAlert("", "Password should contain At least one special case characters", "OK");
+                    }
+                    else if (Password != ConfirmPassword)
+                    {
+                        App.Current.MainPage.DisplayAlert("", "Password must be same as above!", "OK");
+                    }
+                    else if (StudentID.Length < 9)
+                    {
+                        App.Current.MainPage.DisplayAlert("", "Student ID is Incorrect!", "OK");
                     }
                     else
                     {
                         SignUp();
                     }
-                    
-                } );
+
+                });
 
             }
 
         }
         private async void SignUp()
         {
-            //null or empty field validation, check weather email and password is null or empty
-
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
-                await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
-            else
+            //call AddUser function which we define in Firebase helper class
+            var user = await FirebaseHelper.AddUser(Email, Password, StudentID, FirstName, LastName, CarMake, CarModel,
+                                                    CarYear, CarColor, LicenseNumber);
+            //AddUser return true if data insert successfuly 
+            if (user)
             {
-                //call AddUser function which we define in Firebase helper class
-                var user = await FirebaseHelper.AddUser(Email,Password,StudentID,FirstName,LastName, CarMake, CarModel,
-                                                        CarYear, CarColor, LicenseNumber);
-                //AddUser return true if data insert successfuly 
-                if (user)
-                {
-                    await App.Current.MainPage.DisplayAlert("SignUp Success", "", "Ok");
-
-                    //Navigate to Wellcom page after successfuly SignUp
-                    //pass user email to welcom page
-                    await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
-                }
-                else
-                    await App.Current.MainPage.DisplayAlert("Error", "SignUp Fail", "OK");
-               
+                await App.Current.MainPage.DisplayAlert("SignUp Success", "", "Ok");
+                //Navigate to Wellcom page after successfuly SignUp
+                //pass user email to welcom page
+                await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
             }
+            else
+                await App.Current.MainPage.DisplayAlert("Error", "SignUp Fail", "OK");
         }
     }
 }
