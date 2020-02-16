@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+//using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +17,9 @@ namespace CSE455V2.Views
         public MapViewPage()
         {
             InitializeComponent();
+
+            Map map = new Map();
+            Content = map;
         }
     }
 }

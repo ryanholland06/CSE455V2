@@ -25,6 +25,7 @@ namespace CSE455V2.Views
 
             MenuPages.Add((int)MenuItemType.Menu, (NavigationPage)Detail);
 
+
         }
 
         public async Task NavigateFromMenu(int id)
