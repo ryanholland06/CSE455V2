@@ -25,15 +25,15 @@ namespace CSE455V2.Views
 
         private async void Loginbtn_Clicked(object sender, EventArgs e)
         {
-            //null or empty field validation, check weather email and password is null or empty
-
             ls.IsRunning = true;
-            ls.IsVisible = true;
-
+            lgn.IsEnabled = false;
+            sgn.IsEnabled = false;
+            //null or empty field validation, check weather email and password is null or empty
             if (string.IsNullOrEmpty(loginViewModel.Email) || string.IsNullOrEmpty(loginViewModel.Password))
             {
                 ls.IsRunning = false;
-                ls.IsVisible = false;
+                lgn.IsEnabled = true;
+                sgn.IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
             }
             else
@@ -45,23 +45,24 @@ namespace CSE455V2.Views
                     if (loginViewModel.Email == user.Email && loginViewModel.Password == user.Password)
                     {
                         ls.IsRunning = false;
-                        ls.IsVisible = false;
-
+                        lgn.IsEnabled = true;
+                        sgn.IsEnabled = true;
                         await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
                         App.UserName = loginViewModel.Email;
                         Application.Current.MainPage = new MainPage(); //sends to main menu, resets the stack.
-
                     }
                     else
                     {
                         ls.IsRunning = false;
-                        ls.IsVisible = false;
+                        lgn.IsEnabled = true; 
+                        sgn.IsEnabled = true;
                         await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
                     }
                 else
                 {
                     ls.IsRunning = false;
-                    ls.IsVisible = false;
+                    lgn.IsEnabled = true;
+                    sgn.IsEnabled = true;
                     await App.Current.MainPage.DisplayAlert("Login Fail", "User not found", "OK");
                 }
             }

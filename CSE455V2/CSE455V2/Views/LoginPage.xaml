@@ -5,9 +5,12 @@
     <ContentPage.Content>
        
         <ScrollView>
-            <StackLayout>
 
-                <ActivityIndicator x:Name="ls" IsRunning="False" IsVisible="False" Color="Blue" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <AbsoluteLayout>
+                
+                <ActivityIndicator x:Name="ls" IsRunning="False" Color="Orange" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+            <StackLayout>
 
                 <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
                     <Grid.RowDefinitions>
@@ -22,13 +25,15 @@
 
                         <Entry Placeholder="Email" x:Name="Email" Text="{Binding Email}" Grid.Row="0"/>
                         <Entry Placeholder="Password" x:Name="Password" IsPassword="True" Text="{Binding Password}" Grid.Row="1"/>
-                        <Button Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" IsEnabled="True"  Clicked="Loginbtn_Clicked"/>
+                        <Button x:Name="lgn" Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" IsEnabled="True"  Clicked="Loginbtn_Clicked"/>
                         <!--<Button Text="Sign Up" Grid.Row="3" Command="{Binding SignUp}"/>  Made dummy below just for now-->
-                        <Button Text="Sign Up" Grid.Row="3" Clicked="Signupbtn_Clicked"/>
+                        <Button x:Name="sgn" Text="Sign Up" Grid.Row="3" IsEnabled="True" Clicked="Signupbtn_Clicked"/>
 
                     </StackLayout>
                 </Grid>
             </StackLayout>
+                
+            </AbsoluteLayout>
         </ScrollView>
 
     </ContentPage.Content>
