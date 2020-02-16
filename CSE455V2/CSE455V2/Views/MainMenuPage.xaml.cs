@@ -32,15 +32,27 @@ namespace CSE455V2.Views
             Navigation.PushAsync(new ListViewPage());
         }
 
-        void Settings_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new UserSettingsPage());
-        }
-
         void ComPost_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new CommunityPostingPage());
         }
 
+        void Settings_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new UserSettingsPage());
+        }
+
+        void ManPost_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ManagePostingsPage());
+        }
+        void ManData_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ManageDataPage());
+        }
+        void ManPark_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ManageParkingPage());
+        }
     }
 }
