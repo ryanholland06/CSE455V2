@@ -99,7 +99,10 @@ namespace CSE455V2.Services
         }
 
         //Update 
-        public static async Task<bool> UpdateUser(string email, string password)
+        public static async Task<bool> UpdateUser(string email, string password, string studentid,
+                                                string firstname, string lastname, string carmake,
+                                                string carmodel, string caryear, string carcolor,
+                                                string licensenumber)
         {
             try
             {
@@ -111,7 +114,18 @@ namespace CSE455V2.Services
                 await firebase
                 .Child("Users")
                 .Child(toUpdateUser.Key)
-                .PutAsync(new Users() { Email = email, Password = password });
+                .PutAsync(new Users() {
+                    Email = email,
+                    Password = password,
+                    StudentID = studentid,
+                    FirstName = firstname,
+                    LastName = lastname,
+                    CarMake = carmake,
+                    CarModel = carmodel,
+                    CarYear = caryear,
+                    CarColor = carcolor,
+                    LicenseNumber = licensenumber
+                });
                 return true;
             }
             catch (Exception e)
@@ -120,7 +134,7 @@ namespace CSE455V2.Services
                 return false;
             }
         }
-        public static async Task<bool> UpdateLicensePlate(string email, string plateNumber)
+        public static async Task<bool> UpdateUser(Users userInfo)
         {
             try
             {
@@ -128,11 +142,11 @@ namespace CSE455V2.Services
 
                 var toUpdateUser = (await firebase
                 .Child("Users")
-                .OnceAsync<Users>()).Where(a => a.Object.Email == email).FirstOrDefault();
+                .OnceAsync<Users>()).Where(a => a.Object.Email == userInfo.Email).FirstOrDefault();
                 await firebase
                 .Child("Users")
                 .Child(toUpdateUser.Key)
-                .PutAsync(new Users() { Email = email, LicenseNumber = plateNumber});
+                .PutAsync(userInfo);
                 return true;
             }
             catch (Exception e)
