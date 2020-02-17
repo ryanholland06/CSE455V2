@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using CSE455V2.ViewModel;
 
 namespace CSE455V2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUpPage : ContentPage
+    public partial class ManageParkingPage : ContentPage
     {
-        SignUpVM signUpVM;
-        public SignUpPage()
+        public ManageParkingPage()
         {
             InitializeComponent();
-            signUpVM = new SignUpVM();
-            //set binding
-            BindingContext = signUpVM;
+        }
+
+        void CreateCit_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new CitationsPage());
         }
     }
 }

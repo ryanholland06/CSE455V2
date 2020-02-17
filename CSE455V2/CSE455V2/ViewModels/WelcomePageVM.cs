@@ -59,11 +59,17 @@ namespace CSE455V2.ViewModel
             {
                 if (!string.IsNullOrEmpty(Password))
                 {
-                    var isupdate = await FirebaseHelper.UpdateUser(Email, Password);
-                    if (isupdate)
-                        await App.Current.MainPage.DisplayAlert("Update Success", "", "Ok");
-                    else
-                        await App.Current.MainPage.DisplayAlert("Error", "Record not update", "Ok");
+                    var userinfo = await FirebaseHelper.GetUser(App.UserName);
+                    if(userinfo != null)
+                    {
+                        userinfo.Password = Password;
+                        userinfo.Email = email;
+                        var isupdate = await FirebaseHelper.UpdateUser(userinfo);
+                        if (isupdate)
+                            await App.Current.MainPage.DisplayAlert("Update Success", "", "Ok");
+                        else
+                            await App.Current.MainPage.DisplayAlert("Error", "Record not update", "Ok");
+                    }
                 }
                 else
                     await App.Current.MainPage.DisplayAlert("Password Require", "Please Enter your password", "Ok");

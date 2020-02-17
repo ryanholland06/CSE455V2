@@ -29,10 +29,18 @@ namespace CSE455V2.Views
 
         async void EditLicensePlate(object sender, EventArgs args)
         {
-            string result = await DisplayPromptAsync("Edit Vehical Information", "Please enter new License Plate Information?");
-            // Change userData on database
-            LicensePlate.Text = result;     // Display User data, not result
-            await FirebaseHelper.UpdateLicensePlate(App.UserName, result);
+            var result = await DisplayPromptAsync("Edit Vehical Information", "Please enter new License Plate Information?");
+                // Change userData on database
+            if(result != null)
+            {
+                LicensePlate.Text = result;     // Display User data, not result
+                var userInfo = await FirebaseHelper.GetUser(App.UserName);
+                if(userInfo != null)
+                {
+                    userInfo.LicenseNumber = result;
+                    await FirebaseHelper.UpdateUser(userInfo);
+                }
+            }
         }
         async void DeleteLicensePlate(object sender, EventArgs args)
         {
@@ -40,7 +48,13 @@ namespace CSE455V2.Views
 
             if (answer == true)
             {
-                await FirebaseHelper.UpdateLicensePlate(App.UserName, "");
+                var userInfo = await FirebaseHelper.GetUser(App.UserName);
+                if (userInfo != null)
+                {
+                    userInfo.LicenseNumber = "";
+                    await FirebaseHelper.UpdateUser(userInfo);
+                    LicensePlate.Text = "";
+                }
             }
         }
     }

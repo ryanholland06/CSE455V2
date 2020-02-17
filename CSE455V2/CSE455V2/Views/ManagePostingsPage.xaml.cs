@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using CSE455V2.ViewModel;
 
 namespace CSE455V2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUpPage : ContentPage
+    public partial class ManagePostingsPage : ContentPage
     {
-        SignUpVM signUpVM;
-        public SignUpPage()
+        public ManagePostingsPage()
         {
             InitializeComponent();
-            signUpVM = new SignUpVM();
-            //set binding
-            BindingContext = signUpVM;
         }
     }
 }

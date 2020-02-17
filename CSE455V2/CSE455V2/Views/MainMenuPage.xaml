@@ -13,6 +13,9 @@
             <Button Text="List View" Clicked="ListView_Clicked" />
             <Button Text="Community Postings" Clicked="ComPost_Clicked" />
             <Button Text="Settings" Clicked="Settings_Clicked" />
+            <Button Text="Manage Postings" Clicked="ManPost_Clicked" IsVisible="False"/>
+            <Button Text="Manage Data" Clicked="ManData_Clicked" IsVisible="False"/>
+            <Button Text="Manage Parking" Clicked="ManPark_Clicked" IsVisible="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

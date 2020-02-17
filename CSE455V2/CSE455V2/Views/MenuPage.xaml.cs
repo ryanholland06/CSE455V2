@@ -24,8 +24,8 @@ namespace CSE455V2.Views
                 new HomeMenuItem {Id = MenuItemType.Park_Car, Title="Park Car" },
                 new HomeMenuItem {Id = MenuItemType.Map_View, Title="Map View" },
                 new HomeMenuItem {Id = MenuItemType.List_View, Title="List View" },
-                new HomeMenuItem {Id = MenuItemType.User_Settings, Title="Settings" },
-                new HomeMenuItem {Id = MenuItemType.Community_Post, Title="Community Postings" }
+                new HomeMenuItem {Id = MenuItemType.Community_Post, Title="Community Postings" },
+                new HomeMenuItem {Id = MenuItemType.User_Settings, Title="Settings" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
