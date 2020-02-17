@@ -18,7 +18,14 @@ namespace CSE455V2.Views
         {
             InitializeComponent();
 
-            Map map = new Map();
+            //Position position = new Position(34.182821, -117.323526);
+            //MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+
+            Map map = new Map      // default can just be: Map map = new Map();
+            {
+                MapType = MapType.Street    // can change between views
+            };
+
             Content = map;
         }
     }
