@@ -168,6 +168,10 @@ namespace CSE455V2.ViewModel
                     {
                         App.Current.MainPage.DisplayAlert("", "Password must be same as above!", "OK");
                     }
+                    else if (string.IsNullOrEmpty(StudentID))
+                    {
+                        App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Student ID", "OK");
+                    }
                     else if (StudentID.Length < 9)
                     {
                         App.Current.MainPage.DisplayAlert("", "Student ID is Incorrect!", "OK");
