@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CSE455V2.Views"
+             x:Class="CSE455V2.Views.ShellFlyoutPage">
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="#e3e3e3"
+              HeightRequest="200">
+                <Image Aspect="AspectFit"
+                   Source="MainLogo.png" />
+                <Label Text=""
+                   TextColor="Blue"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+    </Shell.FlyoutHeaderTemplate>
+    
+    
+
+    <FlyoutItem Title="Menu"
+                Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent Title="Map View" Shell.BackgroundColor="Red" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:MapViewPage}" />
+        <ShellContent Title="List View" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:ListViewPage}" />
+        <ShellContent Title="Park Car" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
+        <ShellContent Title="Community Postings" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
+        <ShellContent Title="Settings" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
+    </FlyoutItem>
+
+
+    <ShellContent Title="Logout" Shell.NavBarIsVisible="False" ContentTemplate="{DataTemplate local:LoginPage}" />
+
+
+</Shell>
