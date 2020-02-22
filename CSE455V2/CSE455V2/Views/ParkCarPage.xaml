@@ -8,9 +8,9 @@
              Title="Park Car">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <Button Text="Park Car" Clicked="Scan_Clicked"></Button>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
