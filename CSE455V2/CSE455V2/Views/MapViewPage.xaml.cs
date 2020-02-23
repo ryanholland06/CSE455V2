@@ -230,6 +230,7 @@ namespace CSE455V2.Views
             }
             */
 
+            /*
             Polygon lotE = new Polygon
             {
                 StrokeWidth = 8,
@@ -237,7 +238,7 @@ namespace CSE455V2.Views
                 FillColor = Color.FromHex("#8803C04A"),
                 Geopath =
                 {
-                    new Position(34.180222, -117.321648),
+                    new Position(34.180222, -117.321648),           // Parking Lot no longer exist
                     new Position(34.179137, -117.321264),
                     new Position(34.179457, -117.319872),
                     new Position(34.180575, -117.320288),
@@ -245,20 +246,6 @@ namespace CSE455V2.Views
                 }
             };
 
-            /*
-            if("Parking Lot data for green")
-            {
-                "LotN".StrokeColor = Color.FromHex("#03C04A");
-            }
-            
-            elseif("Parking Lot data for for red")
-            {
-                "LotN".StrokeColor = Color.FromHex("#f55542");
-            }
-            else 
-            {
-                "LotN".StrokeColor = Color.FromHex("#ffd733");
-            }
             */
 
             Polygon lotF_Front = new Polygon
@@ -429,7 +416,7 @@ namespace CSE455V2.Views
             map.MapElements.Add(lotB);
             map.MapElements.Add(lotC);
             map.MapElements.Add(lotD);
-            map.MapElements.Add(lotE);
+            //map.MapElements.Add(lotE);
             map.MapElements.Add(lotF_Front);
             map.MapElements.Add(lotG);
             map.MapElements.Add(lotH);
