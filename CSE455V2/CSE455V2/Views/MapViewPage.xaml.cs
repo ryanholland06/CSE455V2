@@ -21,14 +21,20 @@ namespace CSE455V2.Views
             InitializeComponent();
 
             mapSpan = new MapSpan(position, 0.01, 0.01);
-            //mapSpan.Radius.Meters.Equals(300);
 
             map = new Map(mapSpan)     // default can just be: Map map = new Map();
             {
                 MapType = MapType.Street,   // can change between views
-                HasScrollEnabled = false,
-                HasZoomEnabled = false
+                HasScrollEnabled = false
+                //HasZoomEnabled = false
             };
+
+            double zoomLevel = 0.5;
+            double latlongDegrees = 360 / (Math.Pow(2, zoomLevel));
+            if (map.VisibleRegion != null)
+            {
+                map.MoveToRegion(new MapSpan(map.VisibleRegion.Center, latlongDegrees, latlongDegrees));
+            }
 
             Content = map;
 
