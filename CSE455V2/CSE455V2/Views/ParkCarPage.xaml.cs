@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParkingApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,24 @@ namespace CSE455V2.Views
         public ParkCarPage()
         {
             InitializeComponent();
+        }
+
+        private async void Scan_Clicked(object sender, EventArgs e)
+        {
+
+            try
+            {
+                var scanner = DependencyService.Get<IQrScanningService>();
+                var result = await scanner.ScanAsync();
+                if (result != null)
+                {
+                    string test = result;
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
