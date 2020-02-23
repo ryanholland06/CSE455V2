@@ -24,7 +24,7 @@ namespace CSE455V2.Views
 
             map = new Map(mapSpan)     // default can just be: Map map = new Map();
             {
-                MapType = MapType.Street   // can change between views
+                MapType = MapType.Hybrid   // can change between views
                 //HasScrollEnabled = false
                 //HasZoomEnabled = false
             };
@@ -112,12 +112,11 @@ namespace CSE455V2.Views
                 FillColor = Color.FromHex("#8803C04A"),
                 Geopath =
                 {
-                    new Position(34.182851, -117.329707),
-                    new Position(34.183773, -117.328918),
-                    new Position(34.183513, -117.328231),
-                    new Position(34.183943, -117.328349),
-                    new Position(34.184149, -117.328700),
-                    new Position(34.184180, -117.329025)
+                    new Position(34.183258, -117.328517),
+                    new Position(34.182861, -117.329745),
+                    new Position(34.182442, -117.329528),
+                    new Position(34.182389, -117.329198),
+                    new Position(34.182620, -117.328216)
                 }
             };
 
@@ -144,12 +143,12 @@ namespace CSE455V2.Views
                 FillColor = Color.FromHex("#8803C04A"),
                 Geopath =
                 {
-                    new Position(34.184013, -117.329084),
-                    new Position(34.183249, -117.328468),
-                    new Position(34.182683, -117.328151),
-                    new Position(34.182570, -117.328237),
-                    new Position(34.182506, -117.328535),
-                    new Position(34.182459, -117.329506)
+                    new Position(34.184195, -117.328776),
+                    new Position(34.184148, -117.329227),
+                    new Position(34.183831, -117.329017),
+                    new Position(34.183665, -117.328757),
+                    new Position(34.183438, -117.328291),
+                    new Position(34.183806, -117.328160)
                 }
             };
 
