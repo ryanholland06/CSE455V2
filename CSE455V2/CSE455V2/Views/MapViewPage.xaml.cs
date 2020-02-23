@@ -24,22 +24,22 @@ namespace CSE455V2.Views
 
             map = new Map(mapSpan)     // default can just be: Map map = new Map();
             {
-                MapType = MapType.Street,   // can change between views
-                HasScrollEnabled = false
+                MapType = MapType.Street   // can change between views
+                //HasScrollEnabled = false
                 //HasZoomEnabled = false
             };
 
-            double zoomLevel = 0.5;
-            double latlongDegrees = 360 / (Math.Pow(2, zoomLevel));
-            if (map.VisibleRegion != null)
-            {
-                map.MoveToRegion(new MapSpan(map.VisibleRegion.Center, latlongDegrees, latlongDegrees));
-            }
+            //double zoomLevel = 0.5;
+            //double latlongDegrees = 360 / (Math.Pow(2, zoomLevel));
+           // if (map.VisibleRegion != null)
+           // {
+              //  map.MoveToRegion(new MapSpan(map.VisibleRegion.Center, latlongDegrees, latlongDegrees));
+           // }
 
             Content = map;
 
             //map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1)));
-            Debug.WriteLine("$$$$$$$$The center is: " + mapSpan.Radius.Meters + "  $$$$$");
+           // Debug.WriteLine("$$$$$$$$The center is: " + mapSpan.Radius.Meters + "  $$$$$");
 
             Polygon lotF_Back = new Polygon
             {
@@ -59,6 +59,22 @@ namespace CSE455V2.Views
                 }
             };
 
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
+
             Polygon lotA = new Polygon
             {
                 StrokeWidth = 8,
@@ -72,6 +88,22 @@ namespace CSE455V2.Views
                     new Position(34.186828, -117.327976)
                 }
             };
+
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
 
             Polygon lotB = new Polygon
             {
@@ -89,6 +121,22 @@ namespace CSE455V2.Views
                 }
             };
 
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
+
             Polygon lotB_Annex = new Polygon
             {
                 StrokeWidth = 8,
@@ -105,6 +153,22 @@ namespace CSE455V2.Views
                 }
             };
 
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
+
             Polygon lotC = new Polygon
             {
                 StrokeWidth = 8,
@@ -118,6 +182,22 @@ namespace CSE455V2.Views
                     new Position(34.180391, -117.325899)
                 }
             };
+
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
 
             Polygon lotD = new Polygon
             {
@@ -135,6 +215,22 @@ namespace CSE455V2.Views
                 }
             };
 
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
+
             Polygon lotE = new Polygon
             {
                 StrokeWidth = 8,
@@ -149,6 +245,22 @@ namespace CSE455V2.Views
                     new Position(34.180484, -117.321527)
                 }
             };
+
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
 
             Polygon lotF_Front = new Polygon
             {
@@ -166,6 +278,22 @@ namespace CSE455V2.Views
                 }
             };
 
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
+
             Polygon lotG = new Polygon
             {
                 StrokeWidth = 8,
@@ -179,6 +307,22 @@ namespace CSE455V2.Views
                     new Position(34.180834, -117.319523)
                 }
             };
+
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
 
             Polygon lotH = new Polygon
             {
@@ -194,6 +338,22 @@ namespace CSE455V2.Views
                 }
             };
 
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
+
             Polygon lot_EPS = new Polygon
             {
                 StrokeWidth = 8,
@@ -207,6 +367,22 @@ namespace CSE455V2.Views
                     new Position(34.184189, -117.319618)
                 }
             };
+
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
 
             Polygon lotN = new Polygon
             {
@@ -231,6 +407,22 @@ namespace CSE455V2.Views
                     new Position(34.185184, -117.321146)
                 }
             };
+
+            /*
+            if("Parking Lot data for green")
+            {
+                "LotN".StrokeColor = Color.FromHex("#03C04A");
+            }
+            
+            elseif("Parking Lot data for for red")
+            {
+                "LotN".StrokeColor = Color.FromHex("#f55542");
+            }
+            else 
+            {
+                "LotN".StrokeColor = Color.FromHex("#ffd733");
+            }
+            */
 
             map.MapElements.Add(lotF_Back);
             map.MapElements.Add(lotA);
