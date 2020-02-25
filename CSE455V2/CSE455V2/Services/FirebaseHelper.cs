@@ -310,6 +310,53 @@ namespace CSE455V2.Services
             }
             catch { return false; }
         }
+        public static async Task<List<ParkingLotInfo>> GetAllParkingLotInfo()
+        {
+            try
+            {
+                var parkingLotlist = (await firebase
+                .Child("ParkingLotInfo")
+                .OnceAsync<ParkingLotInfo>()).Select(item =>
+                new ParkingLotInfo
+                {
+                    ParkingLotName = item.Object.ParkingLotName,
+                    totalCapacity = item.Object.totalCapacity,
+                    currentCount = item.Object.currentCount
+                }).ToList();
+                return parkingLotlist;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+        public static async Task<bool> UpdatePayment(ParkingLotInfo lotInfo)
+        {
+            try
+            {
+
+
+                var UpdateParkingLot= (await firebase
+                .Child("ParkingLotInfo")
+                .OnceAsync<ParkingLotInfo>()).Where(a => a.Object.ParkingLotName == lotInfo.ParkingLotName).FirstOrDefault();
+                await firebase
+                .Child("ParkingLot")
+                .Child(UpdateParkingLot.Key)
+                .PutAsync(new ParkingLotInfo()
+                {
+                    ParkingLotName = lotInfo.ParkingLotName,
+                    currentCount = lotInfo.currentCount,
+                    totalCapacity = lotInfo.totalCapacity
+                });
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
         #endregion
 
     }
