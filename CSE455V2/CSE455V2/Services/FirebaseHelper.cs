@@ -285,5 +285,32 @@ namespace CSE455V2.Services
             }
         }
         #endregion
+        #region Citation
+        public static async Task<bool> AddCitationInfo(string userName, string cardNo, string cardHolderName, string expDate, string securityCode, string billingName, string streetAddr, string City, string State, string zipCode)
+        {
+            try
+            {
+                await firebase
+                  .Child("Citation")
+                  .PostAsync(new PaymentModel() { userName = userName, cardNo = cardNo, cardHolderName = cardHolderName, expDate = expDate, securityCode = securityCode, NameBilling = billingName, streetAdressBilling = streetAddr, billingCity = City, billingState = State, billingZipCode = zipCode });
+                return true;
+            }
+            catch { return false; }
+        }
+        #endregion
+        #region ParkingLotInfo
+        public static async Task<bool> AddParkingInfo(ParkingLotInfo parkInfo)
+        {
+            try
+            {
+                await firebase
+                  .Child("ParkingLotInfo")
+                  .PostAsync(new ParkingLotInfo() { ParkingLotName = parkInfo.ParkingLotName, currentCount = parkInfo.currentCount, totalCapacity = parkInfo.totalCapacity });
+                return true;
+            }
+            catch { return false; }
+        }
+        #endregion
+
     }
 }

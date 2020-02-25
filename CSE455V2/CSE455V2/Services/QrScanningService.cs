@@ -20,6 +20,7 @@ namespace ParkingApp.Services
             {
                 TopText = "Scan the QR Code",
                 BottomText = "Please Wait",
+                CancelButtonText = "Cancel"
             };
 
             var scanResult = await scanner.Scan(optionsCustom);
