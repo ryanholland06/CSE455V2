@@ -331,7 +331,7 @@ namespace CSE455V2.Services
                 return null;
             }
         }
-        public static async Task<bool> UpdatePayment(ParkingLotInfo lotInfo)
+        public static async Task<bool> UpdateParkingLotInfo(ParkingLotInfo lotInfo)
         {
             try
             {
