@@ -9,13 +9,16 @@ using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace CSE455V2.Views
-{
+{   
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapViewPage : ContentPage
     {
         Position position = new Position(34.182821, -117.323526);
         MapSpan mapSpan;
         Map map;
+        IList<Polygon> LotList = new List<Polygon>();
+        public int lotNumber = 200;
+
         public MapViewPage()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace CSE455V2.Views
 
             map = new Map(mapSpan)     // default can just be: Map map = new Map();
             {
-                MapType = MapType.Hybrid   // can change between views
+                MapType = MapType.Hybrid
                 //HasScrollEnabled = false
                 //HasZoomEnabled = false
             };
@@ -422,6 +425,25 @@ namespace CSE455V2.Views
             map.MapElements.Add(lotH);
             map.MapElements.Add(lot_EPS);
             map.MapElements.Add(lotN);
+        }
+
+        public void ChangeColor(List<ParkingLotInfo> LotList)
+        {
+            foreach(var lot in LotList)
+            {
+                if( lot.< lotNumber)
+                {
+                   
+                }
+                else if()
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
 
     }
