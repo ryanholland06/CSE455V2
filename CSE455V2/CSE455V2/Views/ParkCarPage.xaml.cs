@@ -1,4 +1,6 @@
-﻿using ParkingApp.Services;
+﻿using CSE455V2.Models;
+using CSE455V2.Services;
+using ParkingApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,5 +37,16 @@ namespace CSE455V2.Views
 
             }
         }
+
+        //private async void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    ParkingLotInfo parkingLot = new ParkingLotInfo()
+        //    {
+        //        ParkingLotName = "Lot J",
+        //        totalCapacity = 100,
+        //        currentCount = 0
+        //    };
+        //    var LotInfo = await FirebaseHelper.AddParkingInfo(parkingLot);
+        //}
     }
 }

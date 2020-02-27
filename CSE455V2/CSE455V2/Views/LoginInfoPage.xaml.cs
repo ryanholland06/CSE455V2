@@ -39,7 +39,7 @@ namespace CSE455V2.Views
                 await DisplayAlert("Error", "Incorrect Passowrd", "OK");
             }
         }
-        async void ChangePassord(object sender, EventArgs e)
+        void ChangePassord(object sender, EventArgs e)
         {
 
         }
