@@ -30,7 +30,6 @@
                 FlyoutDisplayOptions="AsMultipleItems">
 
         <ShellContent Title="Map View" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:MapViewPage}" />
-        <ShellContent Title="List View" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:ListViewPage}" />
         <ShellContent Title="Park Car" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
         <ShellContent Title="Community Postings" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
         <ShellContent Title="Settings" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
