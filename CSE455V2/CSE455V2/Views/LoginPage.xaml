@@ -4,7 +4,7 @@
              x:Class="CSE455V2.Views.LoginPage">
     <ContentPage.Content>
        
-        <ScrollView>
+
 
             <AbsoluteLayout>
                 
@@ -33,7 +33,7 @@
             </StackLayout>
                 
             </AbsoluteLayout>
-        </ScrollView>
+
 
     </ContentPage.Content>
 </ContentPage>
