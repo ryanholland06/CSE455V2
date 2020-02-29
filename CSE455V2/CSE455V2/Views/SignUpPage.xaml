@@ -4,65 +4,68 @@
              x:Class="CSE455V2.Views.SignUpPage">
    <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                 <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
 
-                    <StackLayout Orientation="Vertical">
+            <RelativeLayout>
 
-                <Label Text="Email:" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding Email}" Keyboard="Email"
-                    />
-                    <Label Text="- Msut be a valid Email Address" FontSize="11" Grid.Row="0" TextColor="Black" />
+                <ActivityIndicator x:Name="ls" IsRunning="{Binding Truefalse}" Color="Orange" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End"/>
 
-                <Label Text="Password:" FontSize="Default" Grid.Row="0" TextColor="Black"/>
-                    <Entry  Text="{Binding Password} " 
-                    IsPassword="True"/>
-                <Label Text="- Password must be:" FontSize="11" Grid.Row="0" TextColor="Black" />
-                <Label Text="- at least 8 characters, contain an uppercase, and symbol" FontSize="11" Grid.Row="0" TextColor="Black" />
+                <StackLayout>
 
-                <Label Text="Confirm Password:" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding ConfirmPassword} " 
-                    IsPassword="True" />
+                    <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
 
-                <Label Text="Student ID:" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding StudentID}" Keyboard="Numeric" Grid.Row="0"
-                    />
+                        <StackLayout Orientation="Vertical">
 
-                <Label Text="First Name:" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry  Text="{Binding FirstName}" Keyboard="Default" Grid.Row="0"
-                    />
+                            <Label Text="Please fill out the following to use our App!" FontSize="Medium" Grid.Row="0" TextColor="#0077be" HorizontalOptions="Center"/>
 
-                <Label Text="Last Name:" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry  Text="{Binding LastName}" Keyboard="Default" Grid.Row="0"
-                     />
+                            <Label Text="Email*" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding Email}" Keyboard="Email" Placeholder="Enter Valid Email Address" />
+                     <!--   <Label Text="- Msut be a valid Email Address" FontSize="11" Grid.Row="0" TextColor="Black" />  -->
 
-                <Label Text="Car Make (Optional)" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding CarMake}" Keyboard="Default" Grid.Row="0"
-                     />
+                            <Label Text="Password*" FontSize="Default" Grid.Row="0" TextColor="Black"/>
+                            <Entry  Text="{Binding Password}" IsPassword="True" Placeholder="Enter Password" />
+                     <!--   <Label Text="- Password must be:" FontSize="11" Grid.Row="0" TextColor="Black" />  -->
+                     <!--   <Label Text="- at least 8 characters, contain an uppercase, and symbol" FontSize="11" Grid.Row="0" TextColor="Black" />   -->
 
-                <Label Text="Car Model (Optional)" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding CarModel}" Keyboard="Default" Grid.Row="0"
-                    />
+                            <Label Text="Confirm Password*" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding ConfirmPassword}" IsPassword="True" Placeholder="Re-Enter Password" />
 
-                <Label Text="Model Year (Optional)" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding CarYear}" Keyboard="Numeric" Grid.Row="0"
-                    />
+                            <Label Text="Student ID*" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding StudentID}" Keyboard="Numeric" Grid.Row="0" Placeholder="Enter Valid ID" />
 
-                <Label Text="Color (Optional)" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding CarColor}" Keyboard="Default" Grid.Row="0"
-                    />
+                            <Label Text="First Name*" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry  Text="{Binding FirstName}" Keyboard="Default" Grid.Row="0" />
 
-                <Label Text="License Number (Optional)" FontSize="Default" Grid.Row="0" TextColor="Black" />
-                    <Entry Text="{Binding LicenseNumber}" Keyboard="Default" Grid.Row="0"
-                    />
-                
-                <Button x:Name="signup" Text="SignUp" Command="{Binding SignUpCommand}" HorizontalOptions="Center"/>
+                            <Label Text="Last Name*" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry  Text="{Binding LastName}" Keyboard="Default" Grid.Row="0" />
+
+                            <Label Text="Car Make" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding CarMake}" Keyboard="Default" Grid.Row="0" />
+
+                            <Label Text="Car Model" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding CarModel}" Keyboard="Default" Grid.Row="0" />
+
+                            <Label Text="Model Year" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding CarYear}" Keyboard="Numeric" Grid.Row="0" />
+
+                            <Label Text="Color" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding CarColor}" Keyboard="Default" Grid.Row="0" />
+
+                            <Label Text="License Number" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Entry Text="{Binding LicenseNumber}" Keyboard="Default" Grid.Row="0" />
+
+                            <Label Text="(*)Are required information" FontSize="12" Grid.Row="0" FontAttributes="Bold"  TextColor="Red"/>
+                            <Label Text="(*)Password must include atleast 8 characters, contain an uppercase, and symbol" FontAttributes="Bold" FontSize="12" Grid.Row="0" TextColor="Red"/>
+
+                            <Button x:Name="signup" Text="Create Account" BackgroundColor="#0077be" TextColor="White" Command="{Binding SignUpCommand}" IsEnabled="{Binding SignEnable}" HorizontalOptions="Center"/>
 
 
-                    </StackLayout>
-                </Grid>
-            </StackLayout>
-       </ScrollView>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
 </ContentPage.Content>
     
 </ContentPage>
