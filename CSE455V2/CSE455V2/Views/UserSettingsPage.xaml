@@ -6,12 +6,49 @@
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.UserSettingsPage"
              Title="Settings">
-    <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Payment Information" Clicked="PaymentInfo_Clicked" />
-            <Button Text="Vehicle Information" Clicked="VehicleInfo_Clicked" />
-            <Button Text="Login Information" Clicked="LoginInfo_Clicked" />
 
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout Margin="10" Spacing="10">
+        <Button Text="Payment Information" 
+                    Clicked="PaymentInfo_Clicked" 
+                    ImageSource="" 
+                    BorderColor="#0077be" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HorizontalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="500">
+        </Button>
+        <Button Text="Vehicle Information" 
+                    Clicked="VehicleInfo_Clicked" 
+
+                ImageSource="car.png"
+                    BorderColor="#0077be" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HorizontalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="500">
+            <Button.ImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="iOS, Android" Value="car.png" />
+                    <On Platform="UWP" Value="Assets/car.png" />
+                </OnPlatform>
+            </Button.ImageSource>
+        </Button>
+        <Button Text="Login Information" 
+                    Clicked="LoginInfo_Clicked" 
+                    ImageSource="" 
+                    BorderColor="#0077be" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HorizontalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="500">
+        </Button>
+        <!--   <Button Text="Vehicle Information" Clicked="VehicleInfo_Clicked" />  -->
+        <!--   <Button Text="Login Information" Clicked="LoginInfo_Clicked" /> -->
+
+    </StackLayout>
+
+
 </ContentPage>
