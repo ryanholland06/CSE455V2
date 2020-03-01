@@ -14,14 +14,15 @@ namespace CSE455V2.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapViewPage : ContentPage
     {
+        // Map Properties
         Position position = new Position(34.182821, -117.323526);
-        private MapSpan mapSpan;        // 3/1/2020 set to private.
         CustomMap map = new CustomMap();
+        // List created to gather and change info
         List<ParkingLotInfo> LotList = new List<ParkingLotInfo>();
         private List<Polygon> shapes = new List<Polygon>();
-        public int max = 200;
-        public int current = 180;
+        List<CustomPin> PinList = new List<CustomPin>();
 
+        // all Lot shapes on campus
         Polygon lotF_Back = new Polygon
         {
             StrokeWidth = 8,
@@ -186,7 +187,7 @@ namespace CSE455V2.Views
                     new Position(34.185184, -117.321146)
                 }
         };
-
+        // all pins added to list and map
         CustomPin pinF_Back = new CustomPin
         {
             Label = "Lot F",
@@ -254,6 +255,73 @@ namespace CSE455V2.Views
             Position = new Position(34.184806, -117.322195),
             //Name = "this random name"         // adding this field will allow users to open Gmaps to get directions.
         };
+        // Parking lot info that in the database
+        ParkingLotInfo F_Back_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot F Back",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo A_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot A",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo B_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot B",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo B_Lot_Annez = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot B Annex",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo C_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot C",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo D_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot D",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo F_Front_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot F Front",
+            totalCapacity = 706,
+            currentCount = 0
+        };
+        ParkingLotInfo G_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot G",
+            totalCapacity = 605,
+            currentCount = 0
+        };
+        ParkingLotInfo H_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot H",
+            totalCapacity = 587,
+            currentCount = 0
+        };
+        ParkingLotInfo EPS_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "East Parking Structure",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo N_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot N",
+            totalCapacity = 200,
+            currentCount = 0
+        };
 
         public class CustomMap : Map
         {
@@ -267,8 +335,8 @@ namespace CSE455V2.Views
         public MapViewPage()
         {
             InitializeComponent();
-            mapSpan = new MapSpan(position, 0.01, 0.01);
 
+            MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
             map = new CustomMap()     // default can just be: Map map = new Map();
             {
                 MapType = MapType.Street
@@ -276,16 +344,15 @@ namespace CSE455V2.Views
 
             map.MoveToRegion(new MapSpan(position, 0.01, 0.01));
 
-            pinD.Address = max.ToString();
-
-            AddStuffToList(shapes, map);
+            AddStuffToList(shapes, LotList, map);
 
             Content = map;
 
-            UpdateMap(shapes);
+            UpdateMap(shapes, LotList, PinList);
         }
-        public void AddStuffToList(List<Polygon> shapes, CustomMap map)
+        public void AddStuffToList(List<Polygon> shapes,List<ParkingLotInfo> LotList, CustomMap map)
         {
+            // List of polygons
             shapes.Add(lotF_Back);
             shapes.Add(lotA);
             shapes.Add(lotB_Annex);
@@ -297,7 +364,7 @@ namespace CSE455V2.Views
             shapes.Add(lotH);
             shapes.Add(lot_EPS);
             shapes.Add(lotN);
-
+            // Pins
             map.Pins.Add(pinF_Back);
             map.Pins.Add(pinA);
             map.Pins.Add(pinB_Annex);
@@ -309,7 +376,19 @@ namespace CSE455V2.Views
             map.Pins.Add(pinH);
             map.Pins.Add(pin_EPS);
             map.Pins.Add(pinN);
-
+            // Database values: Name, TotalCapacity, CurrentCapacity
+            LotList.Add(F_Back_Lot);
+            LotList.Add(A_Lot);
+            LotList.Add(B_Lot_Annez);
+            LotList.Add(B_Lot);
+            LotList.Add(C_Lot);
+            LotList.Add(D_Lot);
+            LotList.Add(F_Front_Lot);
+            LotList.Add(G_Lot);
+            LotList.Add(H_Lot);
+            LotList.Add(EPS_Lot);
+            LotList.Add(N_Lot);
+            // Polygons being added to map
             map.MapElements.Add(lotF_Back);
             map.MapElements.Add(lotA);
             map.MapElements.Add(lotB_Annex);
@@ -321,18 +400,32 @@ namespace CSE455V2.Views
             map.MapElements.Add(lotH);
             map.MapElements.Add(lot_EPS);
             map.MapElements.Add(lotN);
+            // Adds Pins to List of Pins
+            PinList.Add(pinF_Back);
+            PinList.Add(pinA);
+            PinList.Add(pinB_Annex);
+            PinList.Add(pinB);
+            PinList.Add(pinC);
+            PinList.Add(pinD);
+            PinList.Add(pinF_Front);
+            PinList.Add(pinG);
+            PinList.Add(pinH);
+            PinList.Add(pin_EPS);
+            PinList.Add(pinN);
         }
-        public void UpdateMap(List<Polygon> LotShape)
+        public void UpdateMap(List<Polygon> LotShape, List<ParkingLotInfo> LotList, List<CustomPin> pinlist)
         {
+            //foreach(var Lot in LotShape)
             for (int i = 0; i < LotShape.Count; i++)
             {
+                pinlist[i].Address = LotList[i].currentCount + "/" + LotList[i].totalCapacity;
 
-                if (current <= max * 0.40)
+                if (LotList[i].currentCount <= LotList[i].totalCapacity * 0.40)
                 {
                     LotShape[i].StrokeColor = Color.FromHex("#03C04A");
                     LotShape[i].FillColor = Color.FromHex("#8803C04A");
                 }
-                else if (current >= max * 0.85)
+                else if (LotList[i].currentCount >= LotList[i].totalCapacity * 0.85)
                 {
                     LotShape[i].StrokeColor = Color.FromHex("#e74c3c");
                     LotShape[i].FillColor = Color.FromHex("#ec7063");
