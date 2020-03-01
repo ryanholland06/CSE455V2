@@ -7,43 +7,47 @@
              x:Class="CSE455V2.Views.UserSettingsPage"
              Title="Settings">
 
-    <StackLayout Margin="10" Spacing="10">
+    <StackLayout Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand">
         <Button Text="Payment Information" 
                     Clicked="PaymentInfo_Clicked" 
-                    ImageSource="" 
                     BorderColor="#0077be" 
                     BorderWidth="4" 
                     BackgroundColor="GhostWhite"
-                    HorizontalOptions="Center"
-                    HeightRequest="100"
-                    WidthRequest="500">
-        </Button>
-        <Button Text="Vehicle Information" 
-                    Clicked="VehicleInfo_Clicked" 
-
-                ImageSource="car.png"
-                    BorderColor="#0077be" 
-                    BorderWidth="4" 
-                    BackgroundColor="GhostWhite"
-                    HorizontalOptions="Center"
                     HeightRequest="100"
                     WidthRequest="500">
             <Button.ImageSource>
                 <OnPlatform x:TypeArguments="ImageSource">
-                    <On Platform="iOS, Android" Value="car.png" />
-                    <On Platform="UWP" Value="Assets/car.png" />
+                    <On Platform="iOS, Android" Value="cash.png" />
                 </OnPlatform>
             </Button.ImageSource>
         </Button>
+        
+        <Button Text="Vehicle Information" 
+                Clicked="VehicleInfo_Clicked" 
+                BorderColor="#0077be" 
+                BorderWidth="4" 
+                BackgroundColor="GhostWhite"
+                HeightRequest="100"
+                WidthRequest="500">
+            <Button.ImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="iOS, Android" Value="car.png" />
+                </OnPlatform>
+            </Button.ImageSource>
+        </Button>
+        
         <Button Text="Login Information" 
-                    Clicked="LoginInfo_Clicked" 
-                    ImageSource="" 
-                    BorderColor="#0077be" 
-                    BorderWidth="4" 
-                    BackgroundColor="GhostWhite"
-                    HorizontalOptions="Center"
-                    HeightRequest="100"
-                    WidthRequest="500">
+                Clicked="LoginInfo_Clicked" 
+                BorderColor="#0077be" 
+                BorderWidth="4" 
+                BackgroundColor="GhostWhite"
+                HeightRequest="100"
+                WidthRequest="500">
+            <Button.ImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="iOS, Android" Value="User.png" />
+                </OnPlatform>
+            </Button.ImageSource>
         </Button>
         <!--   <Button Text="Vehicle Information" Clicked="VehicleInfo_Clicked" />  -->
         <!--   <Button Text="Login Information" Clicked="LoginInfo_Clicked" /> -->
