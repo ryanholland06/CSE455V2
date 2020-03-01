@@ -15,15 +15,12 @@ namespace CSE455V2.Views
     public partial class MapViewPage : ContentPage
     {
         Position position = new Position(34.182821, -117.323526);
-        MapSpan mapSpan;
-        Map map = new Map();
+        private MapSpan mapSpan;        // 3/1/2020 set to private.
+        CustomMap map = new CustomMap();
         List<ParkingLotInfo> LotList = new List<ParkingLotInfo>();
-        List<Polygon> shapes = new List<Polygon>();
+        private List<Polygon> shapes = new List<Polygon>();
         public int max = 200;
         public int current = 180;
-
-        const double InitialRadius = 1;     // kilometer
-        const double InitialZoom = 11;
 
         Polygon lotF_Back = new Polygon
         {
@@ -42,7 +39,6 @@ namespace CSE455V2.Views
                     new Position(34.186910, -117.326410)
                 }
         };
-
         Polygon lotA = new Polygon
         {
             StrokeWidth = 8,
@@ -56,7 +52,6 @@ namespace CSE455V2.Views
                     new Position(34.186828, -117.327976)
                 }
         };
-
         Polygon lotB = new Polygon
         {
             StrokeWidth = 8,
@@ -71,7 +66,6 @@ namespace CSE455V2.Views
                     new Position(34.182620, -117.328216)
                 }
         };
-
         Polygon lotB_Annex = new Polygon
         {
             StrokeWidth = 8,
@@ -87,7 +81,6 @@ namespace CSE455V2.Views
                     new Position(34.183806, -117.328160)
                 }
         };
-
         Polygon lotC = new Polygon
         {
             StrokeWidth = 8,
@@ -101,7 +94,6 @@ namespace CSE455V2.Views
                     new Position(34.180391, -117.325899)
                 }
         };
-
         Polygon lotD = new Polygon
         {
             StrokeWidth = 8,
@@ -117,7 +109,6 @@ namespace CSE455V2.Views
                     new Position(34.179708, -117.323307)
                 }
         };
-
         Polygon lotF_Front = new Polygon
         {
             StrokeWidth = 8,
@@ -133,7 +124,6 @@ namespace CSE455V2.Views
                     new Position(34.178678, -117.319595)
                 }
         };
-
         Polygon lotG = new Polygon
         {
             StrokeWidth = 8,
@@ -147,7 +137,6 @@ namespace CSE455V2.Views
                     new Position(34.180834, -117.319523)
                 }
         };
-
         Polygon lotH = new Polygon
         {
             StrokeWidth = 8,
@@ -161,7 +150,6 @@ namespace CSE455V2.Views
                     new Position(34.179810, -117.317820)
                 }
         };
-
         Polygon lot_EPS = new Polygon
         {
             StrokeWidth = 8,
@@ -175,7 +163,6 @@ namespace CSE455V2.Views
                     new Position(34.184189, -117.319618)
                 }
         };
-
         Polygon lotN = new Polygon
         {
             StrokeWidth = 8,
@@ -200,30 +187,105 @@ namespace CSE455V2.Views
                 }
         };
 
+        CustomPin pinF_Back = new CustomPin
+        {
+            Label = "Lot F",
+            Type = PinType.Place,
+            Position = new Position(34.186338, -117.326572)
+        };
+        CustomPin pinA = new CustomPin
+        {
+            Label = "Lot A",
+            Type = PinType.Place,
+            Position = new Position(34.186307, -117.328042)
+        };
+        CustomPin pinB = new CustomPin
+        {
+            Label = "Lot B",
+            Type = PinType.Place,
+            Position = new Position(34.182913, -117.328776)
+        };
+        CustomPin pinB_Annex = new CustomPin
+        {
+            Label = "Lot B",
+            Type = PinType.Place,
+            Position = new Position(34.183821, -117.328685)
+        };
+        CustomPin pinC = new CustomPin
+        {
+            Label = "Lot C",
+            Type = PinType.Place,
+            Position = new Position(34.180811, -117.327492)
+        };
+        CustomPin pinD = new CustomPin
+        {
+            Label = "Lot D",
+            Type = PinType.Place,
+            Position = new Position(34.178944, -117.324553)
+        };
+        CustomPin pinF_Front = new CustomPin
+        {
+            Label = "Lot F",
+            Type = PinType.Place,
+            Position = new Position(34.178717, -117.320145)
+        };
+        CustomPin pinG = new CustomPin
+        {
+            Label = "Lot G",
+            Type = PinType.Place,
+            Position = new Position(34.180183, -117.318607)
+        };
+        CustomPin pinH = new CustomPin
+        {
+            Label = "Lot H",
+            Type = PinType.Place,
+            Position = new Position(34.179039, -117.318124)
+        };
+        CustomPin pin_EPS = new CustomPin
+        {
+            Label = "East Parking Structure",
+            Type = PinType.Place,
+            Position = new Position(34.183910, -117.320227)
+        };
+        CustomPin pinN = new CustomPin
+        {
+            Label = "Lot N",
+            Type = PinType.Place,
+            Position = new Position(34.184806, -117.322195),
+            //Name = "this random name"         // adding this field will allow users to open Gmaps to get directions.
+        };
 
+        public class CustomMap : Map
+        {
+            public List<CustomPin> CustomPins { get; set; }
+        }
+        public class CustomPin : Pin
+        {
+            public string Name { get; set; }
+            //public string Url { get; set; }
+        }
         public MapViewPage()
         {
             InitializeComponent();
-
             mapSpan = new MapSpan(position, 0.01, 0.01);
-            mapSpan = mapSpan.ClampLatitude(10, -10);
 
-            map = new Map(mapSpan)     // default can just be: Map map = new Map();
+            map = new CustomMap()     // default can just be: Map map = new Map();
             {
-                MapType = MapType.Street, 
-                //HasScrollEnabled = false
-                //HasZoomEnabled = false
+                MapType = MapType.Street
             };
 
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(InitialRadius)));
+            map.MoveToRegion(new MapSpan(position, 0.01, 0.01));
 
-            //slider.Value = InitialZoom;
-            //slider.ValueChanged += OnSliderValueChanged;
+            pinD.Address = max.ToString();
 
-            //map.MoveToRegion(new MapSpan(position, 0.01, 0.01));
+            AddStuffToList(shapes, map);
 
             Content = map;
 
+            UpdateMap(shapes);
+        }
+        public void AddStuffToList(List<Polygon> shapes, CustomMap map)
+        {
             shapes.Add(lotF_Back);
             shapes.Add(lotA);
             shapes.Add(lotB_Annex);
@@ -236,25 +298,17 @@ namespace CSE455V2.Views
             shapes.Add(lot_EPS);
             shapes.Add(lotN);
 
-            for(int i = 0; i < shapes.Count; i++)
-            {
-
-                if (current <= max * 0.40)
-                {
-                    shapes[i].StrokeColor = Color.FromHex("#03C04A");
-                    shapes[i].FillColor = Color.FromHex("#8803C04A");
-                }
-                else if (current >= max * 0.85)
-                {
-                    shapes[i].StrokeColor = Color.FromHex("#e74c3c");
-                    shapes[i].FillColor = Color.FromHex("#ec7063");
-                }
-                else
-                {
-                    shapes[i].StrokeColor = Color.FromHex("#f1c40f");
-                    shapes[i].FillColor = Color.FromHex("#f4d03f");
-                }
-            }
+            map.Pins.Add(pinF_Back);
+            map.Pins.Add(pinA);
+            map.Pins.Add(pinB_Annex);
+            map.Pins.Add(pinB);
+            map.Pins.Add(pinC);
+            map.Pins.Add(pinD);
+            map.Pins.Add(pinF_Front);
+            map.Pins.Add(pinG);
+            map.Pins.Add(pinH);
+            map.Pins.Add(pin_EPS);
+            map.Pins.Add(pinN);
 
             map.MapElements.Add(lotF_Back);
             map.MapElements.Add(lotA);
@@ -267,18 +321,28 @@ namespace CSE455V2.Views
             map.MapElements.Add(lotH);
             map.MapElements.Add(lot_EPS);
             map.MapElements.Add(lotN);
-
         }
-
-        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        public void UpdateMap(List<Polygon> LotShape)
         {
-            // Watch out for Android event firing!
-            if (map.VisibleRegion == null)
-                return;
+            for (int i = 0; i < LotShape.Count; i++)
+            {
 
-            Position center = map.VisibleRegion.Center;
-            double radius = InitialRadius * Math.Pow(2, InitialZoom - args.NewValue);
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(center, Distance.FromKilometers(radius)));
+                if (current <= max * 0.40)
+                {
+                    LotShape[i].StrokeColor = Color.FromHex("#03C04A");
+                    LotShape[i].FillColor = Color.FromHex("#8803C04A");
+                }
+                else if (current >= max * 0.85)
+                {
+                    LotShape[i].StrokeColor = Color.FromHex("#e74c3c");
+                    LotShape[i].FillColor = Color.FromHex("#ec7063");
+                }
+                else
+                {
+                    LotShape[i].StrokeColor = Color.FromHex("#f1c40f");
+                    LotShape[i].FillColor = Color.FromHex("#f4d03f");
+                }
+            }
         }
     }
 }
