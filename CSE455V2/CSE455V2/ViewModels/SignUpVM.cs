@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -163,8 +163,11 @@ namespace CSE455V2.ViewModel
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
+                    // Read email address from Firebase database
+                    var user = await FirebaseHelper.GetUser(Email);
+                    // Check for symbols
                     var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
                     Truefalse = true;
                     SignEnable = false;
@@ -173,54 +176,61 @@ namespace CSE455V2.ViewModel
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
+                        await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
                     }
                     else if (!Email.Contains("@"))
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("", "Email Address is Invalid", "OK");
+                        await App.Current.MainPage.DisplayAlert("", "Email Address is Invalid", "OK");
                     }
                     else if (Password.Length < 8)
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("", "Password is less than 8 characters", "OK");
+                        await App.Current.MainPage.DisplayAlert("", "Password is less than 8 characters", "OK");
                     }
                     else if (!Password.Any(char.IsUpper))
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("", "Password Must Contain at Least 1 Uppcase Letter", "OK");
+                        await App.Current.MainPage.DisplayAlert("", "Password Must Contain at Least 1 Uppcase Letter", "OK");
                     }
                     else if (!hasSymbols.IsMatch(Password))
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("", "Password should contain At least one special case characters", "OK");
+                        await App.Current.MainPage.DisplayAlert("", "Password should contain At least one special case characters", "OK");
                     }
                     else if (Password != ConfirmPassword)
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("", "Password must be same as above!", "OK");
+                        await App.Current.MainPage.DisplayAlert("", "Password must be same as above!", "OK");
                     }
                     else if (string.IsNullOrEmpty(StudentID))
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Student ID", "OK");
+                        await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Student ID", "OK");
                     }
                     else if (StudentID.Length < 9)
                     {
                         Truefalse = false;
                         SignEnable = true;
-                        App.Current.MainPage.DisplayAlert("", "Student ID is Incorrect!", "OK");
+                        await App.Current.MainPage.DisplayAlert("", "Student ID is Incorrect!", "OK");
+                    }
+                    else if (user != null)
+                    {
+                        if (Email == user.Email)
+                        {
+                            Truefalse = false;
+                            SignEnable = true;
+                            await App.Current.MainPage.DisplayAlert("Email Taken", "Please Use A Different Email", "Ok");
+                        }
                     }
                     else
-                    {
                         SignUp();
-                    }
 
                 });
 

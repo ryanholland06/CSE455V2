@@ -35,9 +35,38 @@ namespace CSE455V2.Services
                     CarModel = item.Object.CarModel,
                     CarYear = item.Object.CarYear,
                     CarColor = item.Object.CarColor,
-                    LicenseNumber = item.Object.LicenseNumber
+                    LicenseNumber = item.Object.LicenseNumber,
+                    SetAccountType = item.Object.SetAccountType //ADD; THIS SHOULD SPECIFY WHAT ACCOUNT TYPE THE USER IS
                 }).ToList();
                 return userlist;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+
+        public static async Task<List<Citations>> GetAllCitations()
+        {
+            try
+            {
+                var citationlist = (await firebase
+                .Child("Citations")
+                .OnceAsync<Citations>()).Select(item =>
+                new Citations
+                {
+                    StudentId = item.Object.StudentId,
+                    Name = item.Object.Name,
+                    VehicleInfo = item.Object.VehicleInfo,
+                    LisencePlate = item.Object.LisencePlate,
+                    NumberOfCitations = item.Object.NumberOfCitations,
+                    CitationId = item.Object.CitationId,
+                    ReasonForCitation = item.Object.ReasonForCitation,
+                    FineAmount = item.Object.FineAmount,
+                    PaidStatus = item.Object.PaidStatus
+                }).ToList();
+                return citationlist;
             }
             catch (Exception e)
             {
@@ -64,7 +93,29 @@ namespace CSE455V2.Services
             }
         }
 
-        //Inser a user
+        public async Task<Users> GetUserByLisencePlate(string lisencePlate)
+        {
+            var allPersons = await GetAllUser();
+            await firebase
+                .Child("Users")
+                .OnceAsync<Users>();
+            return allPersons.FirstOrDefault(a => a.LicenseNumber == lisencePlate);
+        }
+
+        //Will retrieve all citations matching the parameter lisencePlate
+        public async Task<List<Citations>> GetCitationsByLisencePlate(string lisencePlate)
+        {
+            var allCitations = await GetAllCitations();
+            await firebase
+                .Child("Citations")
+                .OnceAsync<Citations>();
+            var citationsFound = allCitations.Where(e => e.LisencePlate == lisencePlate).ToList();
+            return citationsFound;
+           
+             
+        }
+
+        //Insert a user
         public static async Task<bool> AddUser(string email, string password, string studentid,
                                                 string firstname, string lastname, string carmake,
                                                 string carmodel, string caryear, string carcolor,
@@ -87,7 +138,8 @@ namespace CSE455V2.Services
                     CarModel = carmodel,
                     CarYear = caryear,
                     CarColor = carcolor,
-                    LicenseNumber = licensenumber
+                    LicenseNumber = licensenumber,
+                    SetAccountType = AccountType.student //DEFAULT TO STUDENT UNLESS CHANGED THROUGH FIREBASE
                 });
                 return true;
             }
@@ -96,6 +148,23 @@ namespace CSE455V2.Services
                 Debug.WriteLine($"Error:{e}");
                 return false;
             }
+        }
+
+        //ADD CITATION TO FIREBASE DB
+        public async Task AddCitation(string vehInfo, string lisencePlate, string studentId, string name, string reason)
+        {
+
+            await firebase
+                .Child("Citations")
+                .PostAsync(new Citations()
+                {
+                    Name = name,
+                    VehicleInfo = vehInfo,
+                    LisencePlate = lisencePlate,
+                    StudentId = studentId,
+                    ReasonForCitation = reason,
+                    CitationId = Global.counter++
+                });
         }
 
         //Update 
