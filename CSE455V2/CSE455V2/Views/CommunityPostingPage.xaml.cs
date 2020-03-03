@@ -49,7 +49,7 @@ namespace CSE455V2.Views
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                connectButton.Text = "Connect";
+                connectButton.Text = "Connect to Server";
                 connectButton.IsEnabled = !success;
                 sendButton.IsEnabled = success;
                 AddMessage($"Server connection changed: {message}");

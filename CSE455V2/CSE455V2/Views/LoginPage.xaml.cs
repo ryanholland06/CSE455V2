@@ -27,11 +27,13 @@ namespace CSE455V2.Views
         {
             ls.IsRunning = true;
             lgn.IsEnabled = false;
+            sgn.IsEnabled = false;
             //null or empty field validation, check weather email and password is null or empty
             if (string.IsNullOrEmpty(loginViewModel.Email) || string.IsNullOrEmpty(loginViewModel.Password))
             {
                 ls.IsRunning = false;
                 lgn.IsEnabled = true;
+                sgn.IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
             }
             else
@@ -44,23 +46,29 @@ namespace CSE455V2.Views
                     {
                         ls.IsRunning = false;
                         lgn.IsEnabled = true;
+                        sgn.IsEnabled = true;
+
                         await App.Current.MainPage.DisplayAlert("Welcome", " ", "Ok");
                         App.UserName = loginViewModel.Email;
                         //await Navigation.PushAsync(new SecurityMainMenu());
 
-                        Application.Current.MainPage = new MainPage(); //sends to main menu, resets the stack.
+                        Application.Current.MainPage = new ShellFlyoutPage(); //sends to main menu, resets the stack.
 
                     }
                     else
                     {
                         ls.IsRunning = false;
                         lgn.IsEnabled = true;
+                        sgn.IsEnabled = true;
+
                         await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
                     }
                 else
                 {
                     ls.IsRunning = false;
                     lgn.IsEnabled = true;
+                    sgn.IsEnabled = true;
+
                     await App.Current.MainPage.DisplayAlert("Login Fail", "User not found", "OK");
                 }
             }
