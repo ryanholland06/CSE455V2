@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CSE455V2.Views.SecurityViews.CitationsSearch">
+    <ContentPage.Content>
+        <StackLayout Margin="20,30,20,20">
+            <Label Text="Find a Citation"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Large"
+                FontAttributes="Bold"/>
+            <Label Text="FIND USER: "
+                       FontSize="Medium" 
+                       TextColor="Gray" />
+
+            <SearchBar x:Name="searchLisencePlate" 
+                           Placeholder="Enter Lisence Plate" 
+                           SearchButtonPressed="BtnRetrive_Clicked"/>
+
+            <ListView x:Name="CitationsListView"
+                      ItemTapped="CitationsListView_ItemTapped"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CSE455V2.Views.SecurityMainMenu">
+    <ContentPage.Content>
+        <StackLayout Margin="20,35,20,20">
+            <Label Text="SPOT-LOT SECURITY GUARD"
+               HorizontalOptions="Center"
+               FontSize="Large"/>
+            <!-- View Parking Active and Empty spots -->
+            <Button Text="VIEW PARKING SPOTS"
+                    BackgroundColor="#0077be"
+                    TextColor="White"
+                    Clicked="OnButtonClickedParkingLot"/>
+            
+            <!-- Swipe view to display options to create new or search for an existing citation -->
+            <SwipeView>
+                <SwipeView.LeftItems>
+                    <SwipeItems SwipeBehaviorOnInvoked="Auto">
+                        <SwipeItem Text="New"
+                                   BackgroundColor="LightGreen" 
+                                   Invoked="OnNewSwipeItemInvoke" />
+                        <SwipeItem Text="Search"
+                                   BackgroundColor="LightBlue" 
+                                   Invoked="OnSearchSwipeItemInvoke" />
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <Grid HeightRequest="60"
+                      WidthRequest="200"
+                      BackgroundColor="#0077be">
+                    <Label Text="CITATIONS"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White" />
+                </Grid>
+            </SwipeView>
+            
+            <!-- Request Form to order Tow -->
+            <Button Text="TOWING CO." 
+                Clicked="OnButtonClickedTowing"
+                    BackgroundColor="#0077be"
+                    TextColor="White"/>
+            
+            <!-- Send Emergency Alerts to each user -->
+            <Button Text="SECURITY ALERTS" 
+                Clicked="OnButtonClickedAlerts"
+                    BackgroundColor="#0077be"
+                    TextColor="White"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

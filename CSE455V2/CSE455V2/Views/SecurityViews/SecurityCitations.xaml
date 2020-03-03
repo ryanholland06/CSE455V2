@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CSE455V2.Views.SecurityViews.SecurityCitations">
+    <ContentPage.Content>
+        <StackLayout Margin="20,30,20,20">
+            <StackLayout>
+                <!--
+                <Label Text="CREATE CITATIONS: " 
+                       FontAttributes="Bold" 
+                       FontSize="Large" 
+                       TextColor="Gray" />
+                <Entry x:Name="txtId" Placeholder="ID" />
+                <Entry x:Name="txtName" Placeholder="Enter Name" />
+                <Entry x:Name="txtVehicle" Placeholder="Enter Vehicle Info" />
+                <Entry x:Name="txtVin" Placeholder="Enter Vehicle VIN" />
+                <Button x:Name="btnAdd" WidthRequest="200" Text="Add" Clicked="BtnAdd_Clicked"/>
+                -->
+
+                <Label Text="FIND USER: "
+                       FontAttributes="Bold" 
+                       FontSize="Large" 
+                       TextColor="Gray" />
+
+                <SearchBar x:Name="searchLisencePlate" 
+                           Placeholder="Enter Lisence Plate" 
+                           SearchButtonPressed="BtnRetrive_Clicked"/>
+
+                <Label Text="USER INFORMATION: "
+                       FontAttributes="Bold" 
+                       FontSize="Large" 
+                       TextColor="Gray" />
+
+                <Entry x:Name="personName"
+                       Placeholder="Name"
+                       Text="{Binding Name}"
+                       FontSize="Medium" />
+                <Entry x:Name="vehicleInfo"
+                       Placeholder="Vehicle Information"
+                       Text="{Binding VehicleInformation}"
+                       FontSize="Medium" />
+                <Entry x:Name="vinNumber"
+                       Placeholder="VIN Number"
+                       Text="{Binding VinNum}"
+                       FontSize="Medium" />
+                <Picker x:Name="citationReason" 
+                        Title="Select A Reason">
+                    <Picker.Items>
+                        <x:String>No Valid Permit</x:String>
+                        <x:String>Permit Not Displayed Properly</x:String>
+                        <x:String>Illegal Parking</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Button Text="Submit Citation"
+                        Font="Large"
+                        BackgroundColor="Red"
+                        Clicked="OnButtonClickAddCitation" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
