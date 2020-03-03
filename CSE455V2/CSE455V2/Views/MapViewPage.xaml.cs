@@ -1,9 +1,11 @@
 ﻿using CSE455V2.Models;
+using CSE455V2.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -21,6 +23,7 @@ namespace CSE455V2.Views
         List<ParkingLotInfo> LotList = new List<ParkingLotInfo>();
         private List<Polygon> shapes = new List<Polygon>();
         List<CustomPin> PinList = new List<CustomPin>();
+        public int LotACount =0;
 
         // all Lot shapes on campus
         Polygon lotF_Back = new Polygon
@@ -262,11 +265,12 @@ namespace CSE455V2.Views
             totalCapacity = 200,
             currentCount = 0
         };
+
         ParkingLotInfo A_Lot = new ParkingLotInfo
         {
             ParkingLotName = "Lot A",
             totalCapacity = 200,
-            currentCount = 0
+            currentCount =  0     
         };
         ParkingLotInfo B_Lot = new ParkingLotInfo
         {
@@ -332,26 +336,36 @@ namespace CSE455V2.Views
             public string Name { get; set; }
             //public string Url { get; set; }
         }
-        public MapViewPage()
+        public async void LoadList()
+        {
+            LotList = await FirebaseHelper.GetAllParkingLotInfo();
+            UpdateMap(shapes, LotList, PinList);
+            LoadList();
+
+        }
+
+        public  MapViewPage()
         {
             InitializeComponent();
-
             MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
             map = new CustomMap()     // default can just be: Map map = new Map();
             {
                 MapType = MapType.Street
             };
+            LoadList();
 
             map.MoveToRegion(new MapSpan(position, 0.01, 0.01));
 
-            AddStuffToList(shapes, LotList, map);
+             AddStuffToList(shapes, LotList, map);
 
             Content = map;
 
-            UpdateMap(shapes, LotList, PinList);
+            //UpdateMap(shapes, LotList, PinList);
+           // UpdateListendless();
         }
         public void AddStuffToList(List<Polygon> shapes,List<ParkingLotInfo> LotList, CustomMap map)
         {
+           
             // List of polygons
             shapes.Add(lotF_Back);
             shapes.Add(lotA);
@@ -377,17 +391,17 @@ namespace CSE455V2.Views
             map.Pins.Add(pin_EPS);
             map.Pins.Add(pinN);
             // Database values: Name, TotalCapacity, CurrentCapacity
-            LotList.Add(F_Back_Lot);
-            LotList.Add(A_Lot);
-            LotList.Add(B_Lot_Annez);
-            LotList.Add(B_Lot);
-            LotList.Add(C_Lot);
-            LotList.Add(D_Lot);
-            LotList.Add(F_Front_Lot);
-            LotList.Add(G_Lot);
-            LotList.Add(H_Lot);
-            LotList.Add(EPS_Lot);
-            LotList.Add(N_Lot);
+            //LotList.Add(F_Back_Lot);
+            //LotList.Add(A_Lot);
+            //LotList.Add(B_Lot_Annez);
+            //LotList.Add(B_Lot);
+            //LotList.Add(C_Lot);
+            //LotList.Add(D_Lot);
+            //LotList.Add(F_Front_Lot);
+            //LotList.Add(G_Lot);
+            //LotList.Add(H_Lot);
+            //LotList.Add(EPS_Lot);
+            //LotList.Add(N_Lot);
             // Polygons being added to map
             map.MapElements.Add(lotF_Back);
             map.MapElements.Add(lotA);
