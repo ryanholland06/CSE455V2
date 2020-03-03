@@ -310,6 +310,43 @@ namespace CSE455V2.Services
             }
             catch { return false; }
         }
+        public static async Task<bool> UpdateParkingLotInfo(ParkingLotInfo parkInfo)
+        {
+            try
+            {
+
+
+                var toUpdateUser = (await firebase
+                .Child("ParkingLotInfo")
+                .OnceAsync<ParkingLotInfo>()).Where(a => a.Object.ParkingLotName == parkInfo.ParkingLotName).FirstOrDefault();
+                await firebase
+                .Child("ParkingLotInfo")
+                .Child(toUpdateUser.Key)
+                .PutAsync(parkInfo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return false;
+            }
+        }
+        public static async Task<ParkingLotInfo> GetParkingLot(string parkingLot)
+        {
+            try
+            {
+                var allUsers = await GetAllParkingLotInfo();
+                await firebase
+                .Child("ParkingLotInfo")
+                .OnceAsync<ParkingLotInfo>();
+                return allUsers.Where(a => a.ParkingLotName == parkingLot).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
         public static async Task<List<ParkingLotInfo>> GetAllParkingLotInfo()
         {
             try
@@ -331,24 +368,67 @@ namespace CSE455V2.Services
                 return null;
             }
         }
-        public static async Task<bool> UpdateParkingLotInfo(ParkingLotInfo lotInfo)
+        #endregion
+        #region parkedInfo
+        public static async Task<bool> AddParkedInfo(ParkedInfo parkInfo)
+        {
+            try
+            {
+                await firebase
+                  .Child("ParkedInfo")
+                  .PostAsync(new ParkedInfo() {  username = parkInfo.username, parkingLotName = parkInfo.parkingLotName, parkinglotNum= parkInfo.parkinglotNum, TimeEntered = parkInfo.TimeEntered});
+                return true;
+            }
+            catch { return false; }
+        }
+        public static async Task<List<ParkedInfo>> GetAllParkedInfo()
+        {
+            try
+            {
+                var parklist = (await firebase
+                .Child("ParkedInfo")
+                .OnceAsync<ParkedInfo>()).Select(item =>
+                new ParkedInfo
+                {
+                    username = item.Object.username,
+                    parkingLotName= item.Object.parkingLotName,
+                    parkinglotNum = item.Object.parkinglotNum,
+                    TimeEntered = item.Object.TimeEntered
+                }).ToList();
+                return parklist;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+        public static async Task<ParkedInfo> GetParkRecord(string email)
+        {
+            try
+            {
+                var allUsers = await GetAllParkedInfo();
+                await firebase
+                .Child("ParkedInfo")
+                .OnceAsync<ParkedInfo>();
+                return allUsers.Where(a => a.username == email).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+        public static async Task<bool> DeleteParkedRecord(string email)
         {
             try
             {
 
 
-                var UpdateParkingLot= (await firebase
-                .Child("ParkingLotInfo")
-                .OnceAsync<ParkingLotInfo>()).Where(a => a.Object.ParkingLotName == lotInfo.ParkingLotName).FirstOrDefault();
-                await firebase
-                .Child("ParkingLot")
-                .Child(UpdateParkingLot.Key)
-                .PutAsync(new ParkingLotInfo()
-                {
-                    ParkingLotName = lotInfo.ParkingLotName,
-                    currentCount = lotInfo.currentCount,
-                    totalCapacity = lotInfo.totalCapacity
-                });
+                var toDeleteRecord = (await firebase
+                .Child("ParkedInfo")
+                .OnceAsync<ParkedInfo>()).Where(a => a.Object.username == email).FirstOrDefault();
+                await firebase.Child("ParkedInfo").Child(toDeleteRecord.Key).DeleteAsync();
                 return true;
             }
             catch (Exception e)
@@ -357,6 +437,7 @@ namespace CSE455V2.Services
                 return false;
             }
         }
+
         #endregion
 
     }
