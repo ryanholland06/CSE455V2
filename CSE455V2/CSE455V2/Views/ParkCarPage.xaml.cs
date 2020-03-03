@@ -30,6 +30,38 @@ namespace CSE455V2.Views
                 if (result != null)
                 {
                     string test = result;
+                    var record = await FirebaseHelper.GetParkRecord(App.UserName);
+                    if(record == null)
+                    {
+                        ParkedInfo parkingSlot = new ParkedInfo()
+                        {
+                            parkingLotName = result.Substring(0, 1),
+                            parkinglotNum = result.Substring(0, result.Length),
+                            username = App.UserName,
+                            TimeEntered = DateTime.Now
+                        };
+                        var parkingLot = await FirebaseHelper.GetParkingLot(result.Substring(0, 1));
+                        if (parkingLot != null)
+                        {
+                            parkingLot.currentCount++;
+                            await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
+                        }
+                        
+                        await FirebaseHelper.AddParkedInfo(parkingSlot);
+                        await App.Current.MainPage.DisplayAlert("", "Car is now Parked!", "OK");
+                    }
+                    else
+                    {
+                        var parkingLot = await FirebaseHelper.GetParkingLot(result.Substring(0, 1));
+                        if (parkingLot != null)
+                        {
+                            parkingLot.currentCount--;
+                            await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
+                        }
+
+                        await FirebaseHelper.DeleteParkedRecord(App.UserName);
+                        await App.Current.MainPage.DisplayAlert("", "Car is now Unparked!", "OK");
+                    }
                 }
             }
             catch
