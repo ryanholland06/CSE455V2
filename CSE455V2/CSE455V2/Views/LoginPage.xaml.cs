@@ -44,11 +44,16 @@ namespace CSE455V2.Views
                     {
                         ls.IsRunning = false;
                         lgn.IsEnabled = true;
-                        await App.Current.MainPage.DisplayAlert("Welcome", " ", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Successful Login", "", "Ok");
                         App.UserName = loginViewModel.Email;
-                        //await Navigation.PushAsync(new SecurityMainMenu());
+                        /* ADDED BY CARLOS; WILL READ ACCOUNT TYPE FOR EACH USER AND REDIRECT TO APPROPRIATE PAGE
+                        EX. SECURITY GUARD TO SECURITY PAGE OR STUDENT TO MAIN MENU
+                        ALSO CHANGED THE ADD USER METHOD IN FIREBASE HELPER, WILL DEFAULT ACCOUNT TYPE TO STUDENT */
 
-                        Application.Current.MainPage = new MainPage(); //sends to main menu, resets the stack.
+                        if(user.SetAccountType.ToString() == "security")
+                            await Navigation.PushAsync(new SecurityMainMenu());
+                        else if(user.SetAccountType.ToString() == "student" || user.SetAccountType.ToString() == "faculty")
+                            Application.Current.MainPage = new MainPage(); //sends to main menu, resets the stack.
 
                     }
                     else

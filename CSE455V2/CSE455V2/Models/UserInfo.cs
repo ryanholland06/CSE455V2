@@ -11,14 +11,14 @@ namespace CSE455V2.Models
     public enum AccountType
     {
         student = 0, 
-        facaulty = 1, 
+        faculty = 1, 
         security = 2
     }
     public class Users
     {
 
         private AccountStatus status;
-        private AccountType accuntType;
+        //private AccountType accuntType = AccountType.student;
         public string Email { get; set; }
         public string Password { get; set; }
         public string StudentID { get; set; }
@@ -40,16 +40,6 @@ namespace CSE455V2.Models
                     status = value;
             }
         }
-        public AccountType SetAccountType
-        {
-            get
-            {
-                return accuntType;
-            }
-            set
-            {
-                accuntType = value;
-            }
-        }
+        public AccountType SetAccountType { get; set; }
     }
 }
