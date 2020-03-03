@@ -416,6 +416,22 @@ namespace CSE455V2.Services
                 return null;
             }
         }
+        public static async Task<int> GetParkingLotCount(string parkingLot)
+        {
+            try
+            {
+                var allUsers = await GetAllParkingLotInfo();
+                await firebase
+                .Child("ParkingLotInfo")
+                .OnceAsync<ParkingLotInfo>();
+                return allUsers.Where(a => a.ParkingLotName == parkingLot).FirstOrDefault().currentCount;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return 0;
+            }
+        }
         public static async Task<List<ParkingLotInfo>> GetAllParkingLotInfo()
         {
             try
