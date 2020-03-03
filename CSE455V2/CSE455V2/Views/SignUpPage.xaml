@@ -56,7 +56,7 @@
                             <Label Text="(*)Are required information" FontSize="12" Grid.Row="0" FontAttributes="Bold"  TextColor="Red"/>
                             <Label Text="(*)Password must include atleast 8 characters, contain an uppercase, and symbol" FontAttributes="Bold" FontSize="12" Grid.Row="0" TextColor="Red"/>
 
-                            <Button x:Name="signup" Text="Create Account" BackgroundColor="#0077be" TextColor="White" Command="{Binding SignUpCommand}" IsEnabled="{Binding SignEnable}" HorizontalOptions="Center"/>
+                            <Button x:Name="signup" Text="Sign Up" BackgroundColor="#0077be" TextColor="White" Command="{Binding SignUpCommand}" IsEnabled="{Binding SignEnable}" HorizontalOptions="Center"/>
 
 
                         </StackLayout>

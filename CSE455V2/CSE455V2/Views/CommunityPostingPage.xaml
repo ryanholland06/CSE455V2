@@ -27,23 +27,32 @@
                 </ScrollView>
             </Frame>
             <Entry x:Name="messageEntry"
-               Text="SignalR Message"
+               Placeholder="Type Message Here"
                WidthRequest="500"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="Start" />
             <Button x:Name="sendButton"
                 IsEnabled="False"
-                Text="Send"
+                Text="Send Message"
                 WidthRequest="500"
+                    HeightRequest="75"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Start"
-                Clicked="SendButton_ClickedAsync"/>
+                Clicked="SendButton_ClickedAsync"
+                    BorderColor="#0077be" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"/>
             <Button x:Name="connectButton"
-                Text="Connect"
+                Text="Connect to Server"
+                    
                 WidthRequest="500"
+                    HeightRequest="75"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"
-                Clicked="ConnectButton_ClickedAsync" />
+                Clicked="ConnectButton_ClickedAsync" 
+                    BorderColor="#0077be" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

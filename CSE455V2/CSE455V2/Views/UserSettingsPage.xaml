@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.UserSettingsPage"
              Title="Settings">
-
-    <StackLayout Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand">
+    <ContentPage.Content>
+        <StackLayout Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand">
         <Button Text="Payment Information" 
                     Clicked="PaymentInfo_Clicked" 
                     BorderColor="#0077be" 
@@ -54,5 +54,5 @@
 
     </StackLayout>
 
-
+        </ContentPage.Content>
 </ContentPage>
