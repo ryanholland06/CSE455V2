@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CSE455V2.Views.SecurityViews"
+             xmlns:views="clr-namespace:CSE455V2.Views"
+             x:Class="CSE455V2.Views.SecurityViews.SecurityShell">
+    
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="#e3e3e3"
+              HeightRequest="200">
+                <Image Aspect="AspectFit"
+                   Source="MainLogo.png" />
+                <Label Text=""
+                   TextColor="Blue"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+    </Shell.FlyoutHeaderTemplate>
+
+
+    
+    <FlyoutItem Title="Menu"
+                Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent Title="View Map" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate views:MapViewPage}" />
+        <ShellContent Title="New Citation" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:SecurityCitations}" />
+        <ShellContent Title="Search Citations" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CitationsSearch}" />
+        <ShellContent Title="Request Tow" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:SecurityTow}" />
+    </FlyoutItem>
+
+
+    <ShellContent Title="Logout" Shell.NavBarIsVisible="False" ContentTemplate="{DataTemplate views:LoginPage}" />
+    
+
+</Shell>

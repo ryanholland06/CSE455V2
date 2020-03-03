@@ -54,7 +54,7 @@ namespace CSE455V2.Views
                         EX. SECURITY GUARD TO SECURITY PAGE OR STUDENT TO MAIN MENU
                         ALSO CHANGED THE ADD USER METHOD IN FIREBASE HELPER, WILL DEFAULT ACCOUNT TYPE TO STUDENT */
                         if (user.SetAccountType.ToString() == "security")
-                            await Navigation.PushAsync(new SecurityMainMenu());
+                            Application.Current.MainPage = new SecurityViews.SecurityShell();
                         else if (user.SetAccountType.ToString() == "student" || user.SetAccountType.ToString() == "faculty")
                             Application.Current.MainPage = new ShellFlyoutPage(); //sends to main menu, resets the stack.
 
