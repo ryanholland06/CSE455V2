@@ -35,7 +35,8 @@ namespace CSE455V2.Services
                     CarModel = item.Object.CarModel,
                     CarYear = item.Object.CarYear,
                     CarColor = item.Object.CarColor,
-                    LicenseNumber = item.Object.LicenseNumber
+                    LicenseNumber = item.Object.LicenseNumber,
+                    SetAccountType = item.Object.SetAccountType //ADD; THIS SHOULD SPECIFY WHAT ACCOUNT TYPE THE USER IS
                 }).ToList();
                 return userlist;
             }
@@ -137,7 +138,8 @@ namespace CSE455V2.Services
                     CarModel = carmodel,
                     CarYear = caryear,
                     CarColor = carcolor,
-                    LicenseNumber = licensenumber
+                    LicenseNumber = licensenumber,
+                    SetAccountType = AccountType.student //DEFAULT TO STUDENT UNLESS CHANGED THROUGH FIREBASE
                 });
                 return true;
             }
