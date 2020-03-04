@@ -8,10 +8,8 @@
     <ContentPage.Content>
         <StackLayout Margin="20,30,20,20">
             <Label Text="Find a Citation"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
                 FontSize="Large"
-                FontAttributes="Bold"/>
+                FontAttributes="Bold" />
             <Label Text="FIND USER: "
                        FontSize="Medium" 
                        TextColor="Gray" />

@@ -50,11 +50,17 @@ namespace CSE455V2.Views.SecurityViews
 
         private bool IsLicenseValid() => (searchLisencePlate.Text).Length == 7 && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
 
-        private async void CitationsListView_ItemTapped(object sender, SelectedItemChangedEventArgs e)
+        private async void CitationsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var retCit = await firebaseHelper.GetCitationsByLisencePlate(searchLisencePlate.Text);
-            
-                  
+            var citClicked = e.Item as string;
+            string opening = "Citation ID: ";
+
+            foreach (var clicked in retCit)
+                if (clicked.CitationId == Convert.ToInt64(citClicked.Substring(opening.Length, 1)))
+                    await Navigation.PushAsync(new SecurityViews.CitationDetails(clicked));
+
+
         }
     }
 }
