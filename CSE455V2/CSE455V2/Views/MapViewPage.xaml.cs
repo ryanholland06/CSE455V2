@@ -376,9 +376,7 @@ namespace CSE455V2.Views
             shapes.Add(lotH);
             shapes.Add(lotK);
             shapes.Add(lotL);
-            shapes.Add(lotN);
-            
-            
+            shapes.Add(lotN);            
             // Pins
             map.Pins.Add(pinA);
             map.Pins.Add(pinB);
@@ -417,16 +415,16 @@ namespace CSE455V2.Views
             map.MapElements.Add(lotL);
             map.MapElements.Add(lotN);
             // Adds Pins to List of Pins
-            PinList.Add(pinL);
             PinList.Add(pinA);
-            PinList.Add(pinK);
             PinList.Add(pinB);
             PinList.Add(pinC);
             PinList.Add(pinD);
+            PinList.Add(pinE);
             PinList.Add(pinF);
             PinList.Add(pinG);
             PinList.Add(pinH);
-            PinList.Add(pinE);
+            PinList.Add(pinK);
+            PinList.Add(pinL);
             PinList.Add(pinN);
         }
         public void UpdateMap(List<Polygon> LotShape, List<ParkingLotInfo> LotList, List<CustomPin> pinlist)
