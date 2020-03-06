@@ -47,6 +47,7 @@ namespace CSE455V2.Views.SecurityViews
             {
                 await DisplayAlert("Error", "No Person Available", "Ok");
             }
+
         }
 
         private bool IsLicenseValid() => IsLicenseLengthValid() && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
@@ -60,9 +61,14 @@ namespace CSE455V2.Views.SecurityViews
             string opening = "Citation ID: ";
 
             foreach (var clicked in retCit)
+            {
                 if (clicked.CitationId == Convert.ToInt64(citClicked.Substring(opening.Length, 1)))
+                {
                     await Navigation.PushAsync(new SecurityViews.CitationDetails(clicked));
-
+                    searchLisencePlate.Text = "";
+                    CitationsListView.ItemsSource = null;
+                }
+            }
 
         }
     }

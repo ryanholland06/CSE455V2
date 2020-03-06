@@ -15,6 +15,8 @@ namespace CSE455V2.Views.SecurityViews
         public SecurityShell()
         {
             InitializeComponent();
+
+
         }
     }
 }

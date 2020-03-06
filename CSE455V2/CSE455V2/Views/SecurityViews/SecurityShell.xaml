@@ -32,7 +32,7 @@
 
         <ShellContent Title="View Map" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate views:MapViewPage}" />
         <ShellContent Title="New Citation" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:SecurityCitations}" />
-        <ShellContent Title="Search Citations" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CitationsSearch}" />
+        <ShellContent x:Name="citationsListView" Title="Search Citations" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CitationsSearch}" />
         <ShellContent Title="Request Tow" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:SecurityTow}" />
     </FlyoutItem>
 
