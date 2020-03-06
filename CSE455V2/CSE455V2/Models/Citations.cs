@@ -20,8 +20,6 @@ namespace CSE455V2.Models
 
         public string LisencePlate { get; set; }
 
-        public int NumberOfCitations { get; set; }
-
         public long CitationId { get { return citationId; } set { citationId = value; } }
         public string ReasonForCitation { get; set; }
 
