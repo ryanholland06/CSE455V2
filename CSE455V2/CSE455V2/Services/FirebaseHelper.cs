@@ -153,6 +153,7 @@ namespace CSE455V2.Services
         //ADD CITATION TO FIREBASE DB
         public async Task AddCitation(string vehInfo, string lisencePlate, string studentId, string name, string reason)
         {
+            await UpdateCitationCounter();
 
             await firebase
                 .Child("Citations")
@@ -163,8 +164,24 @@ namespace CSE455V2.Services
                     LisencePlate = lisencePlate,
                     StudentId = studentId,
                     ReasonForCitation = reason,
-                    CitationId = Global.counter++
+                    CitationId = Global.counter
                 });
+        }
+        //This method will make sure that no citation ids match by comparing the exisinting ids to the current counter and then incrementing the global counter
+        public async Task UpdateCitationCounter()
+        {
+            var allCitations =  await GetAllCitations();
+            await firebase
+                .Child("Citations")
+                .OnceAsync<Citations>();
+            foreach(var citationId in allCitations)
+            {
+                if(citationId.CitationId == Global.counter)
+                {
+                    Global.counter++;
+                }
+            }
+
         }
 
         //Update 

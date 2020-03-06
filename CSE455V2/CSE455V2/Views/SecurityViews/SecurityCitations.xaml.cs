@@ -84,10 +84,7 @@ namespace CSE455V2.Views.SecurityViews
             }
         }
         */
-        //private bool IsFormValid() => IsVinValid() && IsReasonValid();
-
-        private bool IsLicenseValid() => (searchLisencePlate.Text).Length == 7 && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
-
+        
         public async void OnButtonClickAddCitation(object sender, EventArgs e)
         {
             if (citationReason.SelectedItem == null)
@@ -105,8 +102,16 @@ namespace CSE455V2.Views.SecurityViews
                                                  citationReason.SelectedItem.ToString());
 
                 await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
-                await Navigation.PushAsync(new SecurityMainMenu());
+                searchLisencePlate.Text = "";
+                vehicleInfo.Text = "";
+                personName.Text = "";
+                vinNumber.Text = "";
+                citationReason.SelectedIndex = -1;
             }
         }
+
+        private bool IsLicenseValid() => IsLicenseLengthValid() && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
+
+        private bool IsLicenseLengthValid() => searchLisencePlate.Text.Length >= 2 && searchLisencePlate.Text.Length <= 7;
     }
 }

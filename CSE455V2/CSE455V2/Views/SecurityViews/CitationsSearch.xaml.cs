@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using CSE455V2.Services;
 using CSE455V2.Models;
+using CSE455V2.Views.SecurityViews;
 
 namespace CSE455V2.Views.SecurityViews
 {
@@ -48,7 +49,9 @@ namespace CSE455V2.Views.SecurityViews
             }
         }
 
-        private bool IsLicenseValid() => (searchLisencePlate.Text).Length == 7 && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
+        private bool IsLicenseValid() => IsLicenseLengthValid() && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
+
+        private bool IsLicenseLengthValid() => searchLisencePlate.Text.Length >= 2 && searchLisencePlate.Text.Length <= 7;
 
         private async void CitationsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
