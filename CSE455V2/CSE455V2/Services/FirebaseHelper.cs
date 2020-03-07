@@ -504,6 +504,22 @@ namespace CSE455V2.Services
                 return null;
             }
         }
+        public static async Task<ParkedInfo> GetParkRecord(string parkingLot, string parkNum)
+        {
+            try
+            {
+                var allUsers = await GetAllParkedInfo();
+                await firebase
+                .Child("ParkedInfo")
+                .OnceAsync<ParkedInfo>();
+                return allUsers.Where(a => a.parkingLotName == parkingLot && a.parkinglotNum == parkNum).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
         public static async Task<bool> DeleteParkedRecord(string email)
         {
             try

@@ -338,10 +338,13 @@ namespace CSE455V2.Views
         }
         public async void LoadList()
         {
-            LotList = await FirebaseHelper.GetAllParkingLotInfo();
-            UpdateMap(shapes, LotList, PinList);
-            LoadList();
-
+            try
+            {
+                LotList = await FirebaseHelper.GetAllParkingLotInfo();
+                UpdateMap(shapes, LotList, PinList);
+                LoadList();
+            }
+            catch { }
         }
 
         public  MapViewPage()
