@@ -5,38 +5,77 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:CSE455V2.Views"
-             x:Class="CSE455V2.Views.ShellFlyoutPage">
+             x:Class="CSE455V2.Views.ShellFlyoutPage"
+             FlyoutBackgroundColor="#0077be"
+       
+       >
 
+
+    <Shell.Resources>
+        <Style x:Key="FloutItemStyle" TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="White"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </Shell.Resources>
+    
+    
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid BackgroundColor="#e3e3e3"
+            <Grid BackgroundColor="LightBlue"
               HeightRequest="200">
                 <Image Aspect="AspectFit"
                    Source="MainLogo.png" />
-                <Label Text=""
-                   TextColor="Blue"
+                <Label Text="Enjoy Your Stay"
+                   TextColor="Black"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" />
+                   VerticalTextAlignment="Start" />
             </Grid>
         </DataTemplate>
-
     </Shell.FlyoutHeaderTemplate>
-    
-    
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid Style="{StaticResource FloutItemStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
 
     <FlyoutItem Title="Menu"
                 Shell.TabBarIsVisible="False"
                 FlyoutDisplayOptions="AsMultipleItems">
 
-        <ShellContent Title="Map View" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:MapViewPage}" />
-        <ShellContent Title="Park Car" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
-        <ShellContent Title="Community Postings" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
-        <ShellContent Title="Settings" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
+        <ShellContent Title="Map View" Icon="Map.png" IsTabStop="True"  ContentTemplate="{DataTemplate local:MapViewPage}" />
+        <ShellContent Title="Park Car" Icon="Qr.png" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
+        <ShellContent Title="Community Postings" Icon="Chat.png" IsTabStop="True" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
+        <ShellContent Title="Settings" Icon="Settings.png" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
     </FlyoutItem>
 
 
-    <ShellContent Title="Logout" Shell.NavBarIsVisible="False" ContentTemplate="{DataTemplate local:LoginPage}" />
+    <ShellContent Title="Logout" Shell.NavBarIsVisible="False" Icon="Logout.png" ContentTemplate="{DataTemplate local:LoginPage}" />
 
 
 </Shell>
