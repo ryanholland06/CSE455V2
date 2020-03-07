@@ -15,11 +15,46 @@
             <Label Text="*Only Call if NECESSARY*"
                    TextColor="Red" 
                    FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   FontSize="Medium" />
+            <Label Text="*All Calls Documented*"
+                   TextColor="Red" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   FontSize="Medium" />
+            <Label Text="FIND USER: "
+                       FontAttributes="Bold" 
+                       FontSize="Large" 
+                       TextColor="Black" />
+
+            <SearchBar x:Name="searchLisencePlate" 
+                           Placeholder="Enter Lisence Plate" 
+                           SearchButtonPressed="searchLisencePlate_SearchButtonPressed"/>
+            <Label Text="USER INFORMATION: "
+                       FontAttributes="Bold" 
+                       FontSize="Large" 
+                       TextColor="Black" />
+            <Entry x:Name="personName"
+                       Placeholder="Name"
+                       Text="{Binding Name}"
+                       FontSize="Medium" />
+            <Entry x:Name="vehicleInfo"
+                       Placeholder="Vehicle Information"
+                       Text="{Binding VehicleInformation}"
+                       FontSize="Medium" />
+            <Entry x:Name="vinNumber"
+                       Placeholder="VIN Number"
+                       Text="{Binding VinNum}"
+                       FontSize="Medium" />
+            <Picker x:Name="citationReason" 
+                        Title="Select A Reason">
+                <Picker.Items>
+                    <x:String>Too Many Violations</x:String>
+                </Picker.Items>
+            </Picker>
             <Button Text="Call for a Tow"
                     Clicked="CallForATowBtnClicked" 
-                    BackgroundColor="Red" 
-                    HorizontalOptions="Center"/>
+                    BackgroundColor="Red" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

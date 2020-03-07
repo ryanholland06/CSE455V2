@@ -9,15 +9,24 @@
         <StackLayout Margin="20,30,20,20">
             <Label Text="Find a Citation"
                 FontSize="Large"
-                FontAttributes="Bold" />
-            <Label Text="FIND USER: "
-                       FontSize="Medium" 
-                       TextColor="Gray" />
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                HorizontalOptions="Center"/>
+            <Label Text="Find User: "
+                   FontSize="Medium" 
+                   TextColor="Black" 
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold" />
 
             <SearchBar x:Name="searchLisencePlate" 
-                           Placeholder="Enter Lisence Plate" 
-                           SearchButtonPressed="BtnRetrive_Clicked"/>
-
+                       Placeholder="Enter Lisence Plate" 
+                       SearchButtonPressed="BtnRetrive_Clicked"
+                       />
+            <Label Text="List of Citations Found: "
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   FontAttributes="Bold"/>
             <ListView x:Name="CitationsListView"
                       ItemTapped="CitationsListView_ItemTapped"/>
 

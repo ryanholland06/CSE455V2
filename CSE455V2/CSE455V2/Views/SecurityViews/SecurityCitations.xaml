@@ -8,46 +8,42 @@
     <ContentPage.Content>
         <StackLayout Margin="20,30,20,20">
             <StackLayout>
-                <!--
-                <Label Text="CREATE CITATIONS: " 
+                <Label Text="Create a New Citation"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center" 
+                       FontSize="Large"/>
+                <Label Text="Find User: "
                        FontAttributes="Bold" 
-                       FontSize="Large" 
-                       TextColor="Gray" />
-                <Entry x:Name="txtId" Placeholder="ID" />
-                <Entry x:Name="txtName" Placeholder="Enter Name" />
-                <Entry x:Name="txtVehicle" Placeholder="Enter Vehicle Info" />
-                <Entry x:Name="txtVin" Placeholder="Enter Vehicle VIN" />
-                <Button x:Name="btnAdd" WidthRequest="200" Text="Add" Clicked="BtnAdd_Clicked"/>
-                -->
-
-                <Label Text="FIND USER: "
-                       FontAttributes="Bold" 
-                       FontSize="Large" 
-                       TextColor="Gray" />
+                       FontSize="Medium" 
+                       TextColor="Black"
+                       HorizontalOptions="Center"/>
 
                 <SearchBar x:Name="searchLisencePlate" 
                            Placeholder="Enter Lisence Plate" 
                            SearchButtonPressed="BtnRetrive_Clicked"/>
 
-                <Label Text="USER INFORMATION: "
+                <Label Text="User Information: "
                        FontAttributes="Bold" 
-                       FontSize="Large" 
-                       TextColor="Gray" />
+                       FontSize="Medium" 
+                       TextColor="Black" 
+                       HorizontalOptions="Center"/>
 
                 <Entry x:Name="personName"
                        Placeholder="Name"
                        Text="{Binding Name}"
-                       FontSize="Medium" />
+                       FontSize="Small" />
                 <Entry x:Name="vehicleInfo"
                        Placeholder="Vehicle Information"
                        Text="{Binding VehicleInformation}"
-                       FontSize="Medium" />
+                       FontSize="Small" />
                 <Entry x:Name="vinNumber"
                        Placeholder="VIN Number"
                        Text="{Binding VinNum}"
-                       FontSize="Medium" />
+                       FontSize="Small" />
                 <Picker x:Name="citationReason" 
-                        Title="Select A Reason">
+                        Title="Select A Reason"
+                        FontSize="Small">
                     <Picker.Items>
                         <x:String>No Valid Permit</x:String>
                         <x:String>Permit Not Displayed Properly</x:String>

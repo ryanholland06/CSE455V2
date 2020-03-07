@@ -128,15 +128,7 @@ namespace CSE455V2.Services
         public string StringWithNumbersToLower(string str)
         {
             string newstr = "";
-            /*
-            foreach (var v in str)
-            {
-                if (!Char.IsDigit(v))
-                    newstr += v.ToString().ToLower();
-                else
-                    newstr += v.ToString();
-            }
-            */
+
             for(int i = 0; i < str.Length; i++)
             {
                 if (char.IsLetter(str[i]))
@@ -218,6 +210,24 @@ namespace CSE455V2.Services
                     toUpdate.SetAccountStatus);
 
         }
+
+        public async Task AddTowCallToTowHistory(CallHistoryToTowingCompany call)
+        {
+            await firebase
+                .Child("CallHistoryToTowingCompany")
+                .PostAsync(new CallHistoryToTowingCompany()
+                {
+                    EnforcerName = call.EnforcerName,
+                    EnforcerEmail = call.EnforcerEmail,
+                    EnforcerId = call.EnforcerId,
+                    UserName = call.UserName,
+                    UserVehicleInformation = call.UserVehicleInformation,
+                    ReasonForCall = call.ReasonForCall,
+                    DateAndTime = call.DateAndTime
+                });
+        }
+
+
         //This method will make sure that no citation ids match by comparing the exisinting ids to the current counter and then incrementing the global counter
         public async Task UpdateCitationCounter()
         {
