@@ -26,7 +26,7 @@ namespace CSE455V2.Views
         public int LotACount =0;
 
         // all Lot shapes on campus
-        Polygon lotF_Back = new Polygon
+        Polygon lotL = new Polygon
         {
             StrokeWidth = 8,
             StrokeColor = Color.FromHex("#03C04A"),
@@ -70,7 +70,7 @@ namespace CSE455V2.Views
                     new Position(34.182620, -117.328216)
                 }
         };
-        Polygon lotB_Annex = new Polygon
+        Polygon lotK = new Polygon
         {
             StrokeWidth = 8,
             StrokeColor = Color.FromHex("#03C04A"),
@@ -113,7 +113,7 @@ namespace CSE455V2.Views
                     new Position(34.179708, -117.323307)
                 }
         };
-        Polygon lotF_Front = new Polygon
+        Polygon lotF = new Polygon
         {
             StrokeWidth = 8,
             StrokeColor = Color.FromHex("#03C04A"),
@@ -154,7 +154,7 @@ namespace CSE455V2.Views
                     new Position(34.179810, -117.317820)
                 }
         };
-        Polygon lot_EPS = new Polygon
+        Polygon lotE = new Polygon
         {
             StrokeWidth = 8,
             StrokeColor = Color.FromHex("#03C04A"),
@@ -191,7 +191,7 @@ namespace CSE455V2.Views
                 }
         };
         // all pins added to list and map
-        CustomPin pinF_Back = new CustomPin
+        CustomPin pinL = new CustomPin
         {
             Label = "Lot F",
             Type = PinType.Place,
@@ -209,7 +209,7 @@ namespace CSE455V2.Views
             Type = PinType.Place,
             Position = new Position(34.182913, -117.328776)
         };
-        CustomPin pinB_Annex = new CustomPin
+        CustomPin pinK = new CustomPin
         {
             Label = "Lot B",
             Type = PinType.Place,
@@ -227,7 +227,7 @@ namespace CSE455V2.Views
             Type = PinType.Place,
             Position = new Position(34.178944, -117.324553)
         };
-        CustomPin pinF_Front = new CustomPin
+        CustomPin pinF = new CustomPin
         {
             Label = "Lot F",
             Type = PinType.Place,
@@ -245,7 +245,7 @@ namespace CSE455V2.Views
             Type = PinType.Place,
             Position = new Position(34.179039, -117.318124)
         };
-        CustomPin pin_EPS = new CustomPin
+        CustomPin pinE = new CustomPin
         {
             Label = "East Parking Structure",
             Type = PinType.Place,
@@ -259,13 +259,6 @@ namespace CSE455V2.Views
             //Name = "this random name"         // adding this field will allow users to open Gmaps to get directions.
         };
         // Parking lot info that in the database
-        ParkingLotInfo F_Back_Lot = new ParkingLotInfo
-        {
-            ParkingLotName = "Lot F Back",
-            totalCapacity = 200,
-            currentCount = 0
-        };
-
         ParkingLotInfo A_Lot = new ParkingLotInfo
         {
             ParkingLotName = "Lot A",
@@ -275,12 +268,6 @@ namespace CSE455V2.Views
         ParkingLotInfo B_Lot = new ParkingLotInfo
         {
             ParkingLotName = "Lot B",
-            totalCapacity = 200,
-            currentCount = 0
-        };
-        ParkingLotInfo B_Lot_Annez = new ParkingLotInfo
-        {
-            ParkingLotName = "Lot B Annex",
             totalCapacity = 200,
             currentCount = 0
         };
@@ -296,7 +283,13 @@ namespace CSE455V2.Views
             totalCapacity = 200,
             currentCount = 0
         };
-        ParkingLotInfo F_Front_Lot = new ParkingLotInfo
+        ParkingLotInfo E_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "East Parking Structure",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo F_Lot = new ParkingLotInfo
         {
             ParkingLotName = "Lot F Front",
             totalCapacity = 706,
@@ -314,9 +307,15 @@ namespace CSE455V2.Views
             totalCapacity = 587,
             currentCount = 0
         };
-        ParkingLotInfo EPS_Lot = new ParkingLotInfo
+        ParkingLotInfo K_Lot = new ParkingLotInfo
         {
-            ParkingLotName = "East Parking Structure",
+            ParkingLotName = "Lot B Annex",
+            totalCapacity = 200,
+            currentCount = 0
+        };
+        ParkingLotInfo L_Lot = new ParkingLotInfo
+        {
+            ParkingLotName = "Lot F Back",
             totalCapacity = 200,
             currentCount = 0
         };
@@ -370,64 +369,65 @@ namespace CSE455V2.Views
         {
            
             // List of polygons
-            shapes.Add(lotF_Back);
             shapes.Add(lotA);
-            shapes.Add(lotB_Annex);
             shapes.Add(lotB);
             shapes.Add(lotC);
             shapes.Add(lotD);
-            shapes.Add(lotF_Front);
+            shapes.Add(lotE);
+            shapes.Add(lotF);
             shapes.Add(lotG);
             shapes.Add(lotH);
-            shapes.Add(lot_EPS);
-            shapes.Add(lotN);
+            shapes.Add(lotK);
+            shapes.Add(lotL);
+            shapes.Add(lotN);            
             // Pins
-            map.Pins.Add(pinF_Back);
             map.Pins.Add(pinA);
-            map.Pins.Add(pinB_Annex);
             map.Pins.Add(pinB);
             map.Pins.Add(pinC);
             map.Pins.Add(pinD);
-            map.Pins.Add(pinF_Front);
+            map.Pins.Add(pinE);
+            map.Pins.Add(pinF);
             map.Pins.Add(pinG);
             map.Pins.Add(pinH);
-            map.Pins.Add(pin_EPS);
+            map.Pins.Add(pinK);
+            map.Pins.Add(pinL);
             map.Pins.Add(pinN);
             // Database values: Name, TotalCapacity, CurrentCapacity
-            //LotList.Add(F_Back_Lot);
+            //LotList.Add(L_Lot);
             //LotList.Add(A_Lot);
-            //LotList.Add(B_Lot_Annez);
+            //LotList.Add(K_Lot);
             //LotList.Add(B_Lot);
             //LotList.Add(C_Lot);
             //LotList.Add(D_Lot);
-            //LotList.Add(F_Front_Lot);
+            //LotList.Add(F_Lot);
             //LotList.Add(G_Lot);
             //LotList.Add(H_Lot);
-            //LotList.Add(EPS_Lot);
+            //LotList.Add(E_Lot);
             //LotList.Add(N_Lot);
+
             // Polygons being added to map
-            map.MapElements.Add(lotF_Back);
             map.MapElements.Add(lotA);
-            map.MapElements.Add(lotB_Annex);
             map.MapElements.Add(lotB);
             map.MapElements.Add(lotC);
             map.MapElements.Add(lotD);
-            map.MapElements.Add(lotF_Front);
+            map.MapElements.Add(lotE);
+            map.MapElements.Add(lotF);
             map.MapElements.Add(lotG);
             map.MapElements.Add(lotH);
-            map.MapElements.Add(lot_EPS);
+            map.MapElements.Add(lotK);
+            map.MapElements.Add(lotL);
             map.MapElements.Add(lotN);
             // Adds Pins to List of Pins
-            PinList.Add(pinF_Back);
             PinList.Add(pinA);
-            PinList.Add(pinB_Annex);
             PinList.Add(pinB);
             PinList.Add(pinC);
             PinList.Add(pinD);
-            PinList.Add(pinF_Front);
+            PinList.Add(pinE);
+            PinList.Add(pinF);
             PinList.Add(pinG);
             PinList.Add(pinH);
-            PinList.Add(pin_EPS);
+            PinList.Add(pinK);
+            PinList.Add(pinL);
             PinList.Add(pinN);
         }
         public void UpdateMap(List<Polygon> LotShape, List<ParkingLotInfo> LotList, List<CustomPin> pinlist)

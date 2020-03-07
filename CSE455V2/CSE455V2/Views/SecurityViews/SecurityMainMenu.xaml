@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CSE455V2.Views.SecurityMainMenu">
+             x:Class="CSE455V2.Views.SecurityViews.SecurityMainMenu">
     <ContentPage.Content>
         <StackLayout Margin="20,35,20,20">
             <Label Text="SPOT-LOT SECURITY GUARD"

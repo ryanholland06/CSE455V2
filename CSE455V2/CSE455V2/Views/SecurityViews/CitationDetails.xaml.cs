@@ -18,12 +18,22 @@ namespace CSE455V2.Views.SecurityViews
         {
             InitializeComponent();
 
-            if (citation == null)
-                DisplayAlert("Error", "Null", "OK");
-            else
-                DisplayAlert("Sucees", "Citation " + citation.CitationId + " Returned!", "Ok");
+            name.Text = "Name: " + citation.Name;
 
-            
+            studentId.Text = "Student ID: " + citation.StudentId.ToString();
+
+            vehicleInfo.Text = "Vehicle Information: " + citation.VehicleInfo;
+
+            lisencePlate.Text = "License Plate: " + citation.LisencePlate;
+
+            citationId.Text = "Citation ID: " + citation.CitationId.ToString();
+
+            reasonForCitation.Text = "Reason for Citation: " + citation.ReasonForCitation;
+
+            fineAmount.Text = "Fine Amount: " + citation.FineAmount.ToString();
+
+            paidStatus.Text = "Paid Status: " + citation.PaidStatus.ToString();
+                                 
 
         }
     }

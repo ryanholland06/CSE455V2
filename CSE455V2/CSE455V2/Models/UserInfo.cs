@@ -29,6 +29,7 @@ namespace CSE455V2.Models
         public string CarYear { get; set; }
         public string CarColor { get; set; }
         public string LicenseNumber { get; set; }
+        public int NumberOfCitations { get; set; }
         public AccountStatus SetAccountStatus
         {
             get

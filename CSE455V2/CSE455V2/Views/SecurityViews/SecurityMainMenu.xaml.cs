@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CSE455V2.Views
+namespace CSE455V2.Views.SecurityViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SecurityMainMenu : ContentPage

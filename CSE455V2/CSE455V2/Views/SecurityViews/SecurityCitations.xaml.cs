@@ -17,77 +17,36 @@ namespace CSE455V2.Views.SecurityViews
         {
             InitializeComponent();
         }
-
-        /*
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            var person = await firebaseHelper.GetPerson(Convert.ToInt32(txtVin.Text));
-            showResult.Text = person.Name;
-        }
-        
-        public async void BtnAdd_Clicked(object sender, EventArgs e)
-        {
-            await firebaseHelper.AddPerson(Convert.ToInt32(txtId.Text), txtName.Text, Convert.ToInt64(txtVin.Text), txtVehicle.Text);
-            txtId.Text = string.Empty;
-            txtName.Text = string.Empty;
-            txtVin.Text = string.Empty;
-            txtVehicle.Text = string.Empty;
-            await DisplayAlert("Success", "Person Added Sucessfully", "Ok");
-            //var allPersons = await firebaseHelper.GetAllPersons();
-            //lstPersons.ItemsSource = allPersons;
-        }
-        */
-
         private async void BtnRetrive_Clicked(object sender, EventArgs e)
         {
-            var person = await firebaseHelper.GetUserByLisencePlate(searchLisencePlate.Text);
             if (!IsLicenseValid())
             {
                 await DisplayAlert("Error", "Required Field Incorrect or Missing", "Ok");
                 return;
             }
-            else if (person != null)
+            
+            var person = await firebaseHelper.GetUserByLisencePlate(searchLisencePlate.Text);
+            if (person != null)
             {
-                personName.Text = person.FirstName + " " + person.LastName;
-                vinNumber.Text = person.LicenseNumber;
-                vehicleInfo.Text = person.CarYear + " " + person.CarMake + " " + person.CarModel;
-
-                //lstPerson.ItemsSource = person.Name;
-                //await DisplayAlert("Sucess", "Person Retrieve Successfully", "Ok");
+                if (person.NumberOfCitations >= 3)
+                {
+                    await DisplayAlert("Warning", "Too many violations!", "OK");
+                    await Navigation.PushAsync(new SecurityViews.SecurityTow());
+                    searchLisencePlate.Text = "";
+                }
+               else
+                {
+                    personName.Text = person.FirstName + " " + person.LastName;
+                    vinNumber.Text = person.LicenseNumber;
+                    vehicleInfo.Text = person.CarYear + " " + person.CarMake + " " + person.CarModel;
+                }
             }
             else
             {
                 await DisplayAlert("Error", "No Person Available", "Ok");
             }
+
         }
-        /*
-        public async void OnButtonClickAddCitation(object sender, EventArgs e)
-        {
-            if (citationReason.SelectedItem == null)
-            {
-                await DisplayAlert("Error", "Required Field Incorrect or Missing", "Ok");
-                return;
-            }
-            else
-            {
-                var person = await firebaseHelper.GetPerson(searchLisencePlate.Text);
-                await firebaseHelper.AddCitation(vehicleInfo.Text,
-                                                 searchLisencePlate.Text,
-                                                 person.PersonId,
-                                                 personName.Text,
-                                                 citationReason.SelectedItem.ToString());
-
-                //NAVIGATE TO PREVIOUS PAGE
-
-                await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
-            }
-        }
-        */
-        //private bool IsFormValid() => IsVinValid() && IsReasonValid();
-
-        private bool IsLicenseValid() => (searchLisencePlate.Text).Length == 7 && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
-
         public async void OnButtonClickAddCitation(object sender, EventArgs e)
         {
             if (citationReason.SelectedItem == null)
@@ -104,9 +63,34 @@ namespace CSE455V2.Views.SecurityViews
                                                  personName.Text,
                                                  citationReason.SelectedItem.ToString());
 
-                await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
-                await Navigation.PushAsync(new SecurityMainMenu());
+                //NOTIFY USER
+                string subject = "Citation Alert";
+                string body = "Attention " + person.FirstName + " " + person.LastName + ", \n\n Your vehicle was citated!\n"
+                    + "Vehicle Information: " + vehicleInfo.Text + "\n" + "License Plate: " + searchLisencePlate.Text + "\n"
+                    + "Reason for Citation: " + citationReason.SelectedItem.ToString() + "\n"
+                    + "Please Pay at: LINK HERE\n For more information please contact Parking Services at 999-999-9999.";
+                string email = person.Email;
+                bool isSent = false;
+                
+                if(isSent == false)
+                {
+                    await Email.ComposeAsync(subject, body, email);
+                    isSent = true;
+                }
+                if(isSent == true)
+                    await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
+                
+                //CLEAR PAGE
+                searchLisencePlate.Text = "";
+                vehicleInfo.Text = "";
+                personName.Text = "";
+                vinNumber.Text = "";
+                citationReason.SelectedIndex = -1;
             }
         }
+
+        private bool IsLicenseValid() => IsLicenseLengthValid() && !string.IsNullOrWhiteSpace(searchLisencePlate.Text);
+
+        private bool IsLicenseLengthValid() => searchLisencePlate.Text.Length >= 2 && searchLisencePlate.Text.Length <= 7;
     }
 }

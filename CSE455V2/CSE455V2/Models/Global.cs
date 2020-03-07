@@ -6,6 +6,6 @@ namespace CSE455V2.Models
 {
     static class Global
     {
-        public static int counter = 1;
+        public static long counter = 1;
     }
 }

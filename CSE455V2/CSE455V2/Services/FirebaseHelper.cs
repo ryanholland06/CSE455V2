@@ -35,6 +35,7 @@ namespace CSE455V2.Services
                     CarModel = item.Object.CarModel,
                     CarYear = item.Object.CarYear,
                     CarColor = item.Object.CarColor,
+                    NumberOfCitations = item.Object.NumberOfCitations,
                     LicenseNumber = item.Object.LicenseNumber,
                     SetAccountType = item.Object.SetAccountType //ADD; THIS SHOULD SPECIFY WHAT ACCOUNT TYPE THE USER IS
                 }).ToList();
@@ -60,7 +61,6 @@ namespace CSE455V2.Services
                     Name = item.Object.Name,
                     VehicleInfo = item.Object.VehicleInfo,
                     LisencePlate = item.Object.LisencePlate,
-                    NumberOfCitations = item.Object.NumberOfCitations,
                     CitationId = item.Object.CitationId,
                     ReasonForCitation = item.Object.ReasonForCitation,
                     FineAmount = item.Object.FineAmount,
@@ -95,11 +95,21 @@ namespace CSE455V2.Services
 
         public async Task<Users> GetUserByLisencePlate(string lisencePlate)
         {
-            var allPersons = await GetAllUser();
-            await firebase
-                .Child("Users")
-                .OnceAsync<Users>();
-            return allPersons.FirstOrDefault(a => a.LicenseNumber == lisencePlate);
+            try
+            {
+                var allPersons = await GetAllUser();
+                await firebase
+                    .Child("Users")
+                    .OnceAsync<Users>();
+                return allPersons.FirstOrDefault(a => StringWithNumbersToLower(a.LicenseNumber) == StringWithNumbersToLower(lisencePlate));
+            }
+            catch
+            {
+                return null;
+                
+            }
+
+
         }
 
         //Will retrieve all citations matching the parameter lisencePlate
@@ -109,10 +119,33 @@ namespace CSE455V2.Services
             await firebase
                 .Child("Citations")
                 .OnceAsync<Citations>();
-            var citationsFound = allCitations.Where(e => e.LisencePlate == lisencePlate).ToList();
+            var citationsFound = allCitations.Where(e => StringWithNumbersToLower(e.LisencePlate) == StringWithNumbersToLower(lisencePlate)).ToList();
             return citationsFound;
-           
-             
+
+
+        }
+
+        public string StringWithNumbersToLower(string str)
+        {
+            string newstr = "";
+            /*
+            foreach (var v in str)
+            {
+                if (!Char.IsDigit(v))
+                    newstr += v.ToString().ToLower();
+                else
+                    newstr += v.ToString();
+            }
+            */
+            for(int i = 0; i < str.Length; i++)
+            {
+                if (char.IsLetter(str[i]))
+                    newstr += str[i].ToString().ToLower();
+                else
+                    newstr += str[i];
+            }
+
+            return newstr;
         }
 
         //Insert a user
@@ -139,7 +172,9 @@ namespace CSE455V2.Services
                     CarYear = caryear,
                     CarColor = carcolor,
                     LicenseNumber = licensenumber,
-                    SetAccountType = AccountType.student //DEFAULT TO STUDENT UNLESS CHANGED THROUGH FIREBASE
+                    SetAccountType = AccountType.student,
+                    SetAccountStatus = AccountStatus.unlcoked,
+                    NumberOfCitations = 0
                 });
                 return true;
             }
@@ -153,6 +188,7 @@ namespace CSE455V2.Services
         //ADD CITATION TO FIREBASE DB
         public async Task AddCitation(string vehInfo, string lisencePlate, string studentId, string name, string reason)
         {
+            await UpdateCitationCounter();
 
             await firebase
                 .Child("Citations")
@@ -163,15 +199,48 @@ namespace CSE455V2.Services
                     LisencePlate = lisencePlate,
                     StudentId = studentId,
                     ReasonForCitation = reason,
-                    CitationId = Global.counter++
+                    CitationId = Global.counter
                 });
+
+            var toUpdate = await GetUserByLisencePlate(lisencePlate);
+            await UpdateUser(toUpdate.Email,
+                    toUpdate.Password,
+                    toUpdate.StudentID,
+                    toUpdate.FirstName,
+                    toUpdate.LastName,
+                    toUpdate.CarMake,
+                    toUpdate.CarModel,
+                    toUpdate.CarYear,
+                    toUpdate.CarColor,
+                    toUpdate.LicenseNumber,
+                    ++toUpdate.NumberOfCitations,
+                    toUpdate.SetAccountType,
+                    toUpdate.SetAccountStatus);
+
+        }
+        //This method will make sure that no citation ids match by comparing the exisinting ids to the current counter and then incrementing the global counter
+        public async Task UpdateCitationCounter()
+        {
+            var allCitations = await GetAllCitations();
+            await firebase
+                .Child("Citations")
+                .OnceAsync<Citations>();
+            foreach (var citationId in allCitations)
+            {
+                if (citationId.CitationId == Global.counter)
+                {
+                    Global.counter++;
+                }
+            }
+
         }
 
         //Update 
         public static async Task<bool> UpdateUser(string email, string password, string studentid,
                                                 string firstname, string lastname, string carmake,
                                                 string carmodel, string caryear, string carcolor,
-                                                string licensenumber)
+                                                string licensenumber, int numOfCitations, AccountType accty,
+                                                AccountStatus acctSt)
         {
             try
             {
@@ -193,7 +262,10 @@ namespace CSE455V2.Services
                     CarModel = carmodel,
                     CarYear = caryear,
                     CarColor = carcolor,
-                    LicenseNumber = licensenumber
+                    LicenseNumber = licensenumber,
+                    NumberOfCitations = numOfCitations,
+                    SetAccountType = accty,
+                    SetAccountStatus = acctSt,
                 });
                 return true;
             }

@@ -6,10 +6,22 @@
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.SecurityViews.SecurityAlerts">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20,30,20,20">
+            <Label Text="Emergency Alerts"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   FontAttributes="Bold" />
+            <Entry x:Name="email" 
+                   Placeholder="Enter Email or Enter 'ALL' for all Users" />
+            <Entry x:Name="subject" 
+                   Placeholder="Subject" />
+            <Editor x:Name="body"
+                   Placeholder="Type message" />
+            <Button x:Name="sendBtn"
+                    Text="Send"
+                    BackgroundColor="Blue" 
+                    Clicked="sendBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
