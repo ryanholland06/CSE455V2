@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Grid>
-                <Button Text="Park Car" Clicked="Scan_Clicked"></Button>
+                <Button Text="Scan Barcode" Clicked="Scan_Clicked"></Button>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

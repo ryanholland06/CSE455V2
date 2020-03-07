@@ -30,8 +30,10 @@ namespace CSE455V2.Views
                 if (result != null)
                 {
                     string test = result;
+                    var alreadyScanned = await FirebaseHelper.GetParkRecord(result.Substring(0, 1), result.Substring(0, result.Length));
+
                     var record = await FirebaseHelper.GetParkRecord(App.UserName);
-                    if(record == null)
+                    if (record == null && alreadyScanned == null)
                     {
                         ParkedInfo parkingSlot = new ParkedInfo()
                         {
@@ -46,21 +48,26 @@ namespace CSE455V2.Views
                             parkingLot.currentCount++;
                             await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
                         }
-                        
+
                         await FirebaseHelper.AddParkedInfo(parkingSlot);
                         await App.Current.MainPage.DisplayAlert("", "Car is now Parked!", "OK");
                     }
                     else
                     {
-                        var parkingLot = await FirebaseHelper.GetParkingLot(result.Substring(0, 1));
-                        if (parkingLot != null)
+                        if(result != null)
                         {
-                            parkingLot.currentCount--;
-                            await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
-                        }
+                            var parkingLot = await FirebaseHelper.GetParkingLot(result.Substring(0, 1));
+                            if (parkingLot != null)
+                            {
+                                parkingLot.currentCount--;
+                                await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
+                            }
+                            await FirebaseHelper.DeleteParkedRecord(App.UserName);
+                            await App.Current.MainPage.DisplayAlert("", "Car is now Unparked!", "OK");
 
-                        await FirebaseHelper.DeleteParkedRecord(App.UserName);
-                        await App.Current.MainPage.DisplayAlert("", "Car is now Unparked!", "OK");
+                        }
+                        else 
+                            await App.Current.MainPage.DisplayAlert("", "Lot is taken!", "OK");
                     }
                 }
             }
@@ -69,16 +76,6 @@ namespace CSE455V2.Views
 
             }
         }
-
-        //private async void Button_Clicked(object sender, EventArgs e)
-        //{
-        //    ParkingLotInfo parkingLot = new ParkingLotInfo()
-        //    {
-        //        ParkingLotName = "Lot J",
-        //        totalCapacity = 100,
-        //        currentCount = 0
-        //    };
-        //    var LotInfo = await FirebaseHelper.AddParkingInfo(parkingLot);
-        //}
     }
 }
+
