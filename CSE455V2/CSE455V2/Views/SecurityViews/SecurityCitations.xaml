@@ -13,6 +13,10 @@
                        TextColor="Black"
                        HorizontalOptions="Center" 
                        FontSize="Large"/>
+                <Label Text="*Email Confirmation are Mandatory*"
+                       TextColor="Red"
+                       HorizontalOptions="Center"
+                       FontSize="Small" />
                 <Label Text="Find User: "
                        FontAttributes="Bold" 
                        FontSize="Medium" 
