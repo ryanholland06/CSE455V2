@@ -34,6 +34,7 @@
         <ShellContent Title="New Citation" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:SecurityCitations}" />
         <ShellContent x:Name="citationsListView" Title="Search Citations" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:CitationsSearch}" />
         <ShellContent Title="Request Tow" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:SecurityTow}" />
+        <ShellContent Title="Chat" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate views:CommunityPostingPage}" />
     </FlyoutItem>
 
 

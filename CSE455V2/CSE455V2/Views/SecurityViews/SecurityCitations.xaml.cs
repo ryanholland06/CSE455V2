@@ -17,28 +17,6 @@ namespace CSE455V2.Views.SecurityViews
         {
             InitializeComponent();
         }
-
-        /*
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            var person = await firebaseHelper.GetPerson(Convert.ToInt32(txtVin.Text));
-            showResult.Text = person.Name;
-        }
-        
-        public async void BtnAdd_Clicked(object sender, EventArgs e)
-        {
-            await firebaseHelper.AddPerson(Convert.ToInt32(txtId.Text), txtName.Text, Convert.ToInt64(txtVin.Text), txtVehicle.Text);
-            txtId.Text = string.Empty;
-            txtName.Text = string.Empty;
-            txtVin.Text = string.Empty;
-            txtVehicle.Text = string.Empty;
-            await DisplayAlert("Success", "Person Added Sucessfully", "Ok");
-            //var allPersons = await firebaseHelper.GetAllPersons();
-            //lstPersons.ItemsSource = allPersons;
-        }
-        */
-
         private async void BtnRetrive_Clicked(object sender, EventArgs e)
         {
             if (!IsLicenseValid())
@@ -46,9 +24,8 @@ namespace CSE455V2.Views.SecurityViews
                 await DisplayAlert("Error", "Required Field Incorrect or Missing", "Ok");
                 return;
             }
-
+            
             var person = await firebaseHelper.GetUserByLisencePlate(searchLisencePlate.Text);
-
             if (person != null)
             {
                 if (person.NumberOfCitations >= 3)
@@ -56,9 +33,8 @@ namespace CSE455V2.Views.SecurityViews
                     await DisplayAlert("Warning", "Too many violations!", "OK");
                     await Navigation.PushAsync(new SecurityViews.SecurityTow());
                     searchLisencePlate.Text = "";
-
                 }
-                else
+               else
                 {
                     personName.Text = person.FirstName + " " + person.LastName;
                     vinNumber.Text = person.LicenseNumber;
@@ -69,6 +45,7 @@ namespace CSE455V2.Views.SecurityViews
             {
                 await DisplayAlert("Error", "No Person Available", "Ok");
             }
+
         }
         public async void OnButtonClickAddCitation(object sender, EventArgs e)
         {
@@ -85,7 +62,25 @@ namespace CSE455V2.Views.SecurityViews
                                                  person.StudentID,
                                                  personName.Text,
                                                  citationReason.SelectedItem.ToString());
-                await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
+
+                //NOTIFY USER
+                string subject = "Citation Alert";
+                string body = "Attention " + person.FirstName + " " + person.LastName + ", \n\n Your vehicle was citated!\n"
+                    + "Vehicle Information: " + vehicleInfo.Text + "\n" + "License Plate: " + searchLisencePlate.Text + "\n"
+                    + "Reason for Citation: " + citationReason.SelectedItem.ToString() + "\n"
+                    + "Please Pay at: LINK HERE\n For more information please contact Parking Services at 999-999-9999.";
+                string email = person.Email;
+                bool isSent = false;
+                
+                if(isSent == false)
+                {
+                    await Email.ComposeAsync(subject, body, email);
+                    isSent = true;
+                }
+                if(isSent == true)
+                    await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
+                
+                //CLEAR PAGE
                 searchLisencePlate.Text = "";
                 vehicleInfo.Text = "";
                 personName.Text = "";

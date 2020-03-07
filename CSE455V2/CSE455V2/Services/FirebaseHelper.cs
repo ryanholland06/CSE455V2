@@ -95,11 +95,21 @@ namespace CSE455V2.Services
 
         public async Task<Users> GetUserByLisencePlate(string lisencePlate)
         {
-            var allPersons = await GetAllUser();
-            await firebase
-                .Child("Users")
-                .OnceAsync<Users>();
-            return allPersons.FirstOrDefault(a => StringWithNumbersToLower(a.LicenseNumber) == StringWithNumbersToLower(lisencePlate));
+            try
+            {
+                var allPersons = await GetAllUser();
+                await firebase
+                    .Child("Users")
+                    .OnceAsync<Users>();
+                return allPersons.FirstOrDefault(a => StringWithNumbersToLower(a.LicenseNumber) == StringWithNumbersToLower(lisencePlate));
+            }
+            catch
+            {
+                return null;
+                
+            }
+
+
         }
 
         //Will retrieve all citations matching the parameter lisencePlate
@@ -118,13 +128,21 @@ namespace CSE455V2.Services
         public string StringWithNumbersToLower(string str)
         {
             string newstr = "";
-
+            /*
+            foreach (var v in str)
+            {
+                if (!Char.IsDigit(v))
+                    newstr += v.ToString().ToLower();
+                else
+                    newstr += v.ToString();
+            }
+            */
             for(int i = 0; i < str.Length; i++)
             {
-                if (!Char.IsDigit(str[i]))
+                if (char.IsLetter(str[i]))
                     newstr += str[i].ToString().ToLower();
                 else
-                    newstr += str[i].ToString();
+                    newstr += str[i];
             }
 
             return newstr;

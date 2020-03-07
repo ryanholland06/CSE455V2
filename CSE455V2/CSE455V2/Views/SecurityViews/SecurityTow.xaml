@@ -6,10 +6,20 @@
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.SecurityViews.SecurityTow">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20,30,20,20">
+            <Label Text="Request a Tow Truck"
+                   FontSize="Large"
+                   TextColor="Black"
+                   HorizontalOptions="Center" 
+                   FontAttributes="Bold"/>
+            <Label Text="*Only Call if NECESSARY*"
+                   TextColor="Red" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            <Button Text="Call for a Tow"
+                    Clicked="CallForATowBtnClicked" 
+                    BackgroundColor="Red" 
+                    HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
