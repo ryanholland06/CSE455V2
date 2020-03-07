@@ -5,12 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.UserSettingsPage"
-             Title="Settings">
+             Title="Settings"
+             BackgroundColor="#0077be">
     <ContentPage.Content>
         <StackLayout Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand">
         <Button Text="Payment Information" 
                     Clicked="PaymentInfo_Clicked" 
-                    BorderColor="#0077be" 
+                    BorderColor="Black" 
                     BorderWidth="4" 
                     BackgroundColor="GhostWhite"
                     HeightRequest="100"
@@ -24,7 +25,7 @@
         
         <Button Text="Vehicle Information" 
                 Clicked="VehicleInfo_Clicked" 
-                BorderColor="#0077be" 
+                BorderColor="Black" 
                 BorderWidth="4" 
                 BackgroundColor="GhostWhite"
                 HeightRequest="100"
@@ -38,7 +39,7 @@
         
         <Button Text="Login Information" 
                 Clicked="LoginInfo_Clicked" 
-                BorderColor="#0077be" 
+                BorderColor="Black" 
                 BorderWidth="4" 
                 BackgroundColor="GhostWhite"
                 HeightRequest="100"

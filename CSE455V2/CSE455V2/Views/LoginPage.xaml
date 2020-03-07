@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CSE455V2.Views.LoginPage">
+             x:Class="CSE455V2.Views.LoginPage"
+             BackgroundColor="LightBlue">
     <ContentPage.Content>
        
 
@@ -20,13 +21,39 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <StackLayout Orientation="Vertical">
-                        <Image VerticalOptions="CenterAndExpand" Source="MainLogo.png"/>
+                    <StackLayout Orientation="Vertical" >
 
-                        <Entry Placeholder="Email" x:Name="Email" Text="{Binding Email}" Grid.Row="0"/>
-                        <Entry Placeholder="Password" x:Name="Password" IsPassword="True" Text="{Binding Password}" Grid.Row="1"/>
-                        <Button x:Name="lgn" Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" IsEnabled="True"  Clicked="Loginbtn_Clicked"/>
-                        <Button x:Name="sgn" Text="Sign Up" IsEnabled="True" Grid.Row="3" Command="{Binding SignUp}"/>
+                        <Image VerticalOptions="CenterAndExpand" Source="MainLogo.png"/>
+                        <Entry Placeholder="Enter Email" PlaceholderColor="#6F6F6F" x:Name="Email" Text="{Binding Email}" Grid.Row="0"/>
+                        <Entry Placeholder="Enter Password" PlaceholderColor="#6F6F6F" x:Name="Password" IsPassword="True" Text="{Binding Password}" Grid.Row="1"/>
+                        <!-- <Button x:Name="lgn" Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" IsEnabled="True"  Clicked="Loginbtn_Clicked"/> -->
+                        <!--<Button x:Name="sgn" Text="Sign Up" IsEnabled="True" Grid.Row="3" Command="{Binding SignUp}"/> -->
+                        <Button x:Name="lgn"
+                                Text="Login" 
+                                Grid.Row="2"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                BorderColor="Black" 
+                                BorderWidth="4" 
+                                BackgroundColor="#0077be"
+                                IsEnabled="True"
+                                Clicked="Loginbtn_Clicked"
+                                HeightRequest="75"
+                                WidthRequest="500">
+                        </Button>
+                        <Button x:Name="sgn"
+                                Text="Sign Up" 
+                                Grid.Row="3"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                BorderColor="Black" 
+                                BorderWidth="4" 
+                                BackgroundColor="White"
+                                IsEnabled="True"
+                                Command="{Binding SignUp}"
+                                HeightRequest="75"
+                                WidthRequest="500">
+                        </Button>
 
                     </StackLayout>
                 </Grid>
