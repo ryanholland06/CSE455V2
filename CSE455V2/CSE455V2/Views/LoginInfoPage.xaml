@@ -24,7 +24,7 @@
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
                 Clicked="ChangeEmailAddress" />
-            <Button Text="Change Passord"
+            <Button Text="Change Password"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
                 Clicked="ChangePassord" />

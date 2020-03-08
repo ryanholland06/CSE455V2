@@ -29,7 +29,7 @@ namespace CSE455V2.Views
 
         async void EditLicensePlate(object sender, EventArgs args)
         {
-            var result = await DisplayPromptAsync("Edit Vehical Information", "Please enter new License Plate Information?");
+            var result = await DisplayPromptAsync("Edit Vehicle Information", "Please enter new License Plate Information?");
                 // Change userData on database
             if(result != null)
             {
@@ -44,7 +44,7 @@ namespace CSE455V2.Views
         }
         async void DeleteLicensePlate(object sender, EventArgs args)
         {
-            bool answer = await DisplayAlert("Delete Vehical Info", "Are you sure you want to delete this information?", "Yes", "No");
+            bool answer = await DisplayAlert("Delete Vehicle Information", "Are you sure you want to delete this information?", "Yes", "No");
 
             if (answer == true)
             {
