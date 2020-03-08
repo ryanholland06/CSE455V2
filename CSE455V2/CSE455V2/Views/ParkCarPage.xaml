@@ -34,7 +34,7 @@
                             WidthRequest="500">
                     </Button>
 
-                    <Label Text="Camera is required to scan QR code" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"/>
+                    <Label Text="Camera is required to scan Barcode" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"/>
                 </Grid>
             </StackLayout>
 

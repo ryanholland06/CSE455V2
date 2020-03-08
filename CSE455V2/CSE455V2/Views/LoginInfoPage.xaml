@@ -5,29 +5,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.LoginInfoPage"
-             Title="Login Information">
+             Title="Login Information"
+             BackgroundColor="#0077be">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Login Information:"
+            <Label Text="Login Info:"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
                 VerticalOptions="Center" 
-                HorizontalOptions="Start" 
+                HorizontalOptions="Center" 
                 FontSize="Large"/>
+            <Label Text="User Email" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0" />
             <Entry x:Name="userEmail"
-                   IsReadOnly="True"/>
+                   IsReadOnly="True"
+                   BackgroundColor="GhostWhite"/>
+            <Label Text="User Password" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0" />
             <Entry x:Name="userPassword" 
                    IsReadOnly="True"
-                   IsPassword="False"/>
+                   IsPassword="False"
+                   BackgroundColor="GhostWhite"/>
             
             <Label Text="&#10;" />
 
-            <Button Text="Change Email Address"
+            <!-- <Button Text="Change Email Address"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
                 Clicked="ChangeEmailAddress" />
             <Button Text="Change Password"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
-                Clicked="ChangePassord" />
+                Clicked="ChangePassord" /> -->
+            <Button Text="Change Email Address"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Clicked="ChangeEmailAddress"
+                    Margin="0,20,0,20"
+                    BorderColor="Black" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HeightRequest="100"
+                    WidthRequest="500">
+            </Button>
+            <Button Text="Change Password"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Clicked="ChangePassord"
+                    BorderColor="Black" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HeightRequest="100"
+                    WidthRequest="500">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
