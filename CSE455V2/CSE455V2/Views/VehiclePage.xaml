@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.VehiclePage"
-             Title="Vehicle Information">
+             Title="Vehicle Information"
+             BackgroundColor="#0077be">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="&#10;" />
@@ -13,19 +14,46 @@
             <Label Text="License Plate:"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" 
-                   FontSize="Large"/>
+                   FontSize="Large"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   Margin="10"/>
             <Label x:Name="LicensePlate"
                 VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" 
-                FontSize="Header"/>
-            <Button Text="Edit License Plate"
+                HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                FontSize="Header"
+                   TextColor="Black"
+                   BackgroundColor="GhostWhite"/>
+            <!-- <Button Text="Edit License Plate"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
                 Clicked="EditLicensePlate" />
             <Button Text="Delete License Plate"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
-                Clicked="DeleteLicensePlate" />
+                Clicked="DeleteLicensePlate" /> -->
+            <Button Text="Edit License Plate"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Clicked="EditLicensePlate"
+                    Margin="0,20,0,20"
+                    BorderColor="Black" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HeightRequest="100"
+                    WidthRequest="500">
+            </Button>
+            <Button Text="Delete License Plate"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Clicked="DeleteLicensePlate"
+                    BorderColor="Black" 
+                    BorderWidth="4" 
+                    BackgroundColor="GhostWhite"
+                    HeightRequest="100"
+                    WidthRequest="500">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
