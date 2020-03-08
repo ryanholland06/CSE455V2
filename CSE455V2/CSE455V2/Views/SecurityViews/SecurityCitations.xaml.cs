@@ -77,7 +77,7 @@ namespace CSE455V2.Views.SecurityViews
                     await Email.ComposeAsync(subject, body, email);
                     isSent = true;
                 }
-                if(isSent == true)
+               else if(isSent == true)
                     await DisplayAlert("Confirmation", "Citation Submitted", "Ok");
                 
                 //CLEAR PAGE
