@@ -37,9 +37,7 @@
                                 BorderWidth="4" 
                                 BackgroundColor="#0077be"
                                 IsEnabled="True"
-                                Clicked="Loginbtn_Clicked"
-                                HeightRequest="75"
-                                WidthRequest="500">
+                                Clicked="Loginbtn_Clicked">
                         </Button>
                         <Button x:Name="sgn"
                                 Text="Sign Up" 
@@ -50,9 +48,7 @@
                                 BorderWidth="4" 
                                 BackgroundColor="White"
                                 IsEnabled="True"
-                                Command="{Binding SignUp}"
-                                HeightRequest="75"
-                                WidthRequest="500">
+                                Command="{Binding SignUp}">
                         </Button>
 
                     </StackLayout>
