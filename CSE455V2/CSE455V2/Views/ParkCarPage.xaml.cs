@@ -22,6 +22,8 @@ namespace CSE455V2.Views
 
         private async void Scan_Clicked(object sender, EventArgs e)
         {
+            ls.IsRunning = true;
+            Scan.IsEnabled = false;
 
             try
             {
@@ -49,12 +51,13 @@ namespace CSE455V2.Views
                             await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
                         }
 
+
                         await FirebaseHelper.AddParkedInfo(parkingSlot);
                         await App.Current.MainPage.DisplayAlert("", "Car is now Parked!", "OK");
                     }
                     else
                     {
-                        if(result != null)
+                        if (result != null)
                         {
                             var parkingLot = await FirebaseHelper.GetParkingLot(result.Substring(0, 1));
                             if (parkingLot != null)
@@ -62,18 +65,23 @@ namespace CSE455V2.Views
                                 parkingLot.currentCount--;
                                 await FirebaseHelper.UpdateParkingLotInfo(parkingLot);
                             }
+
                             await FirebaseHelper.DeleteParkedRecord(App.UserName);
                             await App.Current.MainPage.DisplayAlert("", "Car is now Unparked!", "OK");
 
                         }
-                        else 
+                        else
+                        {
+
                             await App.Current.MainPage.DisplayAlert("", "Lot is taken!", "OK");
+                        }
                     }
                 }
             }
             catch
             {
-
+                ls.IsRunning = false;
+                Scan.IsEnabled = true;
             }
         }
     }

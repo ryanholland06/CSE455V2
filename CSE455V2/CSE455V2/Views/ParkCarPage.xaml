@@ -5,12 +5,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.ParkCarPage"
-             Title="Park Car">
+             Title="Park Car"
+             BackgroundColor="#0077be">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
-                <Button Text="Scan Barcode" Clicked="Scan_Clicked"></Button>
-            </Grid>
-        </StackLayout>
+
+        <AbsoluteLayout>
+
+            <ActivityIndicator x:Name="ls" IsRunning="False" Color="Orange" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+            <StackLayout Margin="10,60,10,10" Spacing="10" HorizontalOptions="CenterAndExpand">
+                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- <Button Text="Scan Barcode" Clicked="Scan_Clicked"></Button> -->
+                    <Button x:Name="Scan"
+                            Text="Scan Barcode" 
+                            Clicked="Scan_Clicked" 
+                            IsEnabled="True"
+                            BorderColor="Black" 
+                            BorderWidth="4" 
+                            BackgroundColor="GhostWhite"
+                            HeightRequest="100"
+                            WidthRequest="500">
+                    </Button>
+
+                    <Label Text="Camera is required to scan QR code" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"/>
+                </Grid>
+            </StackLayout>
+
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

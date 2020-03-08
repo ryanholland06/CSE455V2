@@ -68,10 +68,10 @@
                 Shell.TabBarIsVisible="False"
                 FlyoutDisplayOptions="AsMultipleItems">
 
-        <ShellContent Title="Map View" Icon="Map.png" IsTabStop="True"  ContentTemplate="{DataTemplate local:MapViewPage}" />
-        <ShellContent Title="Park Car" Icon="Qr.png" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
-        <ShellContent Title="Community Postings" Icon="Chat.png" IsTabStop="True" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
-        <ShellContent Title="Settings" Icon="Settings.png" Shell.BackgroundColor="Yellow" Shell.TitleColor="Black" Shell.ForegroundColor="Black" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
+        <ShellContent Title="Map View" Icon="MapView.png" IsTabStop="True"  ContentTemplate="{DataTemplate local:MapViewPage}" />
+        <ShellContent Title="Park Car" Icon="Code.png" Shell.BackgroundColor="Yellow" Shell.TitleColor="Black" Shell.ForegroundColor="Black" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
+        <ShellContent Title="Community Postings" Icon="Chat.png" IsTabStop="True" Shell.BackgroundColor="Yellow" Shell.TitleColor="Black" Shell.ForegroundColor="Black" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
+        <ShellContent Title="User Information" Icon="Settings.png" Shell.BackgroundColor="Yellow" Shell.TitleColor="Black" Shell.ForegroundColor="Black" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
     </FlyoutItem>
 
 
