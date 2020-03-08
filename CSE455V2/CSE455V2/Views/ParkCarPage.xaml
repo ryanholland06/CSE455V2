@@ -30,8 +30,7 @@
                             BorderColor="Black" 
                             BorderWidth="4" 
                             BackgroundColor="GhostWhite"
-                            HeightRequest="100"
-                            WidthRequest="500">
+                            HeightRequest="100">
                     </Button>
 
                     <Label Text="Camera is required to scan Barcode" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"/>
