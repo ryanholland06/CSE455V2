@@ -9,18 +9,12 @@
              BackgroundColor="#0077be">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Login Info:"
-                   TextColor="Black"
-                   HorizontalTextAlignment="Center"
-                   FontAttributes="Bold"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" 
-                FontSize="Large"/>
-            <Label Text="User Email" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0" />
+
+            <Label Text="Email Address:" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,45,0,5" />
             <Entry x:Name="userEmail"
                    IsReadOnly="True"
                    BackgroundColor="GhostWhite"/>
-            <Label Text="User Password" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label Text="Password:" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,20,0,5" />
             <Entry x:Name="userPassword" 
                    IsReadOnly="True"
                    IsPassword="False"
