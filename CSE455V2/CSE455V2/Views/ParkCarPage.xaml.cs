@@ -53,6 +53,8 @@ namespace CSE455V2.Views
 
 
                         await FirebaseHelper.AddParkedInfo(parkingSlot);
+                        ls.IsRunning = false;
+                        Scan.IsEnabled = true;
                         await App.Current.MainPage.DisplayAlert("", "Car is now Parked!", "OK");
                     }
                     else
@@ -67,12 +69,15 @@ namespace CSE455V2.Views
                             }
 
                             await FirebaseHelper.DeleteParkedRecord(App.UserName);
+                            ls.IsRunning = false;
+                            Scan.IsEnabled = true;
                             await App.Current.MainPage.DisplayAlert("", "Car is now Unparked!", "OK");
 
                         }
                         else
                         {
-
+                            ls.IsRunning = false;
+                            Scan.IsEnabled = true;
                             await App.Current.MainPage.DisplayAlert("", "Lot is taken!", "OK");
                         }
                     }
