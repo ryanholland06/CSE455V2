@@ -37,15 +37,15 @@
             <Entry x:Name="personName"
                        Placeholder="Name"
                        Text="{Binding Name}"
-                       FontSize="Medium" />
+                       FontSize="Small" />
             <Entry x:Name="vehicleInfo"
                        Placeholder="Vehicle Information"
                        Text="{Binding VehicleInformation}"
-                       FontSize="Medium" />
+                       FontSize="Small" />
             <Entry x:Name="vinNumber"
                        Placeholder="VIN Number"
                        Text="{Binding VinNum}"
-                       FontSize="Medium" />
+                       FontSize="Small" />
             <Picker x:Name="citationReason" 
                         Title="Select A Reason">
                 <Picker.Items>
