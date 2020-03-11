@@ -8,32 +8,65 @@
              Title="Payment Information">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="&#10;" />
             <Label x:Name="personName"
                 VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   FontSize="16"/>
             <Label x:Name="street"
                 VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="Black"
+                   FontSize="16"/>
             <Label x:Name="city_zip"
                 VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" />
-            
-            <Label Text="&#10;" />
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="Black"
+                   FontSize="16"/>
             
             <Label x:Name="card_name"
                 VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="Black"
+                   Margin="0,20,0,0"
+                   FontSize="16"/>
             <Label x:Name="numbers"
                 VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="Edit Payment Information"
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="Black"
+                   FontSize="16"/>
+            <!-- <Button Text="Edit Payment Information"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
                 Clicked="EditPaymentMethod" />
             <Button Text="Delete Payment Info"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
-                Clicked="DeletePaymentInfo" />
+                Clicked="DeletePaymentInfo" /> -->
+
+            <Button Text="Edit Payment Information" 
+                TextColor="Black"
+                Clicked="EditPaymentMethod" 
+                BorderColor="Black" 
+                BorderWidth="4" 
+                BackgroundColor="LightGray"
+                Margin="0,20,0,0"
+                HeightRequest="100"
+                    WidthRequest="500"
+                    HorizontalOptions="Center">
+            </Button>
+            <Button Text="Delete Payment Information" 
+                TextColor="Black"
+                Clicked="DeletePaymentInfo" 
+                BorderColor="Black" 
+                BorderWidth="4" 
+                BackgroundColor="LightGray"
+                Margin="0,20,0,0"
+                HeightRequest="100"
+                    WidthRequest="500"
+                    HorizontalOptions="Center">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
