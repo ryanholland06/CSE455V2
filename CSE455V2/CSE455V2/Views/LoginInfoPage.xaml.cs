@@ -21,13 +21,13 @@ namespace CSE455V2.Views
             userPassword.Text = pass;
         }
 
-        async void ChangeEmailAddress(object sender, EventArgs e)
+        async void ChangePassword(object sender, EventArgs e)
         {
-            string result = await DisplayPromptAsync("Change Email", "Enter current password to continue:");
+            string result = await DisplayPromptAsync("Change Password", "Enter current password to continue:");
 
             if (result == pass)
             {
-                string result2 = await DisplayPromptAsync("Enter New Email", "Exiting before submiting new email address will not remove current email.");
+                string result2 = await DisplayPromptAsync("Enter New Password", "Exiting before submiting new password will not remove current password.");
                 // Send user an email to confirm(to new email)
                 // maybe send email with confirmation code
                 // have another pop up where they enter the correct pass, then if statemant
@@ -39,9 +39,6 @@ namespace CSE455V2.Views
                 await DisplayAlert("Error", "Incorrect Passowrd", "OK");
             }
         }
-        void ChangePassord(object sender, EventArgs e)
-        {
 
-        }
     }
 }

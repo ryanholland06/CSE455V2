@@ -5,17 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.UserSettingsPage"
-             Title="Settings"
-             BackgroundColor="#0077be">
+             Title="User Information"
+             BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout Margin="10" Spacing="10" HorizontalOptions="CenterAndExpand">
+        <StackLayout Margin="15" Spacing="10" HorizontalOptions="CenterAndExpand">
         <Button Text="Payment Information" 
-                    Clicked="PaymentInfo_Clicked" 
-                    BorderColor="Black" 
-                    BorderWidth="4" 
-                    BackgroundColor="GhostWhite"
-                    HeightRequest="100"
-                    WidthRequest="500">
+                TextColor="Black"
+                Clicked="PaymentInfo_Clicked" 
+                BorderColor="Black" 
+                BorderWidth="4" 
+                BackgroundColor="LightGray"
+                Margin=" 0,30,0,0"
+                HeightRequest="100"
+                WidthRequest="500">
             <Button.ImageSource>
                 <OnPlatform x:TypeArguments="ImageSource">
                     <On Platform="iOS, Android" Value="cash.png" />
@@ -24,10 +26,12 @@
         </Button>
         
         <Button Text="Vehicle Information" 
+                TextColor="Black"
                 Clicked="VehicleInfo_Clicked" 
                 BorderColor="Black" 
                 BorderWidth="4" 
-                BackgroundColor="GhostWhite"
+                BackgroundColor="LightGray"
+                Margin="0,20,0,0"
                 HeightRequest="100"
                 WidthRequest="500">
             <Button.ImageSource>
@@ -38,10 +42,12 @@
         </Button>
         
         <Button Text="Login Information" 
+                TextColor="Black"
                 Clicked="LoginInfo_Clicked" 
                 BorderColor="Black" 
                 BorderWidth="4" 
-                BackgroundColor="GhostWhite"
+                BackgroundColor="LightGray"
+                Margin="0,20,0,0"
                 HeightRequest="100"
                 WidthRequest="500">
             <Button.ImageSource>

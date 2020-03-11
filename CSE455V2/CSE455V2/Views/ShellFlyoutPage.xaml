@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:CSE455V2.Views"
              x:Class="CSE455V2.Views.ShellFlyoutPage"
-             FlyoutBackgroundColor="#0077be"
+             FlyoutBackgroundColor="LightBlue"
        
        >
 
@@ -19,7 +19,7 @@
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="White"/>
+                                <Setter Property="BackgroundColor" Value="#0077be"/>
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -31,7 +31,7 @@
     
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid BackgroundColor="LightBlue"
+            <Grid BackgroundColor="White"
               HeightRequest="200">
                 <Image Aspect="AspectFit"
                    Source="MainLogo.png" />
@@ -68,10 +68,10 @@
                 Shell.TabBarIsVisible="False"
                 FlyoutDisplayOptions="AsMultipleItems">
 
-        <ShellContent Title="Map View" Icon="MapView.png" IsTabStop="True"  ContentTemplate="{DataTemplate local:MapViewPage}" />
-        <ShellContent Title="Park Car" Icon="Code.png" Shell.BackgroundColor="#e9e64b" Shell.TitleColor="Black" Shell.ForegroundColor="Black" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
-        <ShellContent Title="Community Postings" Icon="Chat.png" IsTabStop="True" Shell.BackgroundColor="#e9e64b" Shell.TitleColor="Black" Shell.ForegroundColor="Black" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
-        <ShellContent Title="User Information" Icon="Settings.png" Shell.BackgroundColor="#e9e64b" Shell.TitleColor="Black" Shell.ForegroundColor="Black" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
+        <ShellContent Title="Map View" Icon="MapView.png" IsTabStop="True" Shell.BackgroundColor="#0077be" Shell.TitleColor="White" Shell.ForegroundColor="White" ContentTemplate="{DataTemplate local:MapViewPage}" />
+        <ShellContent Title="Park Car" Icon="Code.png" Shell.BackgroundColor="#0077be" Shell.TitleColor="White" Shell.ForegroundColor="White" IsTabStop="True" ContentTemplate="{DataTemplate local:ParkCarPage}" />
+        <ShellContent Title="Community Postings" Icon="Chat.png" IsTabStop="True" Shell.BackgroundColor="#0077be" Shell.TitleColor="White" Shell.ForegroundColor="White" ContentTemplate="{DataTemplate local:CommunityPostingPage}" />
+        <ShellContent Title="User Information" Icon="Settings.png" Shell.BackgroundColor="#0077be" Shell.TitleColor="White" Shell.ForegroundColor="White" IsTabStop="True" ContentTemplate="{DataTemplate local:UserSettingsPage}" />
     </FlyoutItem>
 
 

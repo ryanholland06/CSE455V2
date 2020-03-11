@@ -6,14 +6,14 @@
              mc:Ignorable="d"
              x:Class="CSE455V2.Views.ParkCarPage"
              Title="Park Car"
-             BackgroundColor="#0077be">
+             BackgroundColor="White">
     <ContentPage.Content>
 
         <AbsoluteLayout>
 
             <ActivityIndicator x:Name="ls" IsRunning="False" Color="Orange" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-            <StackLayout Margin="10,60,10,10" Spacing="10" HorizontalOptions="CenterAndExpand">
+            <StackLayout Margin="0,40,0,0" Spacing="10" HorizontalOptions="CenterAndExpand">
                 <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -21,7 +21,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    
+
                     <!-- <Button Text="Scan Barcode" Clicked="Scan_Clicked"></Button> -->
                     <Button x:Name="Scan"
                             Text="Scan Barcode" 
@@ -29,11 +29,11 @@
                             IsEnabled="True"
                             BorderColor="Black" 
                             BorderWidth="4" 
-                            BackgroundColor="GhostWhite"
+                            BackgroundColor="LightGray"
                             HeightRequest="100">
                     </Button>
 
-                    <Label Text="Camera is required to scan Barcode" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"/>
+                    <Label Text="Camera is required to scan Barcode" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="1"/>
                 </Grid>
             </StackLayout>
 
