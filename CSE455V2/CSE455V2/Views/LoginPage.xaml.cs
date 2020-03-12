@@ -50,6 +50,7 @@ namespace CSE455V2.Views
 
                         await App.Current.MainPage.DisplayAlert("Successful Login", "", "Ok");
                         App.UserName = loginViewModel.Email;
+                        App.Password = loginViewModel.Password;
                         /* ADDED BY CARLOS; WILL READ ACCOUNT TYPE FOR EACH USER AND REDIRECT TO APPROPRIATE PAGE
                         EX. SECURITY GUARD TO SECURITY PAGE OR STUDENT TO MAIN MENU
                         ALSO CHANGED THE ADD USER METHOD IN FIREBASE HELPER, WILL DEFAULT ACCOUNT TYPE TO STUDENT */

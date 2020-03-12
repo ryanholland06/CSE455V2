@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSE455V2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,12 @@ namespace CSE455V2.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginInfoPage : ContentPage
     {
-        public string Uemail = "useremail@email.com";
-        public string pass = "password";        // replace with userData
+        public string Uemail = App.UserName;
+        public string pass = App.Password;        // replace with userData
         public LoginInfoPage()
         {
             InitializeComponent();
             userEmail.Text = Uemail;
-            userPassword.Text = pass;
         }
 
         async void ChangePassword(object sender, EventArgs e)
@@ -28,11 +28,13 @@ namespace CSE455V2.Views
             if (result == pass)
             {
                 string result2 = await DisplayPromptAsync("Enter New Password", "Exiting before submiting new password will not remove current password.");
-                // Send user an email to confirm(to new email)
-                // maybe send email with confirmation code
                 // have another pop up where they enter the correct pass, then if statemant
-                Uemail = result2;
-                userEmail.Text = Uemail;
+                pass = result2;
+                userPassword.Text = pass;
+                App.Password = pass;
+                var user = await FirebaseHelper.GetUser(App.UserName);
+                user.Password = pass;
+                FirebaseHelper.UpdateUser(user);
             }
             else
             {

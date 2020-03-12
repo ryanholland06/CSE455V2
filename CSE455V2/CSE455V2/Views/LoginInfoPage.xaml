@@ -14,12 +14,7 @@
             <Entry x:Name="userEmail"
                    IsReadOnly="True"
                    BackgroundColor="White"/>
-            <Label Text="Password:" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="0,20,0,5" />
-            <Entry x:Name="userPassword" 
-                   IsReadOnly="True"
-                   IsPassword="False"
-                   BackgroundColor="White"/>
-            
+
             <Label Text="&#10;" />
 
             <!-- <Button Text="Change Email Address"
