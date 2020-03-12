@@ -55,12 +55,10 @@ namespace CSE455V2
                 NegotiateInfo negotiate = JsonConvert.DeserializeObject<NegotiateInfo>(negotiateJson);
 
                 HubConnection connection = new HubConnectionBuilder()
-                    .AddJsonProtocol()
+                    .AddNewtonsoftJsonProtocol()
                     .WithUrl(negotiate.Url, options =>
                     {
-//#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
                         options.AccessTokenProvider = async () => negotiate.AccessToken;
-
                     })
                     .Build();
 

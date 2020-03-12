@@ -17,6 +17,9 @@ namespace CSE455V2
         public static bool UseMockDataStore = true;
         public static string UserName { get; set; }
         public static string Password { get; set; }
+
+        public NavigationPage CommunityPostingPage { get; }
+
         public App()
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace CSE455V2
                 DependencyService.Register<AzureDataStore>();
 
             MainPage = new NavigationPage(new LoginPage());
+            CommunityPostingPage = new NavigationPage(new CommunityPostingPage());
 
         }
 

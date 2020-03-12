@@ -30,7 +30,6 @@ namespace CSE455V2.Views
                 string result2 = await DisplayPromptAsync("Enter New Password", "Exiting before submiting new password will not remove current password.");
                 // have another pop up where they enter the correct pass, then if statemant
                 pass = result2;
-                userPassword.Text = pass;
                 App.Password = pass;
                 var user = await FirebaseHelper.GetUser(App.UserName);
                 user.Password = pass;
