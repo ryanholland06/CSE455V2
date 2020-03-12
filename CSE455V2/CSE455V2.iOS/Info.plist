@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>CSE455V2</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.SpotLot.CSE455V2</string>
+	<string>com.CSE455.SpotLot</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -36,5 +36,7 @@
 	<string>SpotLot wants to access your Gallery</string>
 	<key>NSCameraUsageDescription</key>
 	<string>SpotLot wants to access your Camera</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2</string>
 </dict>
 </plist>
