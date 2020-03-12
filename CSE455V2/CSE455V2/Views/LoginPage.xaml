@@ -24,8 +24,8 @@
                     <StackLayout Orientation="Vertical" >
 
                         <Image VerticalOptions="CenterAndExpand" Source="MainLogo.png"/>
-                        <Entry Placeholder="Enter Email" PlaceholderColor="#6F6F6F" x:Name="Email" Text="{Binding Email}" Grid.Row="0"/>
-                        <Entry Placeholder="Enter Password" PlaceholderColor="#6F6F6F" x:Name="Password" IsPassword="True" Text="{Binding Password}" Grid.Row="1"/>
+                        <Entry Placeholder="Enter Email" PlaceholderColor="#6F6F6F" x:Name="Email" Keyboard="Email" Text="{Binding Email}" Grid.Row="0"/>
+                        <Entry Placeholder="Enter Password" PlaceholderColor="#6F6F6F" x:Name="Password" IsPassword="True" Keyboard="Default" Text="{Binding Password}" Grid.Row="1"/>
                         <!-- <Button x:Name="lgn" Text="Login" Grid.Row="2" BackgroundColor="#0077be" TextColor="White" IsEnabled="True"  Clicked="Loginbtn_Clicked"/> -->
                         <!--<Button x:Name="sgn" Text="Sign Up" IsEnabled="True" Grid.Row="3" Command="{Binding SignUp}"/> -->
                         <Button x:Name="lgn"
