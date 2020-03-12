@@ -54,6 +54,7 @@
                     BackgroundColor="#0077be"/>
             <Button x:Name="connectButton"
                 Text="Connect to Server"
+                    TextColor="Black"
                     Margin="10"
                 WidthRequest="500"
                     HeightRequest="75"
@@ -63,9 +64,11 @@
                     BorderColor="Black" 
                     BorderWidth="4" 
                     BackgroundColor="LightGray"/>
+                <Label Text="Connect to server before sending message!" TextColor="Black" FontAttributes="Bold" FontSize="14"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Start" />
 
-                
-        </StackLayout>
+            </StackLayout>
       </ScrollView>
     </ContentPage.Content>
 </ContentPage>

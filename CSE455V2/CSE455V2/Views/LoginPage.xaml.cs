@@ -59,6 +59,15 @@ namespace CSE455V2.Views
                         else if (user.SetAccountType.ToString() == "student" || user.SetAccountType.ToString() == "faculty")
                             Application.Current.MainPage = new ShellFlyoutPage(); //sends to main menu, resets the stack.
 
+                        //here the new stuff professor wanted
+                        else if (user.SetAccountType.ToString() == "database_admin")
+                            Application.Current.MainPage = new DataBasePage();
+                        else if (user.SetAccountType.ToString() == "system_admin")
+                            Application.Current.MainPage = new SystemAdminPage();
+                        else if (user.SetAccountType.ToString() == "developer")
+                            Application.Current.MainPage = new DevPage();
+
+
                     }
                     else
                     {
