@@ -7,7 +7,7 @@
              x:Class="CSE455V2.Views.CommunityPostingPage"
              Title="Community Postings"
              BackgroundColor="#0077be">
-    <ContentPage.Content>
+    
         <StackLayout>
             <Label Text="Messages" TextColor="Black" FontAttributes="Bold" FontSize="18"
                Margin="0,45,0,0"
@@ -58,6 +58,6 @@
                     BorderWidth="4" 
                     BackgroundColor="GhostWhite"/>
         </StackLayout>
-    </ContentPage.Content>
+    
 </ContentPage>
     

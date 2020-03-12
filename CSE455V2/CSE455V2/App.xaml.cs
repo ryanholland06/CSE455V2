@@ -16,6 +16,8 @@ namespace CSE455V2
             DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:5000" : "http://localhost:5000";
         public static bool UseMockDataStore = true;
         public static string UserName { get; set; }
+        public NavigationPage CommunityPostingPage { get; }
+
         public App()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace CSE455V2
                 DependencyService.Register<AzureDataStore>();
 
             MainPage = new NavigationPage(new LoginPage());
-
+            CommunityPostingPage = new NavigationPage(new CommunityPostingPage());
         }
 
         protected override void OnStart()
