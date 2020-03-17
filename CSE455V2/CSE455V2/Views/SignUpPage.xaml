@@ -29,6 +29,19 @@
                             <Label Text="Confirm Password*" FontSize="Default" Grid.Row="0" TextColor="Black" />
                             <Entry Text="{Binding ConfirmPassword}" IsPassword="True" Placeholder="Re-Enter Password" />
 
+                            <Label Text="Select your Role" FontSize="Default" Grid.Row="0" TextColor="Black" />
+                            <Picker x:Name="picker"
+                                 Title="Select a role"
+                                 TitleColor="Black">
+                              <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                     <x:String>Student</x:String>
+                                     <x:String>Faculty</x:String>
+                                     <x:String>Admin</x:String>
+                                 </x:Array>
+                              </Picker.ItemsSource>
+                             </Picker>
+
                             <Label Text="Student ID*" FontSize="Default" Grid.Row="0" TextColor="Black" />
                             <Entry Text="{Binding StudentID}" Keyboard="Numeric" Grid.Row="0" Placeholder="Enter Valid ID" />
 
